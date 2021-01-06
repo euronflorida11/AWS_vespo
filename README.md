@@ -1,24 +1,33 @@
 # README
+  「VESPO」
+  
+# サイト概要
+  「VESPO」は、Venture Sportsを楽しむ全ての人へ向けてつくられています。
+  ベンチャースポーツは、かつてマイナースポーツと呼ばれていました。近年、さまざまなベンチャースポーツが台頭してきましたが、
+  それでもプレイヤーを探すことは大変です。この「VESPO」は、ベンチャースポーツをしたい人とベンチャースポーツチームをつなぐプラットフォームをめざしています。
+  
+# サイトテーマ
+  ベンチャースポーツをしたい人とベンチャースポーツチームのマッチングサービス
+  
+# テーマを選んだ理由
+  中学、高校、大学、、と多くの人は部活やサークルに所属し、スポーツに勤しみます。しかし、社会人になるとともにスポーツを続ける人は減少するように思います。
+  そんな中でも、本気の社会人サークルではなく、軽く体を動かしたい人や新しいスポーツに挑戦したい人も多いと思います。そんな人に向いているのがベンチャースポーツです。
+  ベンチャースポーツは特別な技術を必要としないことが多く、多くの人がすぐに楽しめるようなものが多いです。しかし、ベンチャースポーツは競技人口が少なく、人数不足のチームも多いです。
+  そんな問題を解決する糸口になればと「VESPO」というWEBサービスを考案しました。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# ターゲットユーザ
+  新社会人、転勤が決まった人、スポーツをしたい人
 
-Things you may want to cover:
+# 主な利用シーン
+  ・チームメイトを増やしたいスポーツチームがメンバー募集
+  ・新しいコミュニティを探す
 
-* Ruby version
+# テクノロジー
+  OS：Linux(CentOS)
+  言語：HTML,CSS,JavaScript,Ruby,SQL
+  フレームワーク：Ruby on Rails
+  JSライブラリ：jQueryIDE：Cloud9
 
-* System dependencies
+# チャレンジ要素一覧(AI教養コース)
+  https://docs.google.com/spreadsheets/d/1avAmuAHetvh2t2DnsqB9KRKibShsRbuhQ39Qoi_3kuU/edit?usp=sharing
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
