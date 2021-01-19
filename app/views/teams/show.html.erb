@@ -1,0 +1,20 @@
+マイチーム
+<% @team.each do |team| %>
+<div>
+  <%= attachment_image_tag team, :image, :fill, 40, 40 %>
+  <p>チーム名</p>
+    <%= link_to team_path do %>
+     <%= team.name %>
+    <% end %>
+  <p>チーム紹介</p>
+    <%= team.introduction %>
+  <p>活動人数</p>
+    <%= team.number %>
+  <p>活動場所</p>
+    <%= team.address %>
+  <p>活動ステータス</p>
+    <%= team.status %>
+
+</div>
+ーーーーーーーーーーーーーーーーー
+<% end %>

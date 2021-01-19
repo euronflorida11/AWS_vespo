@@ -1,0 +1,16 @@
+チーム投稿
+<%= form_with model: @team, local:true do |f| %>
+  <p>画像</p>
+    <%= f.attachment_field :image %>
+  <p>チーム名</p>
+    <%= f.text_field :name %>
+  <p>チーム紹介</p>
+    <%= f.text_area :introduction %>
+  <p>活動人数</p>
+    <%= f.text_field :number %>
+  <p>活動場所</p>
+    <%= f.text_field :address %>
+  <p>活動ステータス</p>
+    <%= f.text_field :status %>
+  <%= f.submit %>
+<% end %>
