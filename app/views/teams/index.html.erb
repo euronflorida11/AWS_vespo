@@ -1,0 +1,44 @@
+チーム一覧
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>画像</th>
+        <th>チーム名</th>
+        <th>チーム紹介</th>
+        <th>活動人数</th>
+        <th>活動場所</th>
+        <th>活動ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @teams.each do |team| %>
+      <tr>
+        <td>
+          <%= attachment_image_tag team, :image, :fill, 40, 40 %>
+        </td>
+        <td>
+          <%= link_to team_path(team.id) do %>
+            <%= team.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= team.introduction %>
+        </td>
+        <td>
+          <%= team.number %>
+        </td>
+        <td>
+          <%= team.address %>
+        </td>
+        <td>
+          <%= team.status %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
+<% end %>
