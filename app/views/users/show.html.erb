@@ -1,0 +1,49 @@
+<div class="row">
+ <div class="col-md-8">
+  <i class="fas fa-address-card fa-3x"></i>
+   <h2>マイページ</h2>
+
+  <table class="table">
+   <tbody>
+     <tr>
+      <th scope="row"><label>ハンドルネーム</label></th>
+      <td><%= @user.handle_name %></td>
+    </tr>
+    <tr>
+      <th scope="row"><label>名前</label></th>
+      <td><%= @user.last_name %>
+      <%= @user.first_name %></td>
+    </tr>
+    <tr>
+      <th scope="row"><label>カナ</label></th>
+      <td><%= @user.kana_last_name %>
+      <%= @user.kana_first_name %></td>
+    </tr>
+    <tr>
+      <th scope="row"><label>郵便番号</label></th>
+      <td><%= @user.postal_code %></td>
+    </tr>
+    <tr>
+      <th scope="row"><label>住所</label></th>
+      <td><%= @user.address %></td>
+    </tr>
+    <tr>
+      <th scope="row"><label>電話番号</label></th>
+      <td><%= @user.phone_number %></td>
+    </tr>
+    <tr>
+      <th scope="row"><label>メールアドレス</label></th>
+      <td><%= @user.email %></td>
+    </tr>
+  </tbody>
+ </table>
+     <% if @user.id == current_user.id %>
+      <p><%= link_to "編集する", edit_user_path, class: "btn btn-outline-warning"%></p>
+     <% end %>
+
+    <h3>about</h3>
+    <%= link_to "一覧を見る", about_path, class: "btn btn-info" %>
+    <h3>about</h3>
+    <%= link_to "一覧を見る", about_path, class: "btn btn-info" %>
+  </div>
+</div>

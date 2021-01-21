@@ -12,9 +12,9 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
-              <li class = nav-link text-light ><%= current_user.first_name %>!</li>
-              <!--<li>%= link_to ' マイページ', customers_my_page_path, class: 'nav-link text-light' %></li>-->
+              <li class = nav-link text-light >Hey! <%= current_user.handle_name %> !!</li>
               <li><%= link_to ' About',      about_path, class: 'nav-link text-light' %></li>
+              <li><%= link_to ' マイページ', user_path(current_user.id), class: 'nav-link text-light' %></li>
               <li><%= link_to ' Vスポーツ一覧', teams_path, class: 'nav-link text-light' %></li>
               <li><%= link_to ' チーム一覧', teams_path, class: 'nav-link text-light' %></li>
               <li><%= link_to ' チーム投稿', new_team_path, class: 'nav-link text-light' %></li>
