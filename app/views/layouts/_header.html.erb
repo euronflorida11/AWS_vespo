@@ -15,7 +15,7 @@
               <li class = nav-link text-light >Hey! <%= current_user.handle_name %> !!</li>
               <li><%= link_to ' About',      about_path, class: 'nav-link text-light' %></li>
               <li><%= link_to ' マイページ', user_path(current_user.id), class: 'nav-link text-light' %></li>
-              <li><%= link_to ' Vスポーツ一覧', teams_path, class: 'nav-link text-light' %></li>
+              <li><%= link_to ' Vスポーツ一覧', sports_index_path, class: 'nav-link text-light' %></li>
               <li><%= link_to ' チーム一覧', teams_path, class: 'nav-link text-light' %></li>
               <li><%= link_to ' チーム投稿', new_team_path, class: 'nav-link text-light' %></li>
               <!--<li>%= link_to ' マイチーム', team_path(@team.id), class: 'nav-link text-light' %></li>-->
