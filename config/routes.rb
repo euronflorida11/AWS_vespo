@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/about' => 'homes#about'
   resources :teams do
     resources :comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
   resources :users
   resources :sports

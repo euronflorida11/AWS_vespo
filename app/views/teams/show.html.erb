@@ -27,6 +27,24 @@
         <th scope="row"><label>活動ステータス</label></th>
         <td><%= @team.status %></td>
       </tr>
+      <tr>
+        <th scope="row"><label>いいね</label></th>
+        <td>
+          <% if @team.favorited_by?(current_user) %>
+            <p>
+              <%= link_to team_favorites_path(@team), method: :delete do %>
+                ♥<%= @team.favorites.count %>
+              <% end %>
+            </p>
+            <% else %>
+            <p>
+              <%= link_to team_favorites_path(@team), method: :post do %>
+                ♡<%= @team.favorites.count %>
+              <% end %>
+            </p>
+          <% end %>
+        </td>
+      </tr>
     </tbody>
    </table>
      <!--% if @user.id == current_user.id %>-->
