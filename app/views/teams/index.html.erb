@@ -10,13 +10,15 @@
         <th>活動人数</th>
         <th>活動場所</th>
         <th>活動ステータス</th>
+        <th>いいね</th>
+        <th>コメント</th>
       </tr>
     </thead>
     <tbody>
       <% @teams.each do |team| %>
       <tr>
         <td>
-          <%= attachment_image_tag team, :image, :fill, 40, 40 %>
+          <%= attachment_image_tag team, :image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %>
         </td>
         <td>
           <%= link_to team_path(team.id) do %>
@@ -34,6 +36,12 @@
         </td>
         <td>
           <%= team.status %>
+        </td>
+        <td>
+          iine
+        </td>
+        <td>
+          <%= link_to "#{team.comments.count} コメント", team_path(team.id) %>
         </td>
       </tr>
       <% end %>

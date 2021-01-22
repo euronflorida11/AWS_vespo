@@ -1,20 +1,89 @@
-マイチーム
-<% @team.each do |team| %>
-<div>
-  <%= attachment_image_tag team, :image, :fill, 40, 40 %>
-  <p>チーム名</p>
-    <%= link_to team_path do %>
-     <%= team.name %>
-    <% end %>
-  <p>チーム紹介</p>
-    <%= team.introduction %>
-  <p>活動人数</p>
-    <%= team.number %>
-  <p>活動場所</p>
-    <%= team.address %>
-  <p>活動ステータス</p>
-    <%= team.status %>
+<div class="row">
+ <div class="col-md-8">
+  <i class="fas fa-address-card fa-3x"></i>
+  <h2>マイチーム</h2>
+    <table class="table">
+     <tbody>
+      <tr>
+        <%= attachment_image_tag @team, :image, :fill, 40, 40, fallback: "no_image.jpg", size:'150x150' %>
+      </tr>
+      <tr>
+        <th scope="row"><label>チーム名</label></th>
+        <td><%= @team.name %></td>
+      </tr>
+      <tr>
+        <th scope="row"><label>チーム紹介</label></th>
+        <td><%= @team.introduction %></td>
+      </tr>
+      <tr>
+        <th scope="row"><label>活動人数</label></th>
+        <td><%= @team.number %></td>
+      </tr>
+      <tr>
+        <th scope="row"><label>活動場所</label></th>
+        <td><%= @team.address %></td>
+      </tr>
+      <tr>
+        <th scope="row"><label>活動ステータス</label></th>
+        <td><%= @team.status %></td>
+      </tr>
+    </tbody>
+   </table>
+     <!--% if @user.id == current_user.id %>-->
+      <p><%= link_to "編集する", edit_team_path, class: "btn btn-outline-warning"%></p>
+     <!--% end %>-->
 
+    <h3>about</h3>
+    <%= link_to "一覧を見る", about_path, class: "btn btn-info" %>
+    <h3>about</h3>
+    <%= link_to "一覧を見る", about_path, class: "btn btn-info" %>
+  </div>
 </div>
-ーーーーーーーーーーーーーーーーー
+
+<div class="comments">
+  <h2>コメント</h2>
+  <p>コメント件数：<%= @team.comments.count %></p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>ハンドルネーム</th>
+        <th>コメント</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @team.comments.each do |comment| %>
+      <tr>
+        <td>
+          <!--%= attachment_image_tag comment.user, :image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %>-->
+        </td>
+        <td>
+          <%= comment.user.handle_name %>
+        </td>
+        <td>
+          <%= comment.comment %>
+        </td>
+        <td>
+          <%= comment.created_at.strftime('%Y/%m/%d') %>
+        </td>
+        <td>
+          <% if comment.user == current_user %>
+          <div class="comment-delete">
+            <%= link_to "削除", team_comment_path(comment.team, comment), method: :delete %>
+          </div>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="new-comment">
+<%= form_with(model:[@team, @comment], local: true) do |f| %>
+  <%= f.text_area :comment, placeholder: "コメントをここに", class:"form-control" %>
+  <%= f.submit "送信する" %>
 <% end %>
+</div>

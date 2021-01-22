@@ -1,0 +1,31 @@
+<i class="far fa-edit fa-2x"></i><h2>チーム情報編集</h2><br>
+<form>
+  <%= form_with model: @team, url: teams_path, local: true do |f| %>
+  <fieldset class="form-group">
+    <%= f.attachment_field :image %>
+    <div class="form-group">
+      <label>チーム名</label><br>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control" %>
+      </div>
+    <div class="form-group">
+      <label>チーム紹介</label>
+      <%= f.text_field :introduction, autofocus: true, autocomplete: "introduction", class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <label>活動人数</label>
+      <%= f.text_field :number, autofocus: true, autocomplete: "number", class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <label>活動場所</label>
+      <%= f.text_field :address, autofocus: true, autocomplete: "address", class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <label>活動ステータス</label>
+      <%= f.text_field :status, autofocus: true, autocomplete: "status", class:"form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "編集内容を保存する", class:'btn btn-outline-info' %>
+      <%= link_to '退会する', teams_path, class:'btn btn-danger' %>
+    </div>
+  <% end %>
+</form>
