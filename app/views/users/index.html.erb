@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+  <p><%= link_to "マイページへ", user_path(current_user) %></p>
+  <h2>ユーザー一覧画面</h2>
+  <% User.all.where.not(id: current_user.id).each do |user| %>
+    <p>
+      <%= "id: #{user.id} email: #{user.email}" %>
+      <% if current_user.following?(user) %>
+        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+      <% else %>
+        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+      <% end %>
+      <%= link_to "show", user_path(user) %>
+    </p>
+  <% end %>
+<% end %>

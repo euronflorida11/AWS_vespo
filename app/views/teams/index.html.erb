@@ -9,9 +9,10 @@
         <th>チーム紹介</th>
         <th>活動人数</th>
         <th>活動場所</th>
-        <th>活動ステータス</th>
+        <th>ステータス</th>
         <th>いいね</th>
         <th>コメント</th>
+        <th>チーム設立者</th>
       </tr>
     </thead>
     <tbody>
@@ -35,7 +36,7 @@
           <%= team.address %>
         </td>
         <td>
-          <%= team.status %>
+          <%= (team.status)? '活動中' : '休止中' %>
         </td>
         <td>
           <% if team.favorites.count == 0 %>
@@ -46,6 +47,9 @@
         </td>
         <td>
           <%= team.comments.count %>コメント
+        </td>
+        <td>
+          <%= attachment_image_tag team.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
         </td>
       </tr>
       <% end %>

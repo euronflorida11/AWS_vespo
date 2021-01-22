@@ -2,6 +2,9 @@
 <form>
   <%= form_with model: @user, url: users_path, local: true do |f| %>
   <fieldset class="form-group">
+    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+      <label for="inputImage">ProfileImage</label>
+      <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>  
     <div class="form-group">
       <label>ハンドルネーム</label><br>
       <%= f.text_field :handle_name, autofocus: true, autocomplete: "handle_name", class:"form-control" %>

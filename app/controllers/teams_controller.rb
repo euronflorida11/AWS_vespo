@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-    @team.team_id = current_team.id
+    @team.user_id = current_user.id
     @team.save
     redirect_to teams_path
   end
@@ -18,7 +18,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @comment = Comment.new
   end
-  
+
   def edit
     @team = Team.find(params[:id])
   end
@@ -31,8 +31,11 @@ class TeamsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
+    @team = Team.find(params[:id])
+    @team.destroy
+    redirect_to teams_path
   end
 
   private

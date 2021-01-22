@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :sports
-
+  post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
 end

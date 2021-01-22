@@ -20,12 +20,18 @@
       <%= f.text_field :address, autofocus: true, autocomplete: "address", class:"form-control" %>
     </div>
     <div class="form-group">
-      <label>活動ステータス</label>
-      <%= f.text_field :status, autofocus: true, autocomplete: "status", class:"form-control" %>
+      <label>ステータス</label>
+      <div>
+      <%= f.select :status, [['活動中', 0 ],['休止中', 1 ]] %>
+      </div>
     </div>
     <div class="actions">
-      <%= f.submit "編集内容を保存する", class:'btn btn-outline-info' %>
-      <%= link_to '退会する', teams_path, class:'btn btn-danger' %>
+      <%= f.submit "更新", class: 'btn btn-info' %>
+    </div>
+    <div class="actions">
+      <% if @team.user == current_user %>
+        <%= link_to '削除', teams_path(@team), method: :delete, class:'btn btn-danger' %>
+      <% end %>
     </div>
   <% end %>
 </form>
