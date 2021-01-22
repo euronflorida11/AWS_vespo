@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       root_path(resource)
     else
       flash[:notice] = "管理者ログイン"
-      # admin_path
+      admin_root_path
     end
   end
 

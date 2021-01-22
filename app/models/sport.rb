@@ -1,4 +1,4 @@
 class Sport < ApplicationRecord
-  has_many :taems
+  has_many :teams
   validates :name, presence: true
 end
