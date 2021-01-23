@@ -1,4 +1,10 @@
 class SportsController < ApplicationController
+  
+  def index
+    @sports = Sport.all
+    @sport = Sport.new
+  end
+
   def create
     @sport = Sport.new(sport_params)
     if @sport.save
@@ -7,11 +13,6 @@ class SportsController < ApplicationController
       @sports = Sport.all
       render "index"
     end
-  end
-
-  def index
-    @sports = Sport.all
-    @sport = Sport.new
   end
 
   def edit

@@ -1,6 +1,27 @@
 <h2 class="text-center bg-gray">チーム一覧</h2>
+
+<div class = "row">
+  <div class = col-md-2>
+    <div class = "sidebar_fixed">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>ジャンル検索</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sports.each do |sport| %>
+            <tr>
+             <td><%= link_to sport.name, teams_path(sport_id: sport.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 <div class="row">
-  <div class="col-10 col-offset-1">
+  <div class="col-12">
   <table class = "table table-hover table-bordered table-condensed" >
     <thead>
       <tr>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'maps/index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'sports/index'
@@ -17,4 +18,5 @@ Rails.application.routes.draw do
   resources :sports
   post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
+  
 end

@@ -1,5 +1,5 @@
 チーム投稿
-<%= form_with model: @team, local:true do |f| %>
+<%= form_with model: @team, url: teams_path, local:true do |f| %>
   <p>画像</p>
     <%= f.attachment_field :image %>
   <p>チーム名</p>

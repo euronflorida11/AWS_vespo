@@ -1,4 +1,10 @@
 class TeamsController < ApplicationController
+
+  def index
+    @teams = Team.all
+    @sports = Sport.all
+  end
+
   def new
     @team = Team.new
   end
@@ -6,12 +12,12 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.user_id = current_user.id
-    @team.save
-    redirect_to teams_path
-  end
-
-  def index
-    @teams = Team.all
+    if @team.save!
+      redirect_to teams_path
+    else
+      @teams = Team.all
+      render "index"
+    end
   end
 
   def show
