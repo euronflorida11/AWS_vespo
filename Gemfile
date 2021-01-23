@@ -70,6 +70,8 @@ end
 
 gem 'devise'
 gem 'activeadmin'
+gem 'activeadmin-translate'
+gem "active_material"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'bootstrap', '~> 4.5'
@@ -78,4 +80,6 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'pry-byebug'
 gem 'enum_help'
 gem 'ransack'
+gem 'jp_prefecture'
+gem 'geocoder'
 gem 'rails-i18n', '~> 5.1'
