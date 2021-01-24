@@ -13,6 +13,26 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
   attachment :profile_image
 
+  validates :email, presence: true , uniqueness: true
+  validates :handle_name, length: {maximum: 20, minimum: 2}, uniqueness: true
+  validates :introduction, length: {maximum: 500}
+  [
+  :last_name,
+  :first_name,
+  :kana_last_name,
+  :kana_first_name
+  #:postcode,
+  #:address,
+  #:phone_number,
+  #:is_deleted,
+  #:prefecture_code,
+  #:address_city,
+  #:address_street,
+  #:address_building
+  ].each do |v|
+    validates v, presence: true
+  end
+
   # ユーザーをフォローする
   def follow(user_id)
     follower.create(followed_id: user_id)
