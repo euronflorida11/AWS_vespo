@@ -1,6 +1,6 @@
 class Team < ApplicationRecord
   belongs_to :user
-  belongs_to :sport #, optional: true
+  belongs_to :sport, optional: true
   # has_many :sports, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

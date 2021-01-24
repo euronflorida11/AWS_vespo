@@ -1,5 +1,5 @@
 <i class="far fa-edit fa-2x"></i><h2>登録情報編集</h2><br>
-<%= form_with model: @user, url: user_path(@user.id), local: true do |f| %>
+<%= form_with model: @user, local: true do |f| %>
   <fieldset class="form-group">
     <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
       <label for="inputImage">ProfileImage</label>

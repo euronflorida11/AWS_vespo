@@ -15,10 +15,7 @@
       <!--<p>活動ステータス</p>-->
       <!--  %= f.text_field :status %>-->
       <p class="mt-5">Vスポーツ</p>
-
-        <%= f.collection_select :sport_id, @sport, :id, :name, :include_blank => "  --  選択してください  --  ", class: 'form-control' %>
-
-
+        <%= f.collection_select :sport_id, @sports, :id, :name, :include_blank => "  --  選択してください  --  ", class: 'form-control' %>
       <div class="actions mt-5">
         <%= f.submit "チーム設立", class:'btn btn-outline-info' %>
       </div>

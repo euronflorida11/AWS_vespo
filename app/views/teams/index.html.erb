@@ -1,4 +1,70 @@
 <h2 class="text-center bg-gray">チーム一覧</h2>
+  <div class="row">
+    <div class="col-12">
+    <table class = "table table-hover table-bordered table-condensed" >
+      <thead>
+        <tr>
+          <th>画像</th>
+          <th>チーム名</th>
+          <th>チーム紹介</th>
+          <th>活動人数</th>
+          <th>活動場所</th>
+          <th>ステータス</th>
+          <th>いいね</th>
+          <th>コメント</th>
+          <th>Vスポーツ</th>
+          <th>チーム設立者</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @teams.each do |team| %>
+        <tr>
+          <td>
+            <%= attachment_image_tag team, :image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %>
+          </td>
+          <td>
+            <%= link_to team_path(team.id) do %>
+              <%= team.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= team.introduction %>
+          </td>
+          <td>
+            <%= team.number %>
+          </td>
+          <td>
+            <%= team.address %>
+          </td>
+          <td>
+            <%= (team.status)? '活動中' : '休止中' %>
+          </td>
+          <td>
+            <% if team.favorites.count == 0 %>
+              ♡<%= team.favorites.count %>
+            <% else %>
+              ♥<%= team.favorites.count %>
+            <% end %>
+          </td>
+          <td>
+            <%= team.comments.count %>コメント
+          </td>
+          <td>
+            <%= link_to sports_index_path do %>
+              <%= team.sport.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to user_path(team.user) do %>
+              <%= attachment_image_tag team.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  </div>
 
 <div class = "row">
   <div class = col-md-2>
@@ -19,70 +85,4 @@
       </table>
     </div>
   </div>
-
-<div class="row">
-  <div class="col-12">
-  <table class = "table table-hover table-bordered table-condensed" >
-    <thead>
-      <tr>
-        <th>画像</th>
-        <th>チーム名</th>
-        <th>チーム紹介</th>
-        <th>活動人数</th>
-        <th>活動場所</th>
-        <th>ステータス</th>
-        <th>いいね</th>
-        <th>コメント</th>
-        <th>Vスポーツ</th>
-        <th>チーム設立者</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @teams.each do |team| %>
-      <tr>
-        <td>
-          <%= attachment_image_tag team, :image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %>
-        </td>
-        <td>
-          <%= link_to team_path(team.id) do %>
-            <%= team.name %>
-          <% end %>
-        </td>
-        <td>
-          <%= team.introduction %>
-        </td>
-        <td>
-          <%= team.number %>
-        </td>
-        <td>
-          <%= team.address %>
-        </td>
-        <td>
-          <%= (team.status)? '活動中' : '休止中' %>
-        </td>
-        <td>
-          <% if team.favorites.count == 0 %>
-            ♡<%= team.favorites.count %>
-          <% else %>
-            ♥<%= team.favorites.count %>
-          <% end %>
-        </td>
-        <td>
-          <%= team.comments.count %>コメント
-        </td>
-        <td>
-          <%= link_to sports_index_path do %>
-            <%= team.sport.name %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to user_path(team.user) do %>
-            <%= attachment_image_tag team.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
 </div>

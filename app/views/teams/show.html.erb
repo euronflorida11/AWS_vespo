@@ -52,7 +52,7 @@
       </tr>
     </tbody>
    </table>
-     <% if @team.id == current_user.id %>
+     <% if @team.user_id == current_user.id %>
       <p><%= link_to "編集する", edit_team_path, class: "btn btn-outline-warning"%></p>
      <% end %>
 
