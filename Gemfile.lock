@@ -43,10 +43,6 @@ GEM
       kaminari (~> 1.0, >= 1.2.1)
       railties (>= 5.2, < 6.2)
       ransack (~> 2.1, >= 2.1.1)
-    activeadmin-translate (0.2.2)
-      activeadmin
-      globalize3
-      railties
     activejob (5.2.4.4)
       activesupport (= 5.2.4.4)
       globalid (>= 0.3.6)
@@ -134,9 +130,6 @@ GEM
     geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    globalize3 (0.1.0)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
@@ -379,7 +372,6 @@ PLATFORMS
 DEPENDENCIES
   active_material
   activeadmin
-  activeadmin-translate
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.5)
   byebug
