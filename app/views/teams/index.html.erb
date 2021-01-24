@@ -33,6 +33,7 @@
         <th>ステータス</th>
         <th>いいね</th>
         <th>コメント</th>
+        <th>Vスポーツ</th>
         <th>チーム設立者</th>
       </tr>
     </thead>
@@ -70,7 +71,14 @@
           <%= team.comments.count %>コメント
         </td>
         <td>
-          <%= attachment_image_tag team.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+          <%= link_to sports_index_path do %>
+            <%= team.sport.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to user_path(team.user) do %>
+            <%= attachment_image_tag team.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+          <% end %>
         </td>
       </tr>
       <% end %>

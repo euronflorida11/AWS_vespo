@@ -1,6 +1,7 @@
 class Team < ApplicationRecord
   belongs_to :user
-  belongs_to :sport, optional: true
+  belongs_to :sport #, optional: true
+  # has_many :sports, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   attachment :image
@@ -9,11 +10,11 @@ class Team < ApplicationRecord
   validates :introduction, length: {maximum: 500}
   validates :number, presence: true ,numericality: true
   validates :address, presence: true
-  
+
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
 
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
+  # geocoded_by :address
+  # after_validation :geocode, if: :address_changed?
 end

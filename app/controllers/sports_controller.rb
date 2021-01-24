@@ -1,7 +1,7 @@
 class SportsController < ApplicationController
   
   def index
-    @sports = Sport.all
+    @sports = Sport.where(is_active: true)
     @sport = Sport.new
   end
 
@@ -14,7 +14,12 @@ class SportsController < ApplicationController
       render "index"
     end
   end
-
+  
+  def show
+    @sports = Sport.where(is_active: true)
+    @sport = Sport.find(params[:id])
+  end
+  
   def edit
     @sport = Sport.find(params[:id])
   end
@@ -30,7 +35,7 @@ class SportsController < ApplicationController
 
   private
     def sport_params
-        params.require(:sport).permit(:name, :is_active)
+        params.require(:sport).permit(:name, :is_active, :introduction)
     end
 
 end

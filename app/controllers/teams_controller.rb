@@ -7,12 +7,14 @@ class TeamsController < ApplicationController
 
   def new
     @team = Team.new
+    @sport = Sport.where(is_active: 'true')
   end
 
   def create
     @team = Team.new(team_params)
     @team.user_id = current_user.id
     if @team.save!
+
       redirect_to teams_path
     else
       @teams = Team.all
@@ -27,6 +29,7 @@ class TeamsController < ApplicationController
 
   def edit
     @team = Team.find(params[:id])
+    @sports = Sport.where(is_active: 'true')
   end
 
   def update

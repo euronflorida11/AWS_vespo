@@ -1,7 +1,7 @@
 <div class="row">
  <div class="col-md-8">
   <i class="fas fa-address-card fa-3x"></i>
-   <h2>マイページ</h2>
+   <h2><%= @user.handle_name %>さんのページ</h2>
 
   <table class="table">
    <tbody>
@@ -12,6 +12,11 @@
       <th scope="row"><label>ハンドルネーム</label></th>
       <td><%= @user.handle_name %></td>
     </tr>
+    <tr>
+      <th scope="row"><label>自己紹介</label></th>
+      <td><%= @user.introduction %></td>
+    </tr>
+  <% if @user.id == current_user.id %>
     <tr>
       <th scope="row"><label>名前</label></th>
       <td><%= @user.last_name %>
@@ -28,7 +33,10 @@
     </tr>
     <tr>
       <th scope="row"><label>住所</label></th>
-      <td><%= @user.address %></td>
+      <!--<td>%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code"%></td>-->
+      <td><%= @user.address_city %></td>
+      <td><%= @user.address_street %></td>
+      <td><%= @user.address_building %></td>
     </tr>
     <tr>
       <th scope="row"><label>電話番号</label></th>
@@ -40,14 +48,14 @@
     </tr>
   </tbody>
  </table>
-     <% if @user.id == current_user.id %>
-      <p><%= link_to "編集する", edit_user_path, class: "btn btn-outline-warning"%></p>
-     <% end %>
+
+    <p><%= link_to "編集する", edit_user_path, class: "btn btn-outline-info"%></p>
+   <% end %>
 
     <h4>about</h4>
-    <%= link_to "会員一覧", users_path, class: "btn btn-info" %>
+    <%= link_to "会員一覧", users_path, class: "btn btn-outline-info" %>
     <h4>about</h4>
-    <%= link_to "about", about_path, class: "btn btn-info" %>
+    <%= link_to "about", about_path, class: "btn btn-outline-info" %>
   </div>
 </div>
 

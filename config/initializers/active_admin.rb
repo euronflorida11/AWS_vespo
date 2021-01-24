@@ -1,4 +1,6 @@
 ActiveAdmin.setup do |config|
+  
+  
   # == Site Title
   #
   # Set the title that is displayed on the main layout
@@ -333,3 +335,7 @@ ActiveAdmin.setup do |config|
   #
   # config.use_webpacker = true
 end
+
+# ActiveAdmin::BaseController.class_eval do
+#   skip_before_action :user_logged_in?
+# end

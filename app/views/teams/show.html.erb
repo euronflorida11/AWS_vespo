@@ -1,7 +1,7 @@
 <div class="row">
  <div class="col-md-8">
   <i class="fas fa-address-card fa-3x"></i>
-  <h2>マイチーム</h2>
+  <h2>チーム情報</h2>
     <table class="table">
      <tbody>
       <tr>
@@ -28,6 +28,11 @@
         <td><%= (@team.status)? '活動中' : '休止中' %></td>
       </tr>
       <tr>
+      <tr>
+        <th scope="row"><label>Vスポーツ</label></th>
+        <td><%= @team.sport.name %></td>
+      </tr>
+      <tr>
         <th scope="row"><label>いいね</label></th>
         <td>
           <% if @team.favorited_by?(current_user) %>
@@ -47,9 +52,9 @@
       </tr>
     </tbody>
    </table>
-     <!--% if @user.id == current_user.id %>-->
+     <% if @team.id == current_user.id %>
       <p><%= link_to "編集する", edit_team_path, class: "btn btn-outline-warning"%></p>
-     <!--% end %>-->
+     <% end %>
 
     <h3>about</h3>
     <%= link_to "一覧を見る", about_path, class: "btn btn-info" %>
