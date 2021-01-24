@@ -70,7 +70,6 @@ end
 
 gem 'devise'
 gem 'activeadmin'
-# gem 'activeadmin-translate'
 gem "active_material"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
