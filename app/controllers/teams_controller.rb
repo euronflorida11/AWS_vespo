@@ -1,8 +1,14 @@
 class TeamsController < ApplicationController
 
   def index
-    @teams = Team.all
-    @sports = Sport.all
+    #@teams = Team.all
+    @sports = Sport.where(is_active: 'true')
+    if params[:sport_id].blank?
+      @teams = Team.where(status: 0)
+    else
+      @sport = Sport.find(params[:sport_id])
+      @teams = @sport.teams.where(status: 0)
+    end
   end
 
   def new

@@ -1,132 +1,81 @@
 <div class="row">
- <div class="col-md-8">
-  <i class="fas fa-address-card fa-3x"></i>
+ <div class="col-md-12 text-center">
+  <i class="fas fa-address-card fa-3x mt-4 mb-2"></i>
    <h2><%= @user.handle_name %>さんのページ</h2>
-
-  <table class="table">
-   <tbody>
-     <tr>
-       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-     </tr>
-     <tr>
-      <th scope="row"><label>ハンドルネーム</label></th>
-      <td><%= @user.handle_name %></td>
-    </tr>
-    <tr>
-      <th scope="row"><label>自己紹介</label></th>
-      <td><%= @user.introduction %></td>
-    </tr>
-  <% if @user.id == current_user.id %>
-    <tr>
-      <th scope="row"><label>名前</label></th>
-      <td><%= @user.last_name %>
-      <%= @user.first_name %></td>
-    </tr>
-    <tr>
-      <th scope="row"><label>カナ</label></th>
-      <td><%= @user.kana_last_name %>
-      <%= @user.kana_first_name %></td>
-    </tr>
-    <tr>
-      <th scope="row"><label>郵便番号</label></th>
-      <td><%= @user.postcode %></td>
-    </tr>
-    <tr>
-      <th scope="row"><label>住所</label></th>
-      <!--<td>%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code"%></td>-->
-      <td><%= @user.address_city %></td>
-      <td><%= @user.address_street %></td>
-      <td><%= @user.address_building %></td>
-    </tr>
-    <tr>
-      <th scope="row"><label>電話番号</label></th>
-      <td><%= @user.phone_number %></td>
-    </tr>
-    <tr>
-      <th scope="row"><label>メールアドレス</label></th>
-      <td><%= @user.email %></td>
-    </tr>
-  </tbody>
- </table>
-
-    <p><%= link_to "編集する", edit_user_path, class: "btn btn-outline-info"%></p>
+    <% if @user == current_user %>
+    <table class = "table table-bordered table-condensed">
+      <tbody>
+       <tr>
+         <th><label>プロフィール画像</label></th>
+         <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
+       </tr>
+       <tr>
+        <th><label>ハンドルネーム</label></th>
+        <td><%= @user.handle_name %></td>
+      </tr>
+      <tr>
+        <th><label>自己紹介</label></th>
+        <td><%= @user.introduction %></td>
+      </tr>
+      <tr>
+        <th><label>名前</label></th>
+        <td><%= @user.last_name %>
+        <%= @user.first_name %></td>
+      </tr>
+      <tr>
+        <th><label>カナ</label></th>
+        <td><%= @user.kana_last_name %>
+        <%= @user.kana_first_name %></td>
+      </tr>
+      <tr>
+        <th><label>郵便番号</label></th>
+        <td><%= @user.postcode %></td>
+      </tr>
+      <tr>
+        <th><label>住所</label></th>
+        <td>
+          <%= @user.prefecture_name %>
+          <%= @user.address_city %>
+          <%= @user.address_street %>
+          <%= @user.address_building %>
+        </td>
+      </tr>
+      <tr>
+        <th><label>電話番号</label></th>
+        <td><%= @user.phone_number %></td>
+      </tr>
+      <tr>
+        <th><label>メールアドレス</label></th>
+        <td><%= @user.email %></td>
+      </tr>
+    </tbody>
+   </table>
+    <%= link_to "編集する", edit_user_path, class: "btn btn-outline-info"%>
+   <% else %>
+     <table class = "table table-bordered table-condensed" >
+       <tbody>
+         <tr>
+           <th><label>プロフィール画像</label></th>
+           <td><%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg" %></td>
+         </tr>
+         <tr>
+          <th><label>ハンドルネーム</label></th>
+          <td><%= @user.handle_name %></td>
+        </tr>
+        <tr>
+          <th><label>自己紹介</label></th>
+          <td><%= @user.introduction %></td>
+        </tr>
+      </tbody>
+     </table>
    <% end %>
 
-    <h4>about</h4>
-    <%= link_to "会員一覧", users_path, class: "btn btn-outline-info" %>
-    <h4>about</h4>
-    <%= link_to "about", about_path, class: "btn btn-outline-info" %>
-  </div>
-</div>
-
-
-<p><%= "id: #{@user.id}" %></p>
-<p><%= "フォロー数: #{@user.follower.count}" %></p>
-<p><%= "フォロワー数: #{@user.followed.count}" %></p>
 <% unless @user == current_user %>
   <% if current_user.following?(@user) %>
-    <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
+    <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class:'btn btn-outline-info' %>
   <% else %>
-    <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
+    <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class:'btn btn-outline-info' %>
   <% end %>
 <% end %>
-<p></p>
-
-<h3>フォロー一覧</h3>
-  <% @user.following_user.where.not(id: current_user.id).each do |user| %>
-    <p>
-      <%= "id: #{user.id} email: #{user.email}" %>
-      <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-      <% end %>
-      <%= link_to "show", user_path(user) %>
-    </p>
-  <% end %>
-<h3>フォロワー一覧</h3>
-  <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
-    <p>
-      <%= "id: #{user.id} email: #{user.email}" %>
-      <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-      <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-      <% end %>
-      <%= link_to "show", user_path(user) %>
-    </p>
-  <% end %>
-
-  <table class='table'>
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %></td>
-        <td><%= user.handle_name %></td>
-        <td><%= "フォロー数: #{user.follower.count}" %></td>
-        <td><%= "フォロワー数: #{user.followed.count}" %></td>
-        <td>
-          <% if user_signed_in? %>
-          <% if user != current_user %>
-            <p> <!--%= "id: #{user.id} email: #{user.email}" %>-->
-              <% if current_user.following?(user) %>
-                <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
-              <% else %>
-                <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
-              <% end %>
-            </p>
-          <% end %>
-          <% end %>
-        </td>
-        <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  </div>
+</div>

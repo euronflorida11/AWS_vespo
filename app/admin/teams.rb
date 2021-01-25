@@ -9,10 +9,25 @@ ActiveAdmin.register Team do
   #
   # or
   #
-  # permit_params do
-  #   permitted = [:name, :introduction, :number, :address, :user_id, :sport_id, :status, :image_id]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+  permit_params do
+    permitted = [:name, :introduction, :number, :address, :user_id, :sport_id, :status, :image_id]
+    permitted << :other if params[:action] == 'create' && current_user.admin?
+    permitted
+  end
+  config.sort_order = "updated_at"
   
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :introduction
+    column :number
+    column :address
+    column :user_id
+    column :sport_id
+    column :status
+    column :created_at
+    column :updated_at
+    actions
+  end
 end

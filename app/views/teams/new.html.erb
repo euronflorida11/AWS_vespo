@@ -1,22 +1,23 @@
-<h2 class="text-center bg-gray">チーム投稿</h2>
 <div class = "row">
-  <div class = "col-md-12 text-center">
+  <div class = "col-12 text-center">
+    <i class="fas fa-user-plus fa-3x mt-4 mb-2"></i>
+    <h2 class="text-center bg-gray">チーム投稿</h2>
     <%= form_with model: @team, url: teams_path, local:true do |f| %>
-      <p class="mt-5">チーム画像</p>
+      <div class="font-weight-bold mt-5">チーム画像</div>
         <%= f.attachment_field :image %>
-      <p class="mt-5">チーム名</p>
+      <div class="font-weight-bold mt-5">チーム名</div>
         <%= f.text_field :name, class: 'form-control' %>
-      <p class="mt-5">チーム紹介</p>
+      <div class="font-weight-bold mt-5">チーム紹介</div>
         <%= f.text_area :introduction, class: 'form-control' %>
-      <p class="mt-5">活動人数</p>
+      <div class="font-weight-bold mt-5">活動人数</div>
         <%= f.text_field :number, class: 'form-control' %>
-      <p class="mt-5">活動場所</p>
+      <div class="font-weight-bold mt-5">活動場所</div>
         <%= f.text_field :address, class: 'form-control' %>
-      <!--<p>活動ステータス</p>-->
+      <!--<div>活動ステータス</div>-->
       <!--  %= f.text_field :status %>-->
-      <p class="mt-5">Vスポーツ</p>
+      <div class="font-weight-bold mt-5">Vスポーツ</div>
         <%= f.collection_select :sport_id, @sports, :id, :name, :include_blank => "  --  選択してください  --  ", class: 'form-control' %>
-      <div class="actions mt-5">
+      <div class="actions font-weight-bold mt-5">
         <%= f.submit "チーム設立", class:'btn btn-outline-info' %>
       </div>
 

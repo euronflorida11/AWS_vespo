@@ -1,71 +1,62 @@
 <div class="row">
- <div class="col-md-8">
-  <i class="fas fa-address-card fa-3x"></i>
+ <div class="col-12 text-center">
+  <i class="fas fa-address-card fa-3x mt-4 mb-2"></i>
   <h2>チーム情報</h2>
     <table class="table">
      <tbody>
       <tr>
-        <%= attachment_image_tag @team, :image, :fill, 40, 40, fallback: "no_image.jpg", size:'150x150' %>
+        <%= attachment_image_tag @team, :image, :fill, 150, 150, fallback: "no_image.jpg", size:'150x150' %>
       </tr>
       <tr>
-        <th scope="row"><label>チーム名</label></th>
+        <th><label>チーム名</label></th>
         <td><%= @team.name %></td>
       </tr>
       <tr>
-        <th scope="row"><label>チーム紹介</label></th>
+        <th><label>チーム紹介</label></th>
         <td><%= @team.introduction %></td>
       </tr>
       <tr>
-        <th scope="row"><label>活動人数</label></th>
+        <th><label>活動人数</label></th>
         <td><%= @team.number %></td>
       </tr>
       <tr>
-        <th scope="row"><label>活動場所</label></th>
+        <th><label>活動場所</label></th>
         <td><%= @team.address %></td>
       </tr>
       <tr>
-        <th scope="row"><label>活動ステータス</label></th>
+        <th><label>活動ステータス</label></th>
         <td><%= (@team.status)? '活動中' : '休止中' %></td>
       </tr>
       <tr>
       <tr>
-        <th scope="row"><label>Vスポーツ</label></th>
+        <th><label>Vスポーツ</label></th>
         <td><%= @team.sport.name %></td>
       </tr>
       <tr>
-        <th scope="row"><label>いいね</label></th>
+        <th><label>いいね</label></th>
         <td>
           <% if @team.favorited_by?(current_user) %>
-            <p>
-              <%= link_to team_favorites_path(@team), method: :delete do %>
-                ♥<%= @team.favorites.count %>
-              <% end %>
-            </p>
-            <% else %>
-            <p>
-              <%= link_to team_favorites_path(@team), method: :post do %>
-                ♡<%= @team.favorites.count %>
-              <% end %>
-            </p>
+            <%= link_to team_favorites_path(@team), method: :delete do %>
+              ♥<%= @team.favorites.count %>
+            <% end %>
+          <% else %>
+            <%= link_to team_favorites_path(@team), method: :post do %>
+              ♡<%= @team.favorites.count %>
+            <% end %>
           <% end %>
         </td>
       </tr>
     </tbody>
    </table>
-     <% if @team.user_id == current_user.id %>
-      <p><%= link_to "編集する", edit_team_path, class: "btn btn-outline-warning"%></p>
+     <% if @team.user == current_user %>
+      <%= link_to "編集する", edit_team_path, class: "btn btn-outline-info text-center"%>
      <% end %>
-
-    <h3>about</h3>
-    <%= link_to "一覧を見る", about_path, class: "btn btn-info" %>
-    <h3>about</h3>
-    <%= link_to "一覧を見る", about_path, class: "btn btn-info" %>
   </div>
 </div>
 
-<div class="comments">
-  <h2>コメント</h2>
-  <p>コメント件数：<%= @team.comments.count %></p>
+<div class="comments text-center">
+  <i class="fas fa-comments fa-3x mt-4 mb-2"></i>
+  <h2>コメント件数：<%= @team.comments.count %></h2>
   <table class="table">
     <thead>
       <tr>
@@ -104,9 +95,9 @@
   </table>
 </div>
 
-<div class="new-comment">
+<div class="new-comment text-center">
 <%= form_with(model:[@team, @comment], local: true) do |f| %>
-  <%= f.text_area :comment, placeholder: "コメントをここに", class:"form-control" %>
-  <%= f.submit "送信する" %>
+  <%= f.text_area :comment, placeholder: "コメントをここに", class:"form-control mb-4" %>
+  <%= f.submit "送信する", class: "btn btn-outline-info" %>
 <% end %>
 </div>
