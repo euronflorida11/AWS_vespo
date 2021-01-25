@@ -121,6 +121,11 @@ GEM
       activesupport (>= 3.0.0)
     erubi (1.10.0)
     execjs (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     ffi (1.14.2)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
@@ -381,6 +386,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   enum_help
+  factory_bot_rails
   font-awesome-sass (~> 5.13)
   geocoder
   jbuilder (~> 2.5)
