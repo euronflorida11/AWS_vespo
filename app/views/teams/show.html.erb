@@ -2,7 +2,7 @@
  <div class="col-12 text-center">
   <i class="fas fa-address-card fa-3x mt-4 mb-2"></i>
   <h2>チーム情報</h2>
-    <table class="table">
+    <table class="table table-bordered table-condensed">
      <tbody>
       <tr>
         <%= attachment_image_tag @team, :image, :fill, 150, 150, fallback: "no_image.jpg", size:'150x150' %>
@@ -37,11 +37,11 @@
         <td>
           <% if @team.favorited_by?(current_user) %>
             <%= link_to team_favorites_path(@team), method: :delete do %>
-              ♥<%= @team.favorites.count %>
+              <i class="fas fa-heart"></i><%= @team.favorites.count %>
             <% end %>
           <% else %>
             <%= link_to team_favorites_path(@team), method: :post do %>
-              ♡<%= @team.favorites.count %>
+              <i class="far fa-heart"></i><%= @team.favorites.count %>
             <% end %>
           <% end %>
         </td>
@@ -57,13 +57,12 @@
 <div class="comments text-center">
   <i class="fas fa-comments fa-3x mt-4 mb-2"></i>
   <h2>コメント件数：<%= @team.comments.count %></h2>
-  <table class="table">
+  <table class="">
     <thead>
       <tr>
-        <th></th>
-        <th>ハンドルネーム</th>
+        <th>会員</th>
         <th>コメント</th>
-        <th></th>
+        <th>コメント日時</th>
         <th></th>
       </tr>
     </thead>
@@ -71,10 +70,9 @@
       <% @team.comments.each do |comment| %>
       <tr>
         <td>
-          <%= attachment_image_tag comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-        </td>
-        <td>
-          <%= comment.user.handle_name %>
+          <%= link_to user_path(comment.user) do %>
+            <%= attachment_image_tag comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br><%= comment.user.handle_name %>
+          <% end %>
         </td>
         <td>
           <%= comment.comment %>

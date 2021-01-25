@@ -19,11 +19,11 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.user_id = current_user.id
-    if @team.save!
+    if @team.save
       redirect_to teams_path
     else
       @teams = Team.all
-      render "index"
+      redirect_to new_team_path
     end
   end
 

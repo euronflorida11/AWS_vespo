@@ -2,11 +2,6 @@ Rails.application.routes.draw do
   get 'maps/index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'sports/index'
-  get 'sports/create'
-  get 'sports/edit'
-  get 'sports/update'
-  get 'users/show'
   devise_for :users
   root to: 'homes#top'
   get '/about' => 'homes#about'
