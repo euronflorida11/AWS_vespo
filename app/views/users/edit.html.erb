@@ -1,7 +1,7 @@
 <div class="row">
  <div class="col-md-12 text-center">
   <i class="far fa-edit fa-3x mt-4 mb-2"></i>
-   <h2><%= @user.handle_name %>さんの登録情報編集</h2><br>
+   <h2><%= @user.handle_name %>さんの登録情報編集</h2>
     <%= form_with model: @user, local: true do |f| %>
     <div class = "" >
       <label for="inputImage mt-5">プロフィール画像</label><br>
@@ -53,9 +53,6 @@
         <%= link_to '退会', user_path, class:'btn btn-outline-info' %>
       </div>
     <% end %>
-
-
    </div>
   </div>
 </div>
-

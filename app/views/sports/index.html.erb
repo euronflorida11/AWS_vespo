@@ -1,51 +1,34 @@
-<!--URL:/admin/sports-->
+<div class="row">
+  <div class="col-12 text-center">
+    <i class="fab fa-vuejs fa-3x mt-4 mb-2"></i>
+    <h2 class="text-center bg-gray">Vスポーツ一覧</h2>
+  </div>
+</div>
+<div class="row">
+  <% @sports.each do |sport| %>
+    <div class="col-3 card shadow-ig mt-2 px-2 text-center">
+      <div><%= attachment_image_tag sport, :image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg" %></div>
+      <div class="sport-sport"><%= link_to sport_path(sport) do %><%= attachment_image_tag sport, :image, format: 'jpeg', size: "150x150" %><% end %></div>
+      <h5 class="sport-name"><%= link_to sport.name, sport_path(sport) %></h5>
 
-<!--↓新規登録↓-->
-    <h2>Vスポーツ一覧・追加</h2>
-    <%= form_with model: @sport, url: sports_path, local: true do |f| %>
-        <div class="form_input">
-          <%= f.label :name %>
-          <%= f.text_field :name %>
-        </div>
-        <!--↓ラジオボタン↓-->
-        <div>
-          <%= f.radio_button :is_active, :true, :checked => true %>
-          <%= f.label :is_active, "有効", :value => "true"  %>
-          <%= f.radio_button :is_active, :false %>
-          <%= f.label :is_active, "無効", :value => "false" %>
-        </div>
-        <div class="form_action row">
-          <%= f.submit "登録する", class:'btn btn-outline-info mb-5' %>
-        </div>
-    <% end %>
-
-    <% if @sport.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-      <ul>
-        <% @sport.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+      <%= link_to "編集", edit_sport_path(sport.id), class:'btn btn-outline-info my-4' %>
     </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-12 text-center">
+    <i class="fas fa-plus fa-3x mt-4 mb-2"></i>
+    <h2 class="text-center bg-gray">Vスポーツ登録</h2>
+    <%= form_with model: @sport, url: sports_path, local: true do |f| %>
+      <div class="font-weight-bold mt-5">イメージ</div>
+        <%= f.attachment_field :image %>
+      <div class="font-weight-bold mt-5">Vスポーツ名</div>
+        <%= f.text_field :name, class:'form-control' %>
+      <div class="font-weight-bold mt-5">概要</div>
+        <%= f.text_area :introduction, class:'form-control' %>
+      <div class="form_action text-center">
+        <%= f.submit "登録", class:'btn btn-outline-info mt-3' %>
+      </div>
     <% end %>
-
-<!--↓index↓-->
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ジャンル</th>
-          <th>状態</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @sports.each do |sport| %>
-      <tr>
-        <td><%= sport.name %></td>
-        <!--↓三項演算子という、単純なif文を一行で表す書き方、view上でtrue = 有効を意味している記述↓-->
-        <td><%= (sport.is_active) ? '有効' : '無効' %></td>
-        <td><%= link_to "編集する", edit_sport_path(sport.id) %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+  </div>
+</div>

@@ -1,29 +1,25 @@
-<!--URL:/admin/sports/:id/edit-->
+<div class="row">
+ <div class="col-md-12 text-center">
+  <i class="far fa-edit fa-3x mt-4 mb-2"></i>
+   <h2><%= @sport.name %>の情報編集</h2>
 
-<h2>Vスポーツ編集</h2>
 <%= form_with model: @sport, url: sport_path, local:true do |f| %>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<%= attachment_image_tag @team, :image, :fill, 150, 150, fallback: "no_image.jpg"%><br>
+<%= f.attachment_field :image, placeholder: "イメージ" %><br>
+  <div class="font-weight-bold mt-5">
+    <label>Vスポーツ名</label>
+    <%= f.text_field :name, class:"form-control" %>
+  </div>
+  <div class="font-weight-bold mt-5">
+    <label>概要</label>
+    <%= f.text_area :introduction, class:"form-control" %>
   </div>
 
-  <% if @sport.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-      <ul>
-        <% @sport.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <!--↓ラジオボタン↓-->
-  <div>
-    <%= f.radio_button :is_active, :true, :checked => true %>
-    <%= f.label :is_active, "有効", :value => "true"  %>
-    <%= f.radio_button :is_active, :false %>
-    <%= f.label :is_active, "無効", :value => "false" %>
-  </div>
-  <div class="form-group">
+  <div class="actions mt-4">
     <%= f.submit class: 'btn btn-success' %>
   </div>
 <% end %>
+
+  </div>
+</div>
+
