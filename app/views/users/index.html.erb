@@ -10,7 +10,7 @@
           <th>自己紹介</th>
           <th>フォロー数</th>
           <th>フォロワー数</th>
-          <th></th>
+          <th>フォロー</th>
           <th></th>
         </tr>
       </thead>
@@ -21,7 +21,6 @@
             <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
           </td>
           <td>
-
             <%= link_to user_path(user) do %>
               <%= user.handle_name %>
             <% end %>
@@ -37,9 +36,13 @@
           </td>
           <td>
             <% if current_user.following?(user) %>
-              <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST, class:'btn btn-outline-info' %>
+              <%= link_to unfollow_path(user.id), method: :POST do %>
+                <i class="fas fa-user-slash fa-2x"></i>
+              <% end %>
             <% else %>
-              <%= link_to 'フォロー', follow_path(user.id), method: :POST, class:'btn btn-outline-info' %>
+              <%= link_to follow_path(user.id), method: :POST do %>
+                <i class="fas fa-user-plus fa-2x"></i>
+              <% end %>
             <% end %>
           </td>
           <td>
