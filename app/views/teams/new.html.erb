@@ -1,16 +1,26 @@
-チーム投稿
-<%= form_with model: @team, local:true do |f| %>
-  <p>画像</p>
-    <%= f.attachment_field :image %>
-  <p>チーム名</p>
-    <%= f.text_field :name %>
-  <p>チーム紹介</p>
-    <%= f.text_area :introduction %>
-  <p>活動人数</p>
-    <%= f.text_field :number %>
-  <p>活動場所</p>
-    <%= f.text_field :address %>
-  <p>活動ステータス</p>
-    <%= f.text_field :status %>
-  <%= f.submit %>
-<% end %>
+<div class = "row">
+  <div class = "col-12 text-center">
+    <i class="fas fa-user-plus fa-3x mt-4 mb-2"></i>
+    <h2 class="text-center bg-gray">チーム投稿</h2>
+    <%= form_with model: @team, url: teams_path, local:true do |f| %>
+      <div class="font-weight-bold mt-5">チーム画像</div>
+        <%= f.attachment_field :image %>
+      <div class="font-weight-bold mt-5">チーム名</div>
+        <%= f.text_field :name, class: 'form-control' %>
+      <div class="font-weight-bold mt-5">チーム紹介</div>
+        <%= f.text_area :introduction, class: 'form-control' %>
+      <div class="font-weight-bold mt-5">活動人数</div>
+        <%= f.text_field :number, class: 'form-control' %>
+      <div class="font-weight-bold mt-5">活動場所</div>
+        <%= f.text_field :address, class: 'form-control' %>
+      <!--<div>活動ステータス</div>-->
+      <!--  %= f.text_field :status %>-->
+      <div class="font-weight-bold mt-5">Vスポーツ</div>
+        <%= f.collection_select :sport_id, @sports, :id, :name, :include_blank => "  --  選択してください  --  ", class: 'form-control' %>
+      <div class="actions font-weight-bold mt-5">
+        <%= f.submit "チーム設立", class:'btn btn-outline-info' %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

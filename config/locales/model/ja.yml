@@ -1,0 +1,46 @@
+ja:
+  activerecord:
+    models:
+      admin_user: 管理者
+      sport: スポーツ
+      team: チーム
+      comment: コメント
+      user: 会員
+      name: 名前
+    attributes:
+    #   admin_user:
+    #     email: メールアドレス
+    #     current_sign_in_at: 最新ログイン日時
+    #     sign_in_count: ログイン回数
+    #     created_at: 作成日時
+    #   name:
+    #     name: 名前
+    #     date: 日付
+    #     created_at: 作成日時
+    #     updated_at: 更新日時
+    #   user:
+    #     name: 名前
+    #     date: 日付
+    #     created_at: 作成日時
+    #     updated_at: 更新日時
+    #     Email:
+    #     Reset:
+    #     Password Token:
+    #     Reset Password Sent At:
+    #     Remember Created At:
+    #     Last Name:
+    #     First Name:
+    #     Kana Last Name:
+    #     Kana First Name:
+    #     Handle Name:
+    #     Postcode:
+    #     Address	Phone:
+    #     Number:
+    #     Is Deleted:
+    #     Created At:
+    #     Updated At:
+    #     Profile Image:
+    #     Prefecture Code:
+    #     Address City:
+    #     Address Street:
+    #     Address Building:

@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-12 text-center">
+    <i class="fas fa-user-friends fa-3x mt-4 mb-2"></i>
+    <h2 class="text-center bg-gray">会員一覧</h2>
+    <table class = "table table-hover table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th></th>
+          <th>ハンドルネーム</th>
+          <th>自己紹介</th>
+          <th>フォロー数</th>
+          <th>フォロワー数</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% User.all.where.not(id: current_user.id).each do |user| %>
+        <tr>
+          <td>
+            <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+          </td>
+          <td>
+
+            <%= link_to user_path(user) do %>
+              <%= user.handle_name %>
+            <% end %>
+          </td>
+          <td>
+            <%= user.introduction %>
+          </td>
+          <td>
+            <%= user.follower.count %>
+          </td>
+          <td>
+            <%= user.followed.count %>
+          </td>
+          <td>
+            <% if current_user.following?(user) %>
+              <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST, class:'btn btn-outline-info' %>
+            <% else %>
+              <%= link_to 'フォロー', follow_path(user.id), method: :POST, class:'btn btn-outline-info' %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "show", user_path(user), class:'btn btn-outline-info' %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to "マイページ", user_path(current_user), class: 'btn btn-outline-info' %>
+  </div>
+</div>

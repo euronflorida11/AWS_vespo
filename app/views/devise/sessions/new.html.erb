@@ -1,26 +1,25 @@
-<h2>Log in</h2>
-
 <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <i class="fas fa-sign-in-alt fa-3x"></i><br><h2>ログイン</h2><br><br>
+   <fieldset class="form-group">
+    <div class="form-group">
+     <label>メールアドレス</label>
+     <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control"%>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="form-group">
+     <label>パスワード</label>
+     <%= f.password_field :password, autocomplete: "current-password", class:"form-control"%>
+    </div>
+    <% if devise_mapping.rememberable? %>
+  <div class="field">
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me %>
   </div>
 <% end %>
+    <div>
+    <%= f.submit "ログイン", class:'btn btn-outline-info' %>
 
-<%= render "devise/shared/links" %>
+    </div><br><br>
+    <h2>登録がお済みでない方</h2>
+     <%= render "devise/shared/links" %>
+   </div>
+<% end %>

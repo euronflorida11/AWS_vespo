@@ -1,20 +1,103 @@
-マイチーム
-<% @team.each do |team| %>
-<div>
-  <%= attachment_image_tag team, :image, :fill, 40, 40 %>
-  <p>チーム名</p>
-    <%= link_to team_path do %>
-     <%= team.name %>
-    <% end %>
-  <p>チーム紹介</p>
-    <%= team.introduction %>
-  <p>活動人数</p>
-    <%= team.number %>
-  <p>活動場所</p>
-    <%= team.address %>
-  <p>活動ステータス</p>
-    <%= team.status %>
-
+<div class="row">
+ <div class="col-12 text-center">
+  <i class="fas fa-address-card fa-3x mt-4 mb-2"></i>
+  <h2>チーム情報</h2>
+    <table class="table">
+     <tbody>
+      <tr>
+        <%= attachment_image_tag @team, :image, :fill, 150, 150, fallback: "no_image.jpg", size:'150x150' %>
+      </tr>
+      <tr>
+        <th><label>チーム名</label></th>
+        <td><%= @team.name %></td>
+      </tr>
+      <tr>
+        <th><label>チーム紹介</label></th>
+        <td><%= @team.introduction %></td>
+      </tr>
+      <tr>
+        <th><label>活動人数</label></th>
+        <td><%= @team.number %></td>
+      </tr>
+      <tr>
+        <th><label>活動場所</label></th>
+        <td><%= @team.address %></td>
+      </tr>
+      <tr>
+        <th><label>活動ステータス</label></th>
+        <td><%= (@team.status)? '活動中' : '休止中' %></td>
+      </tr>
+      <tr>
+      <tr>
+        <th><label>Vスポーツ</label></th>
+        <td><%= @team.sport.name %></td>
+      </tr>
+      <tr>
+        <th><label>いいね</label></th>
+        <td>
+          <% if @team.favorited_by?(current_user) %>
+            <%= link_to team_favorites_path(@team), method: :delete do %>
+              ♥<%= @team.favorites.count %>
+            <% end %>
+          <% else %>
+            <%= link_to team_favorites_path(@team), method: :post do %>
+              ♡<%= @team.favorites.count %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+   </table>
+     <% if @team.user == current_user %>
+      <%= link_to "編集する", edit_team_path, class: "btn btn-outline-info text-center"%>
+     <% end %>
+  </div>
 </div>
-ーーーーーーーーーーーーーーーーー
+
+<div class="comments text-center">
+  <i class="fas fa-comments fa-3x mt-4 mb-2"></i>
+  <h2>コメント件数：<%= @team.comments.count %></h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>ハンドルネーム</th>
+        <th>コメント</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @team.comments.each do |comment| %>
+      <tr>
+        <td>
+          <%= attachment_image_tag comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+        </td>
+        <td>
+          <%= comment.user.handle_name %>
+        </td>
+        <td>
+          <%= comment.comment %>
+        </td>
+        <td>
+          <%= comment.created_at.strftime('%Y/%m/%d') %>
+        </td>
+        <td>
+          <% if comment.user == current_user %>
+          <div class="comment-delete">
+            <%= link_to "削除", team_comment_path(comment.team, comment), method: :delete %>
+          </div>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="new-comment text-center">
+<%= form_with(model:[@team, @comment], local: true) do |f| %>
+  <%= f.text_area :comment, placeholder: "コメントをここに", class:"form-control mb-4" %>
+  <%= f.submit "送信する", class: "btn btn-outline-info" %>
 <% end %>
+</div>
