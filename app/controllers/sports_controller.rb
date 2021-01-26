@@ -1,4 +1,5 @@
 class SportsController < ApplicationController
+  before_action :authenticate_user!,except: [:index]
   
   def index
     @sports = Sport.where(is_active: true)
@@ -14,12 +15,12 @@ class SportsController < ApplicationController
       render "index"
     end
   end
-  
+
   def show
     @sports = Sport.where(is_active: true)
     @sport = Sport.find(params[:id])
   end
-  
+
   def edit
     @sport = Sport.find(params[:id])
   end

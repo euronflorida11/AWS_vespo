@@ -16,7 +16,7 @@
   <% end %>
 </div>
 <% if user_signed_in? %>
-<div class="row">
+<div class="row mt-5">
   <div class="col-12 text-center">
     <i class="fas fa-plus fa-3x mt-4 mb-2"></i>
     <h2 class="text-center bg-gray">Vスポーツ登録</h2>
@@ -27,8 +27,8 @@
         <%= f.text_field :name, class:'form-control' %>
       <div class="font-weight-bold mt-5">概要</div>
         <%= f.text_area :introduction, class:'form-control' %>
-      <div class="form_action text-center">
-        <%= f.submit "登録", class:'btn btn-outline-info mt-3' %>
+      <div class="form_action text-center mt-4">
+        <%= f.submit "登録", class:'btn btn-outline-info' %>
       </div>
     <% end %>
   </div>

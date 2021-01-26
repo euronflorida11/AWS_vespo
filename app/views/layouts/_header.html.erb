@@ -20,7 +20,6 @@
             <li><%= link_to ' Vスポーツ一覧', sports_path, class: 'nav-link text-light' %></li>
             <li><%= link_to ' チーム一覧', teams_path, class: 'nav-link text-light' %></li>
             <li><%= link_to ' チーム投稿', new_team_path, class: 'nav-link text-light' %></li>
-            <li><%= link_to ' マイチーム', team_path(current_user.id), class: 'nav-link text-light' %></li>
             <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light' %></li>
           <% else %>
             <li><%= link_to ' About'  , about_path, class: 'nav-link text-light' %></li>

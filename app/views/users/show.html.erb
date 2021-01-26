@@ -2,7 +2,7 @@
  <div class="col-md-12 text-center">
   <i class="fas fa-address-card fa-3x mt-4 mb-2"></i>
    <h2><%= @user.handle_name %>さんのページ</h2>
-    <% if @user == current_user %>
+
     <table class = "table table-bordered table-condensed">
       <tbody>
        <tr>
@@ -17,6 +17,7 @@
         <th><label>自己紹介</label></th>
         <td><%= @user.introduction %></td>
       </tr>
+    <% if @user == current_user %>
       <tr>
         <th><label>名前</label></th>
         <td><%= @user.last_name %>
@@ -48,34 +49,27 @@
         <th><label>メールアドレス</label></th>
         <td><%= @user.email %></td>
       </tr>
+    <% end %>
+    <% unless @user == current_user %>
+      <tr>
+        <th><label>フォロー</label></th>
+        <td>
+          <% if current_user.following?(@user) %>
+            <%= link_to unfollow_path(@user.id), method: :POST do %>
+              <i class="fas fa-user-slash fa-2x"></i>
+            <% end %>
+          <% else %>
+            <%= link_to follow_path(@user.id), method: :POST do %>
+              <i class="fas fa-user-plus fa-2x"></i>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
     </tbody>
-   </table>
-    <%= link_to "編集する", edit_user_path, class: "btn btn-outline-info"%>
-   <% else %>
-     <table class = "table table-bordered table-condensed" >
-       <tbody>
-         <tr>
-           <th><label>プロフィール画像</label></th>
-           <td><%= attachment_image_tag @user, :profile_image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg" %></td>
-         </tr>
-         <tr>
-          <th><label>ハンドルネーム</label></th>
-          <td><%= @user.handle_name %></td>
-        </tr>
-        <tr>
-          <th><label>自己紹介</label></th>
-          <td><%= @user.introduction %></td>
-        </tr>
-      </tbody>
-     </table>
-   <% end %>
-
-<% unless @user == current_user %>
-  <% if current_user.following?(@user) %>
-    <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class:'btn btn-outline-info' %>
-  <% else %>
-    <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class:'btn btn-outline-info' %>
+  </table>
+  <% if @user == current_user %>
+    <%= link_to "編集する", edit_user_path, class: "btn btn-outline-info mt-3"%>
   <% end %>
-<% end %>
   </div>
 </div>

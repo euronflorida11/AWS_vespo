@@ -30,13 +30,7 @@ class TeamsController < ApplicationController
   def show
     @sports = Sport.where(is_active: true)
     @comment = Comment.new
-    if user_id.present?
-      @team = Team.find(params[:id])
-      @team.user_id = current_user.id
-      redirect_to :show
-    else
-      redirect_to teams_path
-    end
+    @team = Team.find(params[:id])
   end
 
   def edit
@@ -69,5 +63,4 @@ class TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(:name, :introduction, :number, :address, :status, :image, :user_id, :sport_id)
   end
-
 end
