@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def index
     #@teams = Team.all
     @sports = Sport.where(is_active: 'true')
