@@ -16,12 +16,36 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
 
 body {
+  font-family: 'Yusei Magic', sans-serif;
   display: flex;
   flex-flow: column;
   min-height: 100vh;
 }
+
 main {
+  font-family: 'Yusei Magic', sans-serif;
   flex: 1;
 }
+
+header {
+  font-family: 'Yusei Magic', sans-serif;
+}
+
+footer {
+  font-family: 'Yusei Magic', sans-serif;
+}
+
+.navbar {
+  background-color: #009688;
+}
+
+// .nav-link:hover {
+//   color: #cddc39;
+//   cursor: pointer;
+// }
+// .navbar-nav .nav-link.active {
+//   color: #cddc39;
+// }

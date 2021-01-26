@@ -28,9 +28,15 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
     @sports = Sport.where(is_active: true)
     @comment = Comment.new
+    if user_id.present?
+      @team = Team.find(params[:id])
+      @team.user_id = current_user.id
+      redirect_to :show
+    else
+      redirect_to teams_path
+    end
   end
 
   def edit

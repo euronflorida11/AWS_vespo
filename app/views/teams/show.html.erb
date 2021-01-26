@@ -2,6 +2,7 @@
  <div class="col-12 text-center">
   <i class="fas fa-address-card fa-3x mt-4 mb-2"></i>
   <h2>チーム情報</h2>
+  <% if @team.present? %>
     <table class="table table-bordered table-condensed">
      <tbody>
       <tr>
@@ -47,7 +48,11 @@
         </td>
       </tr>
     </tbody>
-   </table>
+  </table>
+  <% else %>
+    <i class="fas fa-exclamation fa-5x text-light text-center"></i>
+    <p class="text-center">チーム情報がありません。</p>
+  <% end %>
      <% if @team.user == current_user %>
       <%= link_to "編集する", edit_team_path, class: "btn btn-outline-info text-center"%>
      <% end %>
