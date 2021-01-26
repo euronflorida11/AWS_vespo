@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   def index
     @users = User.all
   end
@@ -28,11 +28,12 @@ class UsersController < ApplicationController
   end
 
   def unsubscribe
+    @user = User.find_by(params[:id])
   end
 
   def withdraw
-    @user = current_user
-    @user.update(is_deleted: true)
+    @user = User.find_by(params[:id])
+    @user.update(is_deleted: false)
     reset_session
     redirect_to root_path
   end

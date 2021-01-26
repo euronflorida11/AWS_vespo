@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   resources :users
+  get 'unsubscribe/:id' => 'users#unsubscribe', as: 'unsubscribe_user'
+  patch 'withdraw/:id' => 'users#withdraw', as: 'withdraw_user'
+  put 'withdraw/:id' => 'users#withdraw'
   resources :sports do
     resource :favorites, only: [:create, :destroy]
   end
