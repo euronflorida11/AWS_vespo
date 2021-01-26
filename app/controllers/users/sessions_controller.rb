@@ -19,18 +19,6 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  def reject_inactive_user
-    @user = User.find_by(email: params[:user][:email])
-    if @user
-      if @user.is_deleted_password?(params[:user][:password]) && !@user.is_deleted
-        redirect_to root_path
-      else
-        flash[:error] = "削除されませんでした"
-      end
-    end
-  end
-
-
   protected
   def reject_user
     @user = User.find_by(email: params[:user][:email].downcase)

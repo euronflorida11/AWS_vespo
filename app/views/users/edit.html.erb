@@ -52,7 +52,7 @@
         <%= f.submit "保存", class:'btn btn-outline-info' %>
       </div>
       <div class="actions mt-5">
-        <%= link_to '退会', unsubscribe_user_path(@user), class:'btn btn-outline-info' %>
+        <%= link_to '退会', unsubscribe_user_path(current_user.id), class:'btn btn-outline-info' %>
       </div>
     <% end %>
    </div>

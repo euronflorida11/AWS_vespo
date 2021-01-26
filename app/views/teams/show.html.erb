@@ -36,13 +36,13 @@
       <tr>
         <th><label>いいね</label></th>
         <td>
-          <%= render 'teams/favorite', team: team %>
+          <%= render 'teams/favorite', team: @team %>
         </td>
       </tr>
     </tbody>
   </table>
     <% if @team.user_id == current_user.id %>
-      <%= link_to "編集する", edit_team_path, class: "btn btn-outline-info text-center"%>
+      <%= link_to "編集する", edit_team_path, class: "btn btn-outline-info text-center my-3"%>
     <% end %>
     <% else %>
       <i class="fas fa-exclamation fa-5x text-light text-center"></i>
@@ -50,12 +50,13 @@
     <% end %>
   </div>
 </div>
-
-<div class="row">
+<div class="row mt-5">
   <div class="col-12 text-center">
     <i class="fas fa-comments fa-3x mt-4 mb-2"></i>
     <h2>コメント件数：<%= @team.comments.count %></h2>
-    <table class="table-bordered table-condensed">
+  </div>
+  <% if @team.comments.present? %>
+    <table class="table table-hover table-bordered table-condensed">
       <thead>
         <tr>
           <th>会員</th>
@@ -89,12 +90,17 @@
         <% end %>
       </tbody>
     </table>
+  <% else %>
+  <div class="col-12 text-center">
+    <i class="fas fa-exclamation fa-2x mt-4 text-center"></i>
+    <p class="mt-2 text-center">コメントがありません。</p>
+  </div>
+  <% end %>
   </div>
 </div>
-
-    <div class="new-comment text-center mt-5">
-    <%= form_with(model:[@team, @comment], local: true) do |f| %>
-      <%= f.text_area :comment, placeholder: "コメントをここに", class:"form-control mb-4" %>
-      <%= f.submit "送信する", class: "btn btn-outline-info" %>
-    <% end %>
-    </div>
+<div class="new-comment text-center mt-5">
+<%= form_with(model:[@team, @comment], local: true) do |f| %>
+  <%= f.text_area :comment, placeholder: "コメントをここに", class:"form-control mb-4" %>
+  <%= f.submit "送信する", class: "btn btn-outline-info" %>
+<% end %>
+</div>

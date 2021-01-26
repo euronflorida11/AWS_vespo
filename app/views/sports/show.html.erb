@@ -15,16 +15,11 @@
         <th><label>概要</label></th>
         <td><%= @sport.introduction %></td>
       </tr>
-      <tr>
-        <th><label>いいね</label></th>
-        <td>
-
-        </td>
       </tr>
     </tbody>
-   </table>
-
+  </table>
+    <% if user_signed_in? %>
       <%= link_to "編集する", edit_sport_path(@sport), class: "btn btn-outline-info text-center"%>
-
+    <% end %>
   </div>
 </div>

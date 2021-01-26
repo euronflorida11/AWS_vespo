@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    # @users = User.all
+    @users = User.where(is_deleted: false)
   end
 
   def show
@@ -32,14 +33,14 @@ class UsersController < ApplicationController
   end
 
   def withdraw
-    @user = User.find_by(params[:id])
-    @user.update(is_deleted: false)
+    @user = current_user
+    @user.update(is_deleted: true)
     reset_session
     redirect_to root_path
   end
 
   private
   def user_params
-    params.require(:user).permit(:profile_image, :email, :last_name, :first_name, :kana_last_name, :kana_first_name, :handle_name, :postcode, :address, :phone_number, :is_deleted, :prefecture_code, :address_city, :address_street, :address_building, :introduction)
+    params.require(:user).permit(:id, :profile_image, :email, :last_name, :first_name, :kana_last_name, :kana_first_name, :handle_name, :postcode, :address, :phone_number, :is_deleted, :prefecture_code, :address_city, :address_street, :address_building, :introduction)
   end
 end
