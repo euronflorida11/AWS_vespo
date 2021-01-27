@@ -1,5 +1,4 @@
 ActiveAdmin.register Team do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -15,7 +14,7 @@ ActiveAdmin.register Team do
     permitted
   end
   config.sort_order = "updated_at"
-  
+
   index do
     selectable_column
     id_column

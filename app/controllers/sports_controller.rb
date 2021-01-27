@@ -1,6 +1,6 @@
 class SportsController < ApplicationController
-  before_action :authenticate_user!,except: [:index, :show]
-  
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @sports = Sport.where(is_active: true)
     @sport = Sport.new
@@ -35,8 +35,8 @@ class SportsController < ApplicationController
   end
 
   private
-    def sport_params
-        params.require(:sport).permit(:image, :user_id, :name, :is_active, :introduction)
-    end
 
+  def sport_params
+    params.require(:sport).permit(:image, :user_id, :name, :is_active, :introduction)
+  end
 end

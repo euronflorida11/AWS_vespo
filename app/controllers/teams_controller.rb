@@ -1,8 +1,8 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
-    #@teams = Team.all
+    # @teams = Team.all
     @sports = Sport.where(is_active: 'true')
     if params[:sport_id].blank?
       @teams = Team.where(status: 0)
@@ -61,6 +61,7 @@ class TeamsController < ApplicationController
   end
 
   private
+
   def team_params
     params.require(:team).permit(:name, :introduction, :number, :address, :status, :image, :user_id, :sport_id)
   end

@@ -13,22 +13,22 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
   attachment :profile_image
 
-  validates :email, presence: true , uniqueness: true
-  validates :handle_name, length: {maximum: 20, minimum: 2}, uniqueness: true
-  validates :introduction, length: {maximum: 500}
+  validates :email, presence: true, uniqueness: true
+  validates :handle_name, length: { maximum: 20, minimum: 2 }, uniqueness: true
+  validates :introduction, length: { maximum: 500 }
   [
-  :last_name,
-  :first_name,
-  :kana_last_name,
-  :kana_first_name
-  #:postcode,
-  #:address,
-  #:phone_number,
-  #:is_deleted,
-  #:prefecture_code,
-  #:address_city,
-  #:address_street,
-  #:address_building
+    :last_name,
+    :first_name,
+    :kana_last_name,
+    :kana_first_name,
+    #:postcode,
+    #:address,
+    #:phone_number,
+    #:is_deleted,
+    #:prefecture_code,
+    #:address_city,
+    #:address_street,
+    #:address_building
   ].each do |v|
     validates v, presence: true
   end
@@ -58,8 +58,8 @@ class User < ApplicationRecord
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
-  
+
   def active_for_authentication?
-    super && (self.is_deleted == false)
+    super && (is_deleted == false)
   end
 end

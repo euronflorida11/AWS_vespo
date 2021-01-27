@@ -1,5 +1,4 @@
 class FavoritesController < ApplicationController
-
   def create
     @team = Team.find(params[:team_id])
     favorite = current_user.favorites.new(team_id: @team.id)

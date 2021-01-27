@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   it "姓、名、メール、パスワードがある場合、有効である" do
     user = FactoryBot.build(:user)
     expect(user).to be_valid
-      end
+  end
 
   it "名がない場合、無効である" do
     user = FactoryBot.build(:user, first_name: nil)
@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
     expect(user.errors[:last_name]).to include("can't be blank")
   end
 
-  it "メールアドレスがない場合、無効である"  do
+  it "メールアドレスがない場合、無効である" do
     user = FactoryBot.build(:user, email: nil)
     user.valid?
     expect(user.errors[:email]).to include("can't be blank")

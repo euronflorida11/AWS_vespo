@@ -20,5 +20,4 @@ class SportsControllerTest < ActionDispatch::IntegrationTest
     get sports_update_url
     assert_response :success
   end
-
 end
