@@ -41,7 +41,7 @@
           <td>
             <%= (team.status)? '活動中' : '休止中' %>
           </td>
-          <td>
+          <td id="favorites_buttons_<%= team.id %>">
             <%= render 'teams/favorite', team: team %>
           </td>
           <td>
