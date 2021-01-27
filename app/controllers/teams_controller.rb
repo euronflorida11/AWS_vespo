@@ -21,10 +21,9 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.user_id = current_user.id
     if @team.save
-      redirect_to teams_path
+      redirect_to teams_path, notice: "チームを設立しました。"
     else
-      @teams = Team.all
-      redirect_to new_team_path
+      render :index
     end
   end
 
@@ -48,7 +47,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @team.user_id = current_user.id
     if @team.update(team_params)
-      redirect_to team_path(@team.id)
+      redirect_to team_path(@team.id), notice: "チーム情報を更新しました。"
     else
       render :edit
     end
@@ -57,6 +56,7 @@ class TeamsController < ApplicationController
   def destroy
     @team = Team.find(params[:id])
     @team.destroy
+    flash[:notice] = "チームを削除しました。"
     redirect_to teams_path
   end
 

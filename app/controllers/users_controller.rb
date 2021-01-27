@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user.id)
+      redirect_to user_path(@user.id), notice: "会員情報を更新しました。"
     else
       render :edit
     end
@@ -35,9 +35,12 @@ class UsersController < ApplicationController
 
   def withdraw
     @user = current_user
-    @user.update(is_deleted: true)
-    reset_session
-    redirect_to root_path
+    if @user.update(is_deleted: true)
+      reset_session
+      redirect_to root_path, notice: "退会処理が完了しました。"
+    else
+      render :edit
+    end
   end
 
   private

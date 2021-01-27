@@ -9,7 +9,7 @@ class SportsController < ApplicationController
   def create
     @sport = Sport.new(sport_params)
     if @sport.save
-      redirect_to sports_path
+      redirect_to sports_path, notice: "Vスポーツを作成しました。"
     else
       @sports = Sport.all
       render "index"
@@ -28,7 +28,7 @@ class SportsController < ApplicationController
   def update
     @sport = Sport.find(params[:id])
     if @sport.update(sport_params)
-      redirect_to sports_path
+      redirect_to sports_path, notice: "Vスポーツを更新しました。"
     else
       render "edit"
     end
