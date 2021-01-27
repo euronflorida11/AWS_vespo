@@ -4,18 +4,26 @@
     <h2 class="text-center bg-gray">Vスポーツ一覧</h2>
   </div>
 </div>
+<% if @sports.present? %>
 <div class="row">
   <% @sports.each do |sport| %>
-    <div class="col-3 card shadow-ig mt-2 px-2 text-center">
-      <div><%= attachment_image_tag sport, :image, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg" %></div>
-      <div class="sport-sport"><%= link_to sport_path(sport) do %><%= attachment_image_tag sport, :image, format: 'jpeg', size: "150x150" %><% end %></div>
-      <h5 class="sport-name"><%= link_to sport.name, sport_path(sport) %></h5>
+    <div class="col-3 card shadow-ig pt-3 px-2 text-center">
 
-      <%= link_to "編集", edit_sport_path(sport.id), class:'btn btn-outline-info my-4' %>
+      <div class="sport-sport"><%= link_to sport_path(sport) do %><%= attachment_image_tag sport, :image, format: 'jpeg', size: "150x150" %><% end %></div>
+      <h5 class="sport-name my-3"><%= link_to sport.name, sport_path(sport) %></h5>
+
+      <%= link_to "詳細", sport_path(sport), class:'btn btn-outline-info mb-3 mx-5' %>
     </div>
   <% end %>
 </div>
-<div class="row">
+<% else %>
+  <div class="col-12 text-center">
+    <i class="fas fa-exclamation fa-2x mt-4 text-center"></i>
+    <p class="mt-2 text-center">Vスポーツがありません。</p>
+  </div>
+  <% end %>
+<% if user_signed_in? %>
+<div class="row mt-5">
   <div class="col-12 text-center">
     <i class="fas fa-plus fa-3x mt-4 mb-2"></i>
     <h2 class="text-center bg-gray">Vスポーツ登録</h2>
@@ -26,9 +34,10 @@
         <%= f.text_field :name, class:'form-control' %>
       <div class="font-weight-bold mt-5">概要</div>
         <%= f.text_area :introduction, class:'form-control' %>
-      <div class="form_action text-center">
-        <%= f.submit "登録", class:'btn btn-outline-info mt-3' %>
+      <div class="form_action text-center mt-4">
+        <%= f.submit "登録", class:'btn btn-outline-info' %>
       </div>
     <% end %>
   </div>
 </div>
+<% end %>

@@ -1,0 +1,14 @@
+<div class="row">
+ <div class="col-md-12 text-center">
+  <i class="fas fa-exclamation fa-3x mt-4 mb-2"></i>
+  <h2>退会ページ</h2>
+  <h5 class="text-center">退会すると、会員登録情報やチーム情報が閲覧できなくなります。
+    <br>退会する場合は、「退会する」をクリックしてください。</h5>
+    <div class="actions mt-4 text-center">
+      <%= link_to '退会しない', user_path(current_user.id), class:'btn btn-outline-primary'%><br>
+    </div>
+    <div class="actions mt-4 text-center">
+      <%= link_to "退会する", withdraw_user_path(current_user.id), method: :patch, class:'btn btn-outline-danger mt-4 text-center'%>
+    </div>
+  </div>
+</div>

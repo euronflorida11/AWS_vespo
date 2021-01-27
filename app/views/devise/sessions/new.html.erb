@@ -1,25 +1,28 @@
-<%= form_with model: @user, url: user_session_path, local: true do |f| %>
-  <i class="fas fa-sign-in-alt fa-3x"></i><br><h2>ログイン</h2><br><br>
-   <fieldset class="form-group">
-    <div class="form-group">
-     <label>メールアドレス</label>
-     <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control"%>
+<%= render "devise/shared/error_messages", resource: resource %>
+<div class = "row">
+  <div class = "col-12 text-center">
+    <i class="fas fa-external-link-alt fa-3x mt-4 mb-2"></i>
+    <h2 class="text-center bg-gray">ログイン</h2>
+    <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+      <div class="font-weight-bold mt-5">
+       <label>メールアドレス</label>
+       <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control"%>
+      </div>
+      <div class="font-weight-bold mt-5">
+       <label>パスワード</label>
+       <%= f.password_field :password, autocomplete: "current-password", class:"form-control"%>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="font-weight-bold mt-5">
+          <%= f.check_box :remember_me %>
+          <%= f.label :ログイン状態を保持 %>
+        </div>
+      <% end %>
+      <div class="actions font-weight-bold mt-5">
+        <%= f.submit "ログイン", class:'btn btn-outline-info' %>
+      </div>
+    <% end %>
+    <h2 class="text-center bg-gray mt-5">登録がお済みでない方</h2>
     </div>
-    <div class="form-group">
-     <label>パスワード</label>
-     <%= f.password_field :password, autocomplete: "current-password", class:"form-control"%>
-    </div>
-    <% if devise_mapping.rememberable? %>
-  <div class="field">
-    <%= f.check_box :remember_me %>
-    <%= f.label :remember_me %>
   </div>
-<% end %>
-    <div>
-    <%= f.submit "ログイン", class:'btn btn-outline-info' %>
-
-    </div><br><br>
-    <h2>登録がお済みでない方</h2>
-     <%= render "devise/shared/links" %>
-   </div>
-<% end %>
+  <%= render "devise/shared/links" %>

@@ -2,11 +2,6 @@ Rails.application.routes.draw do
   get 'maps/index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'sports/index'
-  get 'sports/create'
-  get 'sports/edit'
-  get 'sports/update'
-  get 'users/show'
   devise_for :users
   root to: 'homes#top'
   get '/about' => 'homes#about'
@@ -15,8 +10,13 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   resources :users
-  resources :sports
+  get 'unsubscribe/user' => 'users#unsubscribe', as: 'unsubscribe_user'
+  patch ':withdraw/user' => 'users#withdraw', as: 'withdraw_user'
+
+  resources :sports do
+    resource :favorites, only: [:create, :destroy]
+  end
   post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
-  
+
 end

@@ -2,6 +2,7 @@
   <div class="col-12 text-center">
     <i class="fas fa-users fa-3x mt-4 mb-2"></i>
     <h2 class="text-center bg-gray">チーム一覧</h2>
+   <% if @teams.present? %>
     <table class = "table table-hover table-bordered table-condensed">
       <thead>
         <tr>
@@ -40,23 +41,14 @@
           <td>
             <%= (team.status)? '活動中' : '休止中' %>
           </td>
-          <td>
-
-          <% if team.favorited_by?(current_user) %>
-            <%= link_to team_favorites_path(team), method: :delete do %>
-              ♥<%= team.favorites.count %>
-            <% end %>
-          <% else %>
-            <%= link_to team_favorites_path(team), method: :post do %>
-              ♡<%= team.favorites.count %>
-            <% end %>
-          <% end %>
+          <td id="favorites_buttons_<%= team.id %>">
+            <%= render 'teams/favorite', team: team %>
           </td>
           <td>
             <%= team.comments.count %>
           </td>
           <td>
-            <%= link_to sports_index_path do %>
+            <%= link_to sport_path(team.sport_id) do %>
               <%= team.sport.name %>
             <% end %>
           </td>
@@ -71,13 +63,18 @@
     </table>
   </div>
 </div>
-
+  <% else %>
+  <div class="col-12 text-center">
+    <i class="fas fa-exclamation fa-2x mt-4 text-center"></i>
+    <p class="mt-2 text-center">チームがありません。</p>
+  </div>
+  <% end %>
   <div class ="row">
     <div class ="col-12  col-offset-4 mt-5 text-center">
       <table class="table table-hover table-bordered table-condensed table-striped">
-        <thead class="thead-dark">
+        <thead class="thead_sport">
           <tr>
-            <th><%= link_to 'チーム検索', sports_index_path, class: 'nav-link text-light' %></th>
+            <th><%= link_to 'チーム検索', sports_path, class: 'nav-link text-light' %></th>
           </tr>
         </thead>
         <tbody>

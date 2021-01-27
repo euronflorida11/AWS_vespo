@@ -1,77 +1,81 @@
 <%= render "devise/shared/error_messages", resource: resource %>
-<span>
-  <i class="fas fa-kiwi-bird fa-3x"></i>
-  <h2>新規会員登録</h2><br><br>
-</span>
-<div class="form-group">
-<%= form_with model: @user, url: user_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
-  <div class="form-group">
-    <label>ハンドルネーム</label>
-    <%= f.text_field :handle_name, autofocus: true, class:"form-control" %>
-  </div>
-  <div class="form-group">
-    <label>名前</label><br>
-    <label>(姓)</label>
-    <%= f.text_field :last_name, autofocus: true, class:"form-control"%>
-    <label>(名前)</label>
-    <%= f.text_field :first_name, autofocus: true, class:"form-control"%>
-  </div>
-  <div class="form-group">
-    <label>フリガナ</label><br>
-    <label>(セイ)</label>
-    <%= f.text_field :kana_last_name, autofocus: true, class:"form-control"%>
-    <label>(メイ)</label>
-    <%= f.text_field :kana_first_name, autofocus: true, class:"form-control"%>
-  </div>
-  <div class="form-group">
-    <label>メールアドレス</label>
-    <%= f.email_field :email, autofocus: true, class:"form-control" %>
-  </div>
-  <div class="form-group">
-    <label>郵便番号（ハイフン無し）</label>
-    <%= f.text_field :postcode, autofocus: true, id: "user_postcode", class:"form-control"%>
-  </div>
-  <div class="form-group">
-    <label>都道府県</label>
-    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code", class: 'form-control' %>
-  </div>
+<div class="row">
+  <div class="col-12 text-center">
+    <i class="fas fa-user-edit fa-3x"></i>
+    <h2 class="text-center bg-gray">新規会員登録</h2>
+    <%= form_with model: @user, url: user_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
+      <div class="font-weight-bold mt-5">プロフィール画像</div>
 
-  <div class="form-group">
-    <label>市区町村</label>
-    <%= f.text_field :address_city, autofocus: true, id: "user_address_city", class:"form-control"%>
-  </div>
-  <div class="form-group">
-    <label>番地</label>
-    <%= f.text_field :address_street, autofocus: true, id: "user_address_street", class:"form-control"%>
-  </div>
-  <div class="form-group">
-    <label>マンション名</label>
-    <%= f.text_field :address_building, autofocus: true, class:"form-control"%>
-  </div>
-  <div class="form-group">
-    <label>電話番号</label>
-    <%= f.text_field :phone_number, autofocus: true, class:"form-control" %>
-  </div>
+      <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %><br>
+      <div class="font-weight-bold mt-5">
+        <label>ハンドルネーム</label>
+        <%= f.text_field :handle_name, autofocus: true, class:"form-control" %>
+      </div>
+      <div class="font-weight-bold mt-5">
+        <label>名前</label><br>
+        <label>(姓)</label>
+        <%= f.text_field :last_name, autofocus: true, class:"form-control"%>
+        <label>(名前)</label>
+        <%= f.text_field :first_name, autofocus: true, class:"form-control"%>
+      </div>
+      <div class="font-weight-bold mt-5">
+        <label>フリガナ</label><br>
+        <label>(セイ)</label>
+        <%= f.text_field :kana_last_name, autofocus: true, class:"form-control"%>
+        <label>(メイ)</label>
+        <%= f.text_field :kana_first_name, autofocus: true, class:"form-control"%>
+      </div>
+      <div class="font-weight-bold mt-5">
+        <label>メールアドレス</label>
+        <%= f.email_field :email, autofocus: true, class:"form-control" %>
+      </div>
+      <div class="font-weight-bold mt-5">
+        <label>郵便番号（ハイフン無し）</label>
+        <%= f.text_field :postcode, autofocus: true, id: "user_postcode", class:"form-control"%>
+      </div>
+      <div class="font-weight-bold mt-5">
+        <label>都道府県</label>
+        <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code", class: 'form-control' %>
+      </div>
 
-  <div class="form-group">
-    <label>パスワード</label>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
+      <div class="font-weight-bold mt-5">
+        <label>市区町村</label>
+        <%= f.text_field :address_city, autofocus: true, id: "user_address_city", class:"form-control"%>
+      </div>
+      <div class="font-weight-bold mt-5">
+        <label>番地</label>
+        <%= f.text_field :address_street, autofocus: true, id: "user_address_street", class:"form-control"%>
+      </div>
+      <div class="font-weight-bold mt-5">
+        <label>マンション名</label>
+        <%= f.text_field :address_building, autofocus: true, class:"form-control"%>
+      </div>
+      <div class="font-weight-bold mt-5">
+        <label>電話番号</label>
+        <%= f.text_field :phone_number, autofocus: true, class:"form-control" %>
+      </div>
+
+      <div class="font-weight-bold mt-5">
+        <label>パスワード</label>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %>文字以上)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+      </div>
+
+      <div class="font-weight-bold mt-5">
+        <label>パスワード(確認用)</label>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+      </div>
+      <div class="font-weight-bold mt-5">
+        <label>自己紹介</label>
+        <%= f.text_area :introduction, autofocus: true, class:"form-control"%>
+      </div>
+      <div class="actions font-weight-bold mt-5">
+        <%= f.submit "新規登録", class:'btn btn-outline-info' %>
+      </div>
     <% end %>
-    <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
   </div>
-
-  <div class="form-group">
-    <label>パスワード(確認用)</label>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
-  </div>
-  <div class="form-group">
-    <label>自己紹介</label>
-    <%= f.text_field :introduction, autofocus: true, class:"form-control"%>
-  </div>
-
-  <%= f.submit "新規登録", class:'btn btn-outline-info' %>
-<% end %>
 </div>
-<h2>既に登録済みの方</h2>
+<h2 class="text-center bg-gray mt-5">既に登録済みの方</h2>
 <%= render "devise/shared/links" %>

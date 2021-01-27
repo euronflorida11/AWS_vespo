@@ -11,7 +11,8 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-      <main class = "container">
+      <main class="container">
+        <h5 class="text-success mt-3" id="notice"><%= notice %></h5>
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>

@@ -1,0 +1,9 @@
+<% if team.favorited_by?(current_user) %>
+  <%= link_to team_favorites_path(team), method: :delete, remote: true do %>
+    <i class="fas fa-heart"></i><%= team.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to team_favorites_path(team), method: :post, remote: true do %>
+    <i class="far fa-heart"></i><%= team.favorites.count %>
+  <% end %>
+<% end %>

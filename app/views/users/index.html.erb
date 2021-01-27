@@ -2,7 +2,8 @@
   <div class="col-12 text-center">
     <i class="fas fa-user-friends fa-3x mt-4 mb-2"></i>
     <h2 class="text-center bg-gray">会員一覧</h2>
-    <table class = "table table-hover table-bordered table-condensed">
+    <% if @users.present? %>
+    <table class="table table-hover table-bordered table-condensed">
       <thead>
         <tr>
           <th></th>
@@ -10,18 +11,17 @@
           <th>自己紹介</th>
           <th>フォロー数</th>
           <th>フォロワー数</th>
-          <th></th>
+          <th>フォロー</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <% User.all.where.not(id: current_user.id).each do |user| %>
+        <% @users.each do |user| %>
         <tr>
           <td>
             <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
           </td>
           <td>
-
             <%= link_to user_path(user) do %>
               <%= user.handle_name %>
             <% end %>
@@ -37,9 +37,13 @@
           </td>
           <td>
             <% if current_user.following?(user) %>
-              <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST, class:'btn btn-outline-info' %>
+              <%= link_to unfollow_path(user.id), method: :POST do %>
+                <i class="fas fa-user-slash fa-2x"></i>
+              <% end %>
             <% else %>
-              <%= link_to 'フォロー', follow_path(user.id), method: :POST, class:'btn btn-outline-info' %>
+              <%= link_to follow_path(user.id), method: :POST do %>
+                <i class="fas fa-user-plus fa-2x"></i>
+              <% end %>
             <% end %>
           </td>
           <td>
@@ -49,6 +53,12 @@
         <% end %>
       </tbody>
     </table>
-    <%= link_to "マイページ", user_path(current_user), class: 'btn btn-outline-info' %>
+    <% else %>
+      <div class="col-12 text-center">
+        <i class="fas fa-exclamation fa-2x mt-4 text-center"></i>
+        <p class="mt-2 text-center">会員がいません。</p>
+      </div>
+    <% end %>
+    <%= link_to "マイページ", user_path(current_user), class: 'btn btn-outline-info mt-3' %>
   </div>
 </div>

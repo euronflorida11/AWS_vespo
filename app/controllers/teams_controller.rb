@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def index
     #@teams = Team.all
     @sports = Sport.where(is_active: 'true')
@@ -19,18 +20,17 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.user_id = current_user.id
-    if @team.save!
-      redirect_to teams_path
+    if @team.save
+      redirect_to teams_path, notice: "チームを設立しました。"
     else
-      @teams = Team.all
-      render "index"
+      render :index
     end
   end
 
   def show
-    @team = Team.find(params[:id])
     @sports = Sport.where(is_active: true)
     @comment = Comment.new
+    @team = Team.find(params[:id])
   end
 
   def edit
@@ -47,7 +47,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @team.user_id = current_user.id
     if @team.update(team_params)
-      redirect_to team_path(@team.id)
+      redirect_to team_path(@team.id), notice: "チーム情報を更新しました。"
     else
       render :edit
     end
@@ -56,6 +56,7 @@ class TeamsController < ApplicationController
   def destroy
     @team = Team.find(params[:id])
     @team.destroy
+    flash[:notice] = "チームを削除しました。"
     redirect_to teams_path
   end
 
@@ -63,5 +64,4 @@ class TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(:name, :introduction, :number, :address, :status, :image, :user_id, :sport_id)
   end
-
 end

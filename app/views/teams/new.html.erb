@@ -18,9 +18,8 @@
       <div class="font-weight-bold mt-5">Vスポーツ</div>
         <%= f.collection_select :sport_id, @sports, :id, :name, :include_blank => "  --  選択してください  --  ", class: 'form-control' %>
       <div class="actions font-weight-bold mt-5">
-        <%= f.submit "チーム設立", class:'btn btn-outline-info' %>
+        <%= f.submit "チーム設立", class:'btn btn-outline-info text-center' %>
       </div>
-
     <% end %>
   </div>
 </div>
