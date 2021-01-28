@@ -3,12 +3,11 @@
     <i class="fas fa-user-friends fa-3x mt-4 mb-2"></i>
     <h2 class="text-center bg-gray">会員一覧</h2>
     <% if @users.present? %>
-    <table class="table table-hover table-bordered table-condensed">
+    <table class="table table-hover table-bordered table-condensed" style="table-layout:fixed;">
       <thead>
         <tr>
-          <th></th>
-          <th>ハンドルネーム</th>
-          <th>自己紹介</th>
+          <th>会員</th>
+          <th style="width:300px;">自己紹介</th>
           <th>フォロー数</th>
           <th>フォロワー数</th>
           <th>フォロー</th>
@@ -19,11 +18,8 @@
         <% @users.each do |user| %>
         <tr>
           <td>
-            <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
-          </td>
-          <td>
             <%= link_to user_path(user) do %>
-              <%= user.handle_name %>
+              <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br><%= user.handle_name %>
             <% end %>
           </td>
           <td>
