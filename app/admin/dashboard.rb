@@ -29,4 +29,8 @@ ActiveAdmin.register_page "Dashboard" do
     #   end
     # end
   end # content
+  
+  ActiveAdmin.register_page "Dashboard" do
+    menu false
+  end
 end

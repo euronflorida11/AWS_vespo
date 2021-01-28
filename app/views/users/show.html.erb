@@ -49,6 +49,14 @@
         <th><label>メールアドレス</label></th>
         <td><%= @user.email %></td>
       </tr>
+      <tr>
+        <th><label>フォロー数</label></th>
+        <td><%= @user.follower.count %></td>
+      </tr>
+      <tr>
+        <th><label>フォロワー数</label></th>
+        <td><%= @user.followed.count %></td>
+      </tr>
     <% end %>
     <% unless @user == current_user %>
       <tr>

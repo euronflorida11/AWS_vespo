@@ -19,7 +19,6 @@ ActiveAdmin.register Sport do
     selectable_column
     id_column
     column :name
-    column :user_id
     column :is_active
     column :introduction
     column :created_at

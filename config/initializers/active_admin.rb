@@ -334,6 +334,10 @@ ActiveAdmin.setup do |config|
   # You can switch to using Webpacker here.
   #
   # config.use_webpacker = true
+  config.comments = false
+  ActiveAdmin.setup do |config|
+    config.root_to = 'users#index'
+  end
 end
 
 # ActiveAdmin::BaseController.class_eval do

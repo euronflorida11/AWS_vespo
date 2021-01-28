@@ -15,6 +15,8 @@ class Team < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+  enum status: [["活動中", 0], ["休止中", 1]]
+
   # geocoded_by :address
   # after_validation :geocode, if: :address_changed?
 end

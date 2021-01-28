@@ -5,10 +5,10 @@ class TeamsController < ApplicationController
     # @teams = Team.all
     @sports = Sport.where(is_active: 'true')
     if params[:sport_id].blank?
-      @teams = Team.where(status: 0)
+      @teams = Team.all
     else
       @sport = Sport.find(params[:sport_id])
-      @teams = @sport.teams.where(status: 0)
+      @teams = @sport.teams.all
     end
   end
 
@@ -23,7 +23,8 @@ class TeamsController < ApplicationController
     if @team.save
       redirect_to teams_path, notice: "チームを設立しました。"
     else
-      render :index
+      @sports = Sport.where(is_active: 'true')
+      render :new
     end
   end
 
@@ -50,6 +51,7 @@ class TeamsController < ApplicationController
     if @team.update(team_params)
       redirect_to team_path(@team.id), notice: "チーム情報を更新しました。"
     else
+      @sports = Sport.where(is_active: 'true')
       render :edit
     end
   end
