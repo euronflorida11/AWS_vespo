@@ -23,7 +23,7 @@
       <div class="form-group mt-5">
         <label>ステータス</label>
         <div id="status">
-        <%= f.select :status, [['活動中', :active ],['休止中', :unactive ]] %>
+        <%= f.select :status_before_type_cast, [['活動中', 0 ],['休止中', 1 ]] %>
         </div>
       </div>
       <div class="form-group mt-5">
