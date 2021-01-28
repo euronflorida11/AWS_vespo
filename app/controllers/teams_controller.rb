@@ -29,8 +29,9 @@ class TeamsController < ApplicationController
 
   def show
     @sports = Sport.where(is_active: true)
-    @comment = Comment.new
     @team = Team.find(params[:id])
+    @comment = Comment.new
+    @comments = @team.comments
   end
 
   def edit

@@ -2,21 +2,24 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    team = Team.find(params[:team_id])
-    comment = current_user.comments.new(comment_params)
-    comment.team_id = team.id
-    comment.save
-    redirect_to team_path(team)
+    @team = Team.find(params[:team_id])
+    @comment = @team.comments.build(comment_params)
+    @comment.user_id = current_user.id
+    @comment.save
+    # flash[:notice] = "コメントしました。"
+    render :index
   end
 
   def destroy
-    Comment.find_by(id: params[:id], team_id: params[:team_id]).destroy
-    redirect_to team_path(params[:team_id])
+    @comment = Comment.find_by(id: params[:id], team_id: params[:team_id])
+    @comment.destroy
+    # flash[:notice] = "コメントを削除しました。"
+    render :index
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:comment)
+    params.require(:comment).permit(:comment, :user_id, :team_id)
   end
 end

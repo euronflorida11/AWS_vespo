@@ -3,17 +3,17 @@
   <i class="far fa-edit fa-3x mt-4 mb-2"></i>
    <h2><%= @user.handle_name %>さんの登録情報編集</h2>
     <%= form_with model: @user, local: true do |f| %>
-    <div class = "" >
+      <div>
       <label for="inputImage mt-5">プロフィール画像</label><br>
         <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg"%><br>
         <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
       <div class="form-group mt-5">
-        <label>ハンドルネーム</label><br>
-        <%= f.text_field :handle_name, autofocus: true, autocomplete: "handle_name", class:"form-control" %>
-        </div>
-        <label>自己紹介</label><br>
-        <%= f.text_field :introduction, autofocus: true, autocomplete: "introduction", class:"form-control" %>
-        </div>
+      <label>ハンドルネーム</label><br>
+      <%= f.text_field :handle_name, autofocus: true, autocomplete: "handle_name", class:"form-control" %>
+      </div>
+      <label>自己紹介</label><br>
+      <%= f.text_field :introduction, autofocus: true, autocomplete: "introduction", class:"form-control" %>
+      </div>
       <div class="form-group mt-5">
         <label>名前</label><br>
         <label>(姓)</label>
@@ -39,7 +39,6 @@
       <div class="form-group mt-5">
         <label>住所</label>
         <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code", class: 'form-control' %>
-        <!--%= f.text_field :prefecture_name, autofocus: true, autocomplete: "address", class:"form-control" %>-->
         <%= f.text_field :address_city, autofocus: true, autocomplete: "address", class:"form-control" %>
         <%= f.text_field :address_street, autofocus: true, autocomplete: "address", class:"form-control" %>
         <%= f.text_field :address_building, autofocus: true, autocomplete: "address", class:"form-control" %>
