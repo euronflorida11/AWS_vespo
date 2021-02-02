@@ -10,7 +10,7 @@ ActiveAdmin.register Sport do
   #
   permit_params do
     permitted = [:name, :is_active, :introduction]
-    permitted << :other if params[:action] == 'create' && current_user.admin?
+    permitted << :other if params[:action] == 'create' && current_admin_user
     permitted
   end
   config.sort_order = "updated_at"
