@@ -18,6 +18,6 @@ class Team < ApplicationRecord
 
   enum status:  { active: 0, inactive: 1 }
 
-  # geocoded_by :address
-  # after_validation :geocode, if: :address_changed?
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 end
