@@ -4,6 +4,7 @@ class Team < ApplicationRecord
   # has_many :sports, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :tags, dependent: :destroy
   attachment :image
   validates :image, presence: true
   validates :name, presence: true, length: { maximum: 20, minimum: 2 }, uniqueness: true

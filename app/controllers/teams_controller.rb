@@ -21,6 +21,10 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.user_id = current_user.id
     if @team.save
+      @tags = Vision.get_image_data(@team.image)
+      @tags.each do |tag|
+        @team.tags.create(name: tag)
+      end
       redirect_to teams_path, notice: "チームを設立しました。"
     else
       @sports = Sport.where(is_active: 'true')
