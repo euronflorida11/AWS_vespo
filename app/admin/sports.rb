@@ -9,7 +9,7 @@ ActiveAdmin.register Sport do
   # or
   #
   permit_params do
-    permitted = [:name, :is_active, :introduction]
+    permitted = [:name, :is_active, :introduction, :image_id, :user_id]
     permitted << :other if params[:action] == 'create' && current_admin_user
     permitted
   end
