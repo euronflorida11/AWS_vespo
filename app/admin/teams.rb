@@ -9,7 +9,7 @@ ActiveAdmin.register Team do
   # or
   #
   permit_params do
-    permitted = [:name, :introduction, :number, :address, :user_id, :sport_id, :status, :image_id]
+    permitted = [:name, :introduction, :number, :address, :user_id, :sport_id, :status, :image_id, :longitude, :latitude]
     permitted << :other if params[:action] == 'create' && current_admin_user
     permitted
   end
