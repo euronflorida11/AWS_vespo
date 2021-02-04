@@ -2,12 +2,11 @@
  <div class="col-md-12 text-center">
   <i class="fas fa-address-card fa-3x mt-4 mb-2"></i>
    <h2><%= @user.handle_name %>さんのページ</h2>
-
-    <table class="table ">
+    <table class="table">
       <tbody>
        <tr>
          <th><label>プロフィール画像</label></th>
-         <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
+         <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
        </tr>
        <tr>
         <th><label>ハンドルネーム</label></th>
@@ -49,6 +48,7 @@
         <th><label>メールアドレス</label></th>
         <td><%= @user.email %></td>
       </tr>
+    <% end %>
       <tr>
         <th><label>フォロー数</label></th>
         <td><%= @user.follower.count %></td>
@@ -57,7 +57,6 @@
         <th><label>フォロワー数</label></th>
         <td><%= @user.followed.count %></td>
       </tr>
-    <% end %>
     <% unless @user == current_user %>
       <tr>
         <th><label>フォロー</label></th>
