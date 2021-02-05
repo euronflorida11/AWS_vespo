@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-12 text-center">
     <i class="fas fa-passport fa-3x mt-4 mb-2"></i>
-    <h2 class="text-center bg-gray">Vスポーツ一覧</h2>
+    <h2 class="text-center bg-gray">ベンチャースポーツ一覧</h2>
   </div>
 </div>
 <% if @sports.present? %>
@@ -17,18 +17,18 @@
 <% else %>
   <div class="col-12 text-center">
     <i class="fas fa-exclamation fa-2x mt-4 text-center"></i>
-    <p class="mt-2 text-center">Vスポーツがありません。</p>
+    <p class="mt-2 text-center">ベンチャースポーツがありません。</p>
   </div>
   <% end %>
 <% if user_signed_in? %>
 <div class="row mt-5">
   <div class="col-12 text-center">
     <i class="fas fa-plus fa-3x mt-4 mb-2"></i>
-    <h2 class="text-center bg-gray">Vスポーツ登録</h2>
+    <h2 class="text-center bg-gray">ベンチャースポーツ登録</h2>
     <%= form_with model: @sport, url: sports_path, local: true do |f| %>
       <div class="font-weight-bold mt-5">イメージ</div>
         <%= f.attachment_field :image %>
-      <div class="font-weight-bold mt-5">Vスポーツ名</div>
+      <div class="font-weight-bold mt-5">ベンチャースポーツ名</div>
         <%= f.text_field :name, class:'form-control' %>
       <div class="font-weight-bold mt-5">概要</div>
         <%= f.text_area :introduction, class:'form-control' %>
