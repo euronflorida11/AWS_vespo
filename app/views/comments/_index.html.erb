@@ -30,7 +30,7 @@
           <td>
             <% if comment.user == current_user %>
             <div class="comment-delete">
-              <%= link_to "削除", team_comment_path(comment.team_id, comment.id), method: :delete, remote: true, class:'btn btn-outline-info' %>
+              <%= link_to "削除", team_comment_path(comment.team_id, comment.id), method: :delete, remote: true, data: { confirm: '削除しますか？' }, class:'btn btn-outline-info' %>
             </div>
             <% end %>
           </td>

@@ -3,7 +3,8 @@
  <div class="col-md-12 text-center">
     <i class="far fa-edit fa-3x mt-4 mb-2"></i><h2>チーム情報編集</h2><br>
     <%= form_with model: @team, url: team_path(@team.id), local: true do |f| %>
-      <%= attachment_image_tag @team, :image, :fill, 150, 150, fallback: "no_image.jpg"%>
+      <%= attachment_image_tag @team, :image, :fill, 150, 150, fallback: "no_image.jpg"%><br>
+      <%= f.attachment_field :image, placeholder: "イメージ" %><br>
       <div class="form-group mt-5">
         <label>チーム名</label><br>
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control" %>
@@ -35,7 +36,7 @@
       </div>
       <div class="actions mt-5">
         <% if @team.user_id == current_user.id %>
-          <%= link_to '削除', team_path(@team), method: :delete, class:'btn btn-outline-info' %>
+          <%= link_to '削除', team_path(@team), method: :delete, data: { confirm: '削除しますか？' }, class:'btn btn-outline-info' %>
         <% end %>
       </div>
     <% end %>

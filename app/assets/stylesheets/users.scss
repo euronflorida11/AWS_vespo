@@ -6,3 +6,13 @@
             overflow-wrap: break-word;
             word-wrap: break-word;
         }
+
+.profile {
+        // width: auto;
+        // height: auto;
+        // //サイズ指定
+        border-radius: 50px;
+        //画像を丸くする
+        object-fit: cover;
+        //タテヨコ比を変えないままトリミング
+      }

@@ -6,7 +6,7 @@
       <tbody>
        <tr>
          <th><label>プロフィール画像</label></th>
-         <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+         <td class="rounded-circle"><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'100x100' %></td>
        </tr>
        <tr>
         <th><label>ハンドルネーム</label></th>

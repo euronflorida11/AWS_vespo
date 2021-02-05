@@ -14,11 +14,12 @@
         <label>概要</label>
         <%= f.text_area :introduction, class:"form-control" %>
       </div>
-    
+
       <div class="actions mt-5">
         <%= f.submit class: 'btn btn-success' %>
       </div>
     <% end %>
+    <%= link_to '削除', sport_path(@sport), method: :delete, data: { confirm: '削除しますか？' }, class:'btn btn-outline-info mt-5' %>
   </div>
 </div>
 

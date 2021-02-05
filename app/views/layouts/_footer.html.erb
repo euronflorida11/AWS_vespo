@@ -1,9 +1,16 @@
 <footer class="mt-5">
-   <nav class="navbar navbar-expand-lg pt-4 pb-4">
-    <div class="container">
-      <p class="text-center text-white">Copyright © 2021 VESPO All Rights Reserved.</p>
+   <nav class="navbar navbar-expand-lg py-3">
+    <div class="container text-white">
+
+      <p class="text-center">Copyright © 2021 VESPO All Rights Reserved.</p>
+      <div>Logo created by <a href="https://www.designevo.com" title="Free Online Logo Maker" class="text-white">DesignEvo logo maker</a></div>
+      <%= link_to admin_root_path, class: 'nav-link' do %>
+        <i class="fas fa-user-shield fa-2x text-light"></i>
+      <% end %>
+
     </div>
   </nav>
+
 </footer>
 
 <!--<div class="col-md-3 col-xs-11 offset-1 mt-4">-->
