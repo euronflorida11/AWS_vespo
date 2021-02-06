@@ -1,7 +1,6 @@
 class Team < ApplicationRecord
   belongs_to :user
   belongs_to :sport, optional: true
-  # has_many :sports, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :tags, dependent: :destroy
@@ -16,7 +15,7 @@ class Team < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  enum status:  { active: 0, inactive: 1 }
+  enum status: { active: 0, inactive: 1 }
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?

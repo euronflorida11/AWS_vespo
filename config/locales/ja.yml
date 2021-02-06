@@ -205,3 +205,10 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+ja:
+  enums:                      #enum型に対する日本語定義であることを明示するために記述
+    team:                     #モデル名を指定
+      status:                 #カラム名を指定
+        active:   活動中      #Enumの名前定義①
+        inactive: 休止中      #Enumの名前定義②

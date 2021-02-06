@@ -1,7 +1,7 @@
 <%= render "devise/shared/error_messages", resource: resource %>
 <div class="row">
   <div class="col-12 text-center">
-    <i class="fas fa-user-edit fa-3x"></i>
+    <i class="fas fa-user-plus fa-3x mt-4 mb-2"></i>
     <h2 class="text-center bg-gray">新規会員登録</h2>
     <%= form_with model: @user, url: user_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
       <div class="font-weight-bold mt-5">プロフィール画像</div>

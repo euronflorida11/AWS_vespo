@@ -20,6 +20,7 @@
 
 body {
   font-family: 'Yusei Magic', sans-serif;
+  color: #555555;
   display: flex;
   flex-flow: column;
   min-height: 100vh;
@@ -35,8 +36,8 @@ header {
 }
 
 .vespo_title {
-  width: 35%;
-  height: 35%;
+  width: 45%;
+  height: 45%;
 }
 
 .navbar-toggler .navbar-toggler-icon {
@@ -60,6 +61,14 @@ footer {
 }
 
 .alert {
+    color:#262626;
+    background:#FFEBE8;
+    text-align: center;
+    border:2px solid #990000;
+    padding:12px; font-weight:850;
+  }
+  
+.flash {
     color:#262626;
     background:#FFEBE8;
     text-align: center;

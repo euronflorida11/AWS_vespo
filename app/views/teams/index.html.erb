@@ -16,15 +16,17 @@
                       <%= link_to sport_path(team.sport_id) do %>
                         <%= team.sport.name %>
                       <% end %>
-
+                      <% if team.status == "active" %>
+                        <span class=""><%= team.status_i18n %></span>
+                      <% else %>
+                        <span class="text-muted"><%= team.status_i18n %></span>
+                      <% end %>
                       <i class="fas fa-users m-1"></i><%= team.number %>人
-
-                      <!--%= (team.status_before_type_cast)? '活動中' : '休止中' %>-->
-
                       <i class="far fa-comment m-1"></i><%= team.comments.count %>
                       <span id="favorites_buttons_<%= team.id %>">
                         <%= render 'teams/favorite', team: team %>
                       </span><i class="fas fa-map-pin m-1"></i><%= team.address %><br>
+
                       <%= team.introduction %>
                     </div>
                   </div>

@@ -1,7 +1,8 @@
-<%= render "devise/shared/error_messages", resource: resource %>
+<!--%= render "devise/shared/error_messages", resource: resource %>-->
+<%= flash[:alert] %>
 <div class="row">
   <div class="col-12 text-center">
-    <i class="fas fa-external-link-alt fa-3x mt-4 mb-2"></i>
+    <i class="fas fa-sign-in-alt fa-3x mt-4 mb-2"></i>
     <h2 class="text-center bg-gray">ログイン</h2>
     <%= form_with model: @user, url: user_session_path, local: true do |f| %>
       <div class="font-weight-bold mt-5">

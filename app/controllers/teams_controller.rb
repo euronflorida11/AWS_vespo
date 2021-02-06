@@ -4,11 +4,10 @@ class TeamsController < ApplicationController
   def index
     # @teams = Team.all
     @sports = Sport.where(is_active: 'true')
-    if params[:sport_id].blank?
-      @teams = Team.all
+    if @sports.blank?
+      redirect_to sports_path, notice: "ベンチャースポーツを追加してください。"
     else
-      @sport = Sport.find(params[:sport_id])
-      @teams = @sport.teams.all
+      @teams = Team.all
     end
   end
 
@@ -70,6 +69,6 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:name, :introduction, :number, :address, :status, :image, :user_id, :sport_id, :longitude, :latitude)
+    params.require(:team).permit(:name, :introduction, :number, :status, :address, :image, :user_id, :sport_id, :longitude, :latitude)
   end
 end

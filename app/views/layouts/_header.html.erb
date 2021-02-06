@@ -3,7 +3,7 @@
     <div class="container">
       <div class="vespo_title">
         <%= link_to root_path, class: 'nav-link vespo_title' do %>
-          <%= image_tag asset_path 'vespo_title.png' %>
+          <%= image_tag asset_path 'vespo_title.png', class: 'vespo_title' %>
             <!--<img src="/assets/vespo_title.png" alt="" class="vespo">-->
         <% end %>
       </div>
@@ -35,7 +35,7 @@
             </li>
             <li>
               <%= link_to teams_path, class: 'nav-link text-light' do %>
-                <i class="fas fa-search fa-2x m-2 mr-4", data-toggle="tooltip", data-placement="bottom", title="チーム検索"></i>
+                <i class="fas fa-search fa-2x m-2 mr-4", data-toggle="tooltip", data-placement="bottom", title="チーム一覧"></i>
               <% end %>
             </li>
             <li>
@@ -61,7 +61,7 @@
             </li>
             <li data-turbolinks="false">
               <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
-                <i class="fas fa-external-link-square-alt fa-2x m-2 mr-4", data-toggle="tooltip", data-placement="bottom", title="新規登録"></i>
+                <i class="fas fa-user-plus fa-2x m-2 mr-4", data-toggle="tooltip", data-placement="bottom", title="新規登録"></i>
               <% end %>
             </li>
             <li>
