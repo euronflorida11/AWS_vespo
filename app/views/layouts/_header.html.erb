@@ -1,9 +1,12 @@
 <header>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <%= link_to root_path, class: 'nav-link' do %>
-        <img src="/assets/vespo_title.png" alt="" class="vespo">
-      <% end %>
+      <div class="vespo_title">
+        <%= link_to root_path, class: 'nav-link vespo_title' do %>
+          <%= image_tag asset_path 'vespo_title.png' %>
+            <!--<img src="/assets/vespo_title.png" alt="" class="vespo">-->
+        <% end %>
+      </div>
       <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
