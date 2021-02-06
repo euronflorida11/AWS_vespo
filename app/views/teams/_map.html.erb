@@ -32,27 +32,11 @@
        infowindow.open(map, marker);
      });
   }
-
-    let geocoder
-
-    function codeAddress(){
-      let inputAddress = document.getElementById('address').value;
-
-      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-        if (status == 'OK') {
-          map.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location
-          });
-        } else {
-          alert('該当する結果がありませんでした：' + status);
-        }
-      });
+  $(document).on("turbolinks:load",function(){
+    if($("#map").length){
+      initMap();
     }
+  });
 
 </script>
 
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap">
-</script>
