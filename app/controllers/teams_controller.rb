@@ -6,8 +6,11 @@ class TeamsController < ApplicationController
     @sports = Sport.where(is_active: 'true')
     if @sports.blank?
       redirect_to sports_path, notice: "ベンチャースポーツを追加してください。"
-    else
+    elsif params[:sport_id].blank?
       @teams = Team.all
+    else
+      @sport = Sport.find(params[:sport_id])
+      @teams = @sport.teams.all
     end
   end
 
