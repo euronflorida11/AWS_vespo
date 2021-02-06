@@ -32,7 +32,6 @@ module Vision
       request = Net::HTTP::Post.new(uri.request_uri)
       request['Content-Type'] = 'application/json'
       response = https.request(request, params)
-      
       response_body = JSON.parse(response.body)
       # APIレスポンス出力
       if (error = response_body['responses'][0]['error']).present?
