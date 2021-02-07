@@ -9,6 +9,10 @@ class SportsController < ApplicationController
   def create
     @sport = Sport.new(sport_params)
     if @sport.save
+      @tags = Vision.get_image_data(@sport.image)
+      @tags.each do |tag|
+        @sport.tags.create(name: tag)
+      end
       redirect_to sports_path, notice: "Vスポーツを作成しました。"
     else
       @sports = Sport.all

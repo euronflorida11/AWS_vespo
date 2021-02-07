@@ -7,9 +7,6 @@
      <tbody>
       <tr>
         <%= attachment_image_tag @team, :image, :fill, 150, 150, fallback: "no_image.jpg", size:'150x150' %><br>
-        <% @team.tags.each do |tag| %>
-           <span class="label bg-dark text-light mx-1 p-2"><%= tag.name %></span>
-        <% end %>
       </tr>
       <tr>
         <th><label>チーム名</label></th>
