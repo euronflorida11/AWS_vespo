@@ -16,7 +16,7 @@
         <%= f.text_field :address, class: 'form-control' %>
       <div class="font-weight-bold mt-5">活動ステータス</div>
         <%= f.select :status, [['活動中', "active" ],['休止中', "inactive" ]] %>
-      <div class="font-weight-bold mt-5">Vスポーツ</div>
+      <div class="font-weight-bold mt-5">ベンチャースポーツ</div>
         <%= f.collection_select :sport_id, @sports, :id, :name, :include_blank => "  --  選択してください  --  ", class: 'form-control' %>
       <div class="actions font-weight-bold mt-5">
         <%= f.submit "チーム設立", class:'btn btn-outline-info text-center' %>
