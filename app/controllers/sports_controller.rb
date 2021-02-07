@@ -12,6 +12,7 @@ class SportsController < ApplicationController
       @tags = Vision.get_image_data(@sport.image)
       @tags.each do |tag|
         @sport.tags.create(name: tag)
+        # @sport.save_tag(tag)
       end
       redirect_to sports_path, notice: "Vスポーツを作成しました。"
     else

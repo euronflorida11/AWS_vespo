@@ -8,4 +8,12 @@ class Sport < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+  
+  # def save_tag(tag_name)
+  #   tag = Tag.find_by(name: tag_name)
+  #   if tag == nil
+  #     tag = Tag.create.(name: tag_name)
+  #   end
+  # end
+  
 end

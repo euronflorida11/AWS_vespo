@@ -18,9 +18,6 @@
       </tr>
     </tbody>
   </table>
-  <% @sport.tags.each do |tag| %>
-     <span class="label bg-dark text-light m-2 p-2"><%= tag.name %></span>
-  <% end %>
     <% if user_signed_in? %>
       <%= link_to "編集する", edit_sport_path(@sport), class: "btn btn-outline-info text-center"%>
     <% end %>

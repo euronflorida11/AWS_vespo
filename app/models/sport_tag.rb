@@ -1,0 +1,2 @@
+class SportTag < ApplicationRecord
+end
