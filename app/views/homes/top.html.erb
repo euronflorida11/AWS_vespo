@@ -5,7 +5,6 @@
         <%= image_tag asset_path 'vespo_logo.png' %>
        <!--<img src="/assets/vespo_logo.png" alt="" class="logo m-3">-->
       </div>
-
       <h1 class="text-warning my-3">Let's Venture Sports !!</h1>
       <h4 class="my-2">
         <span class="text-danger">ベンチャースポーツ</span>は、かつて<span class="text-primary">マイナースポーツ</span>と呼ばれていました。<br>
@@ -13,37 +12,61 @@
       <h5 class="my-2">
         "VESPO"は、ベンチャースポーツをしたい方とベンチャースポーツチームを繋ぐプラットフォームを目指しています。<br>
       </h5>
-
       <h3 class="ext-warning mt-5">"VESPO"とは？</h3>
+      <h5 class="my-3">
+        ベンチャースポーツをしたい人とベンチャースポーツチームの<span class="text-info mx-1">マッチングサービス</span>です。<br>
+      </h5>
+      <div class="row">
+        <div class="col-4 card shadow-ig pt-3 px-2 text-center">
+          <%= link_to sports_path, class: 'nav-link' do %>
+            <h4 class="sport-sport"><i class="fas fa-passport fa-2x m-1"></i></h4>
+            <h5 class="sport-name my-4">ベンチャースポーツを探す！</h5>
+          <% end %>
+        </div>
+        <div class="col-4 card shadow-ig pt-3 px-2 text-center">
+          <%= link_to teams_path, class: 'nav-link' do %>
+            <h4 class="sport-sport"><i class="fas fa-search fa-2x m-1"></i></h4>
+            <h5 class="sport-name my-4">新しいコミュニティを探す！</h5>
+          <% end %>
+        </div>
+        <div class="col-4 card shadow-ig pt-3 px-2 text-center">
+          <%= link_to new_team_path, class: 'nav-link' do %>
+            <h4 class="sport-sport"><i class="fas fa-plus-circle fa-2x m-1"></i></h4>
+            <h5 class="sport-name my-4">チームを設立してアピールする！</h5>
+          <% end %>
+        </div>
+      </div>
+      <h5 class="my-4">
+        新しいことにチャレンジしたい人や、何かスポーツをしたい人、転勤先に知り合いがいない、、、<br>
+        というようなお悩みをお持ちのあなた！！<br>
+      </h5>
+      <h4 class="my-2 mb-5">ベンチャースポーツに<span class="text-danger mx-1">挑戦</span>してみませんか？</h4>
+      <h1 class="text-info mt-5 mb-3">アプリ情報</h1>
+        <div class="row">
+          <div class="col-4 card pt-3 px-2 text-center">
+            <%= link_to sports_path, class: 'nav-link' do %>
+              <h4 class="sport-sport"><i class="fas fa-passport fa-2x m-1"></i></h4>
+              <h5 class="sport-name my-2">ベンチャースポーツ数</h5>
+              <h2><%= @sports.count %></h2>
+            <% end %>
+          </div>
+          <div class="col-4 card shadow-ig pt-3 px-2 text-center">
+            <%= link_to teams_path, class: 'nav-link' do %>
+              <h4 class="sport-sport"><i class="fas fa-search fa-2x m-1"></i></h4>
+              <h5 class="sport-name my-2">チーム数</h5>
+              <h2><%= @teams.count %></h2>
+            <% end %>
+          </div>
+          <div class="col-4 card shadow-ig pt-3 px-2 text-center">
+            <%= link_to users_path, class: 'nav-link' do %>
+              <h4 class="sport-sport"><i class="fas fa-user-friends fa-2x m-1"></i></h4>
+              <h5 class="sport-name my-2">会員数</h5>
+              <h2><%= @users.count %></h2>
+            <% end %>
+          </div>
+        </div>
 
-        <h5 class="my-3">
-          ベンチャースポーツをしたい人とベンチャースポーツチームの<span class="text-info mx-1">マッチングサービス</span>です。<br>
-        </h5>
-            <div class="row">
-                <div class="col-4 card shadow-ig pt-3 px-2 text-center">
-                  <%= link_to sports_path, class: 'nav-link' do %>
-                    <h4 class="sport-sport"><i class="fas fa-passport fa-2x m-1"></i></h4>
-                    <h5 class="sport-name my-4">ベンチャースポーツを探す！</h5>
-                  <% end %>
-                </div>
-                <div class="col-4 card shadow-ig pt-3 px-2 text-center">
-                  <%= link_to teams_path, class: 'nav-link' do %>
-                    <h4 class="sport-sport"><i class="fas fa-search fa-2x m-1"></i></h4>
-                    <h5 class="sport-name my-4">新しいコミュニティを探す！</h5>
-                  <% end %>
-                </div>
-                <div class="col-4 card shadow-ig pt-3 px-2 text-center">
-                  <%= link_to new_team_path, class: 'nav-link' do %>
-                    <h4 class="sport-sport"><i class="fas fa-plus-circle fa-2x m-1"></i></h4>
-                    <h5 class="sport-name my-4">チームを設立してアピールする！</h5>
-                  <% end %>
-                </div>
-            </div>
-        <h5 class="my-4">
-          新しいことにチャレンジしたい人や、何かスポーツをしたい人、転勤先に知り合いがいない、、、<br>
-          というようなお悩みをお持ちのあなた！！<br>
-        </h5>
-        <h4 class="my-2">ベンチャースポーツに<span class="text-danger mx-1">挑戦</span>してみませんか？</h4>
+
     </div>
   </div>
 </div>
