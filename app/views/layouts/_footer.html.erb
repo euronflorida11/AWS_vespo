@@ -2,24 +2,36 @@
    <nav class="navbar navbar-expand-lg py-3">
     <div class="container text-white">
 
-      <p class="text-center">Copyright © 2021 VESPO All Rights Reserved.</p>
-      <div>Logo created by <a href="https://www.designevo.com" title="Free Online Logo Maker" class="text-white">DesignEvo logo maker</a></div>
-      <%= link_to admin_root_path, class: 'nav-link' do %>
-        <i class="fas fa-user-shield fa-2x text-light", data-toggle="tooltip", data-placement="bottom", title="管理者"></i>
-      <% end %>
-
+      <div class="row text-center">
+        <div class="col-12 mt-4">
+          <ul class="navbar-nav ml-auto">
+            <li><%= link_to ' トップ',      root_path, class: 'nav-link text-light mx-2' %></li>
+            <li><%= link_to ' お知らせ',    about_path, class: 'nav-link text-light mx-2' %></li>
+            <li><%= link_to ' ベンチャースポーツ', sports_path, class: 'nav-link text-light mx-2' %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to ' マイページ', user_path(current_user), class: 'nav-link text-light mx-2' %></li>
+              <li><%= link_to ' 会員一覧'  , users_path, class: 'nav-link text-light mx-2' %></li>
+              <li><%= link_to ' チーム一覧', teams_path, class: 'nav-link text-light mx-2' %></li>
+              <li><%= link_to ' チーム設立', new_team_path, class: 'nav-link text-light mx-2' %></li>
+              <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light mx-2' %></li>
+            <% else %>
+              <li><%= link_to ' 新規登録', new_user_registration_path, class: 'nav-link text-light mx-2' %></li>
+              <li><%= link_to ' ログイン', new_user_session_path, class: 'nav-link text-light mx-2' %></li>
+            <% end %>
+            <li><%= link_to ' お問い合わせ',      about_path, class: 'nav-link text-light mx-2' %></li>
+            <!--<li>%= link_to ' 管理者ログイン', admin_root_path, class: 'nav-link text-light bg-danger' %></li>-->
+          </ul>
+        </div>
+        <div class="col-md-10 col-xs-11 offset-1 my-4">
+          Logo created by <a href="https://www.designevo.com" title="Free Online Logo Maker" class="text-white">DesignEvo logo maker</a><br>
+          Copyright © 2021 VESPO All Rights Reserved.
+        </div>
+        <div class="test-right col-md-1 col-xs-2 mt-4">
+          <%= link_to admin_root_path, class: 'nav-link' do %>
+            <i class="fas fa-user-shield fa-2x text-light", data-toggle="tooltip", data-placement="bottom", title="管理者"></i>
+          <% end %>
+        </div>
+      </div>
     </div>
   </nav>
-
 </footer>
-
-<!--<div class="col-md-3 col-xs-11 offset-1 mt-4">-->
-<!--<h5 class="text-light">その他</h5>-->
-<!--  <ul class="mt-2 list-unstyled" style="line-height:1.3rem">-->
-<!--    <li><a class="text-light" href="/">トップページ</a></li>-->
-<!--    <li><a class="text-light" href="/about">ご利用方法</a></li>-->
-<!--    <li><a class="text-light" href="/informations">お知らせ</a></li>-->
-<!--    <li><a class="text-light" href="/contact">お問い合わせ</a></li>-->
-<!--    <li class="mt-2"><a class="text-light" href="/admins/sign_in">管理者ページ</a></li>-->
-<!--  </ul>-->
-<!--</div>-->

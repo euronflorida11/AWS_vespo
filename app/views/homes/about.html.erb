@@ -3,25 +3,30 @@
     <div class="col-12">
       <i class="fas fa-bell fa-3x mt-4 mb-2"></i>
       <h2 class="text-center bg-gray">お知らせ</h2>
-      <h1 class="text-warning my-4">Let's Venture Sports !!</h1>
-      <h4 class="my-4">
-        <span class="text-danger">ベンチャースポーツ</span>は、かつて<span class="text-primary">マイナースポーツ</span>と呼ばれていました。<br>
-      </h4>
-      <h5 class="my-3">
-        "VESPO"は、ベンチャースポーツをしたい方とベンチャースポーツチームを繋ぐプラットフォームを目指しています。<br>
-      </h5>
-      <h3 class="ext-warning mt-5">"VESPO"とは？</h3>
-        <h5 class="my-3">
-          ベンチャースポーツをしたい人とベンチャースポーツチームのマッチングサービスです。<br>
-          新しいコミュニティやベンチャースポーツを探したり、<br>
-          チームメイトを増やしたいスポーツチームがメンバー募集したり、<br>
-          使い方はさまざまです。<br>
-        </h5>
-        <h5 class="my-1">
-          新しいことにチャレンジしたい人や、何かスポーツをしたい人、転勤先に知り合いがいない、、、<br>
-          というようなお悩みをお持ちのあなた！！<br>
-          この機会にベンチャースポーツに挑戦してみませんか？
-        </h5>
+         <% if @infos.present? %>
+          <% @infos.each do |info| %>
+            <div class="card mb-2">
+              <div class="row no-gutters">
+                  <div class="col-md-2 my-3">
+                    <%= info.title %>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <%= info.content %>
+                    </div>
+                  </div>
+                  <div class="col-md-2 my-3">
+                    <%= info.d %>
+                  </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="col-12 text-center">
+            <i class="fas fa-exclamation fa-2x mt-4 text-center"></i>
+            <p class="mt-2 text-center">お知らせはありません。</p>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>
