@@ -41,32 +41,30 @@
         というようなお悩みをお持ちのあなた！！<br>
       </h5>
       <h4 class="my-2 mb-5">ベンチャースポーツに<span class="text-danger mx-1">挑戦</span>してみませんか？</h4>
-      <h1 class="text-info mt-5 mb-3">アプリ情報</h1>
-        <div class="row">
-          <div class="col-4 card pt-3 px-2 text-center">
-            <%= link_to sports_path, class: 'nav-link' do %>
-              <h4 class="sport-sport"><i class="fas fa-passport fa-2x m-1"></i></h4>
-              <h5 class="sport-name my-2">ベンチャースポーツ数</h5>
-              <h2><%= @sports.count %></h2>
-            <% end %>
-          </div>
-          <div class="col-4 card shadow-ig pt-3 px-2 text-center">
-            <%= link_to teams_path, class: 'nav-link' do %>
-              <h4 class="sport-sport"><i class="fas fa-search fa-2x m-1"></i></h4>
-              <h5 class="sport-name my-2">チーム数</h5>
-              <h2><%= @teams.count %></h2>
-            <% end %>
-          </div>
-          <div class="col-4 card shadow-ig pt-3 px-2 text-center">
-            <%= link_to users_path, class: 'nav-link' do %>
-              <h4 class="sport-sport"><i class="fas fa-user-friends fa-2x m-1"></i></h4>
-              <h5 class="sport-name my-2">会員数</h5>
-              <h2><%= @users.count %></h2>
-            <% end %>
-          </div>
+      <h1 class="mt-5 mb-3" style="color: #009688">ー  アプリ情報  ー</h1>
+      <div class="row">
+        <div class="col-4 card pt-3 px-2 text-center">
+          <%= link_to sports_path, class: 'nav-link' do %>
+            <h4 class="sport-sport"><i class="fas fa-passport fa-2x m-1"></i></h4>
+            <h5 class="sport-name my-2">ベンチャースポーツ数</h5>
+            <h2><%= @sports.count %></h2>
+          <% end %>
         </div>
-
-
+        <div class="col-4 card shadow-ig pt-3 px-2 text-center">
+          <%= link_to teams_path, class: 'nav-link' do %>
+            <h4 class="sport-sport"><i class="fas fa-search fa-2x m-1"></i></h4>
+            <h5 class="sport-name my-2">チーム数</h5>
+            <h2><%= @teams.count %></h2>
+          <% end %>
+        </div>
+        <div class="col-4 card shadow-ig pt-3 px-2 text-center">
+          <%= link_to users_path, class: 'nav-link' do %>
+            <h4 class="sport-sport"><i class="fas fa-user-friends fa-2x m-1"></i></h4>
+            <h5 class="sport-name my-2">会員数</h5>
+            <h2><%= @users.count %></h2>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
