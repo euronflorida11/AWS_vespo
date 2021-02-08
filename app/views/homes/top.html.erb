@@ -5,46 +5,46 @@
         <%= image_tag asset_path 'vespo_logo.png' %>
        <!--<img src="/assets/vespo_logo.png" alt="" class="logo m-3">-->
       </div>
-      <div class="vespo_sentence">
+      <div class="sentence">
         <h1 class="text-warning my-3">Let's Venture Sports !!</h1>
         <h4 class="my-2">
           <span class="text-danger">ベンチャースポーツ</span>は、
           <span class="text-primary">マイナースポーツ</span>
-          <span class="vespo_indention">と呼ばれていました。</span>
+          <span class="indention">と呼ばれていました。</span>
         </h4>
         <h5 class="my-2">
           "VESPO"はベンチャースポーツがしたい方とベンチャースポーツチームを
-          <span class="vespo_indention">繋ぐプラットフォームを目指しています。</span>
+          <span class="indention">繋ぐプラットフォームを目指しています。</span>
         </h5>
         <h3 class="ext-warning mt-5">"VESPO"とは？</h3>
         <h5 class="my-3">
           ベンチャースポーツをしたい人とベンチャースポーツチームの
-          <span class="vespo_indention text-info mx-1">マッチングサービス</span>です。<br>
+          <span class="indention text-info mx-1">マッチングサービス</span>です。<br>
         </h5>
         <div class="row">
           <div class="col-4 card shadow-ig pt-3 px-2 text-center">
             <%= link_to sports_path, class: 'nav-link' do %>
               <h4 class="sport-sport"><i class="fas fa-passport fa-2x m-1"></i></h4>
-              <h5 class="sport-name my-4">ベンチャースポーツを探す！</h5>
+              <h5 class="sport-name my-4"><span class="indention">ベンチャースポーツを</span><span class="indention">探す！</span></h5>
             <% end %>
           </div>
           <div class="col-4 card shadow-ig pt-3 px-2 text-center">
             <%= link_to teams_path, class: 'nav-link' do %>
               <h4 class="sport-sport"><i class="fas fa-search fa-2x m-1"></i></h4>
-              <h5 class="sport-name my-4">新しいコミュニティを探す！</h5>
+              <h5 class="sport-name my-4"><span class="indention">新しいコミュニティを</span><span class="indention">探す！</span></h5>
             <% end %>
           </div>
           <div class="col-4 card shadow-ig pt-3 px-2 text-center">
             <%= link_to new_team_path, class: 'nav-link' do %>
               <h4 class="sport-sport"><i class="fas fa-plus-circle fa-2x m-1"></i></h4>
-              <h5 class="sport-name my-4">チームを設立してアピールする！</h5>
+              <h5 class="sport-name my-4"><span class="indention">チームを設立して</span><span class="indention">アピールする！</span></h5>
             <% end %>
           </div>
         </div>
         <h5 class="my-4">
-          <span class="vespo_indention">新しいことにチャレンジしたい人や、カラダを動かしたい人、</span>
-          <span class="vespo_indention">転勤先に友人がいない、、、</span><br>
-          <span class="vespo_indention">そんなお悩みをお持ちのそこのあなた！！</span>
+          <span class="indention">新しいことにチャレンジしたい人や、カラダを動かしたい人、</span>
+          <span class="indention">転勤先に友人がいない、、、</span><br>
+          <span class="indention">そんなお悩みをお持ちのそこのあなた！！</span>
         </h5>
         <h4 class="my-2 mb-5">ベンチャースポーツに<span class="text-danger mx-1">挑戦</span>してみませんか？</h4>
       </div>
@@ -53,21 +53,21 @@
         <div class="col-4 card pt-3 px-2 text-center">
           <%= link_to sports_path, class: 'nav-link' do %>
             <h4 class="sport-sport"><i class="fas fa-passport fa-2x m-1"></i></h4>
-            <h5 class="sport-name my-2">ベンチャースポーツ数</h5>
+            <h6 class="sport-name my-2">ベンチャースポーツ数</h6>
             <h2><%= @sports.count %></h2>
           <% end %>
         </div>
         <div class="col-4 card shadow-ig pt-3 px-2 text-center">
           <%= link_to teams_path, class: 'nav-link' do %>
             <h4 class="sport-sport"><i class="fas fa-search fa-2x m-1"></i></h4>
-            <h5 class="sport-name my-2">チーム数</h5>
+            <h6 class="sport-name my-2">チーム数</h6>
             <h2><%= @teams.count %></h2>
           <% end %>
         </div>
         <div class="col-4 card shadow-ig pt-3 px-2 text-center">
           <%= link_to users_path, class: 'nav-link' do %>
             <h4 class="sport-sport"><i class="fas fa-user-friends fa-2x m-1"></i></h4>
-            <h5 class="sport-name my-2">会員数</h5>
+            <h6 class="sport-name my-2">会員数</h6>
             <h2><%= @users.count %></h2>
           <% end %>
         </div>
