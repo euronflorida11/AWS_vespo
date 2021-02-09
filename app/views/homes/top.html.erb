@@ -7,20 +7,36 @@
       </div>
       <div class="sentence">
         <h1 class="text-warning my-3">Let's Venture Sports !!</h1>
-        <h4 class="my-2">
-          <span class="text-danger">ベンチャースポーツ</span>は、
-          <span class="text-primary">マイナースポーツ</span>
+        <h3 class="mt-4">あなたは"ベンチャースポーツ"をご存知ですか？</h3>
+        <h4 class="my-3">
+          <span class="text-danger">ベンチャースポーツ </span>は、
+          <span class="indention">かつて<span class="text-primary"> マイナースポーツ</span></span>
           <span class="indention">と呼ばれていました。</span>
         </h4>
-        <h5 class="my-2">
-          "VESPO"はベンチャースポーツがしたい方とベンチャースポーツチームを
-          <span class="indention">繋ぐプラットフォームを目指しています。</span>
-        </h5>
-        <h3 class="ext-warning mt-5">"VESPO"とは？</h3>
         <h5 class="my-3">
-          ベンチャースポーツをしたい人とベンチャースポーツチームの
-          <span class="indention text-info mx-1">マッチングサービス</span>です。<br>
+          その理由は、競技人口が<span class="text-primary"> 少なかった</span>からです。<br>
         </h5>
+        <h5 class="mt-3">
+          しかし、今後の成長が<span class="h4 text-danger"> 期待 </span>されるスポーツとして<span class="indention">呼ばれ方が変化しつつあります。</span><br>
+        </h5>
+        <h4 class="mt-3">
+          つまり、<span class="">広めたい！</span>と思ったら、<span class="indention text-danger"> ベンチャースポーツ </span> であり、<br>
+          オススメしたい！ と思ったら、<span class="indention"><span class="text-danger"> ベンチャースポーツ </span>なのです。</span>
+        </h4>
+
+        <div class="slider mt-3 mb-5" id="slider">
+          <% @sports.each do |sport| %>
+            <%= attachment_image_tag sport, :image, :fill, 300, 200, size:'300x200', class:"text-center" %>
+           <% end %>
+        </div>
+
+        <h2 class="mt-5">"VESPO"とは？</h2>
+        <h4 class="my-3">
+          ベンチャースポーツをしたい人とベンチャースポーツチームの
+          <span class="indention text-info">マッチングサービス </span> です。<br>
+          "VESPO"はベンチャースポーツプレイヤー同士を
+          <span class="indention">繋ぐ<span class="text-primary"> プラットフォーム </span>を目指しています。</span>
+        </h4>
         <div class="row">
           <div class="col-4 card shadow-ig pt-3 px-2 text-center">
             <%= link_to sports_path, class: 'nav-link' do %>
@@ -41,14 +57,14 @@
             <% end %>
           </div>
         </div>
-        <h5 class="my-4">
+        <h4 class="my-4">
           <span class="indention">新しいことにチャレンジしたい人や、カラダを動かしたい人、</span>
           <span class="indention">転勤先に友人がいない、、、</span><br>
           <span class="indention">そんなお悩みをお持ちのそこのあなた！！</span>
-        </h5>
-        <h4 class="my-2 mb-5">ベンチャースポーツに<span class="text-danger mx-1">挑戦</span>してみませんか？</h4>
+        </h4>
+        <h3 class="my-2 mb-5">ベンチャースポーツに<span class="text-danger mx-1">挑戦</span>してみませんか？</h3>
       </div>
-      <h1 class="mt-5 mb-3" style="color: #009688">ー  VESPO情報  ー</h1>
+      <h1 class="mt-5 mb-4" style="color: #009688">ー  VESPO情報  ー</h1>
       <div class="row">
         <div class="col-4 card pt-3 px-2 text-center">
           <%= link_to sports_path, class: 'nav-link' do %>

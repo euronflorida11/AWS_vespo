@@ -82,7 +82,7 @@ footer {
 }
 .indention {
   display: inline-block;
-  
+
 }
 
 .back {
@@ -94,3 +94,19 @@ footer {
   width:      50px;
   height:     50px;
 }
+
+.slider {
+  width: 50%;
+  max-width: 50%; /* 画像幅以上拡大しないようにする指定 */
+  margin: 0 auto 50px;
+}
+
+.slick-next {
+    right: 10px;
+    z-index: 100;
+ }
+
+.slick-prev {
+    left: 10px;
+  z-index: 100;
+ }
