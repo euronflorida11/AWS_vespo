@@ -1,82 +1,126 @@
 <div class="row">
- <div class="col-md-12 text-center">
-  <i class="fas fa-address-card fa-3x mt-4 mb-2"></i>
-   <h2><%= @user.handle_name %>さんのページ</h2>
+  <div class="col-md-12 text-center">
+    <i class="fas fa-address-card fa-3x mt-4 mb-2"></i>
+    <h2><%= @user.handle_name %>さんのページ</h2>
     <table class="table">
       <tbody>
-       <tr>
-         <th><label>プロフィール画像</label></th>
-         <td class="rounded-circle"><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'100x100' %></td>
-       </tr>
-       <tr>
-        <th><label>ハンドルネーム</label></th>
-        <td><%= @user.handle_name %></td>
-      </tr>
-      <tr>
-        <th><label>自己紹介</label></th>
-        <td><%= @user.introduction %></td>
-      </tr>
-    <% if @user == current_user %>
-      <tr>
-        <th><label>名前</label></th>
-        <td><%= @user.last_name %>
-        <%= @user.first_name %></td>
-      </tr>
-      <tr>
-        <th><label>カナ</label></th>
-        <td><%= @user.kana_last_name %>
-        <%= @user.kana_first_name %></td>
-      </tr>
-      <tr>
-        <th><label>郵便番号</label></th>
-        <td><%= @user.postcode %></td>
-      </tr>
-      <tr>
-        <th><label>住所</label></th>
-        <td>
-          <%= @user.prefecture_name %>
-          <%= @user.address_city %>
-          <%= @user.address_street %>
-          <%= @user.address_building %>
-        </td>
-      </tr>
-      <tr>
-        <th><label>電話番号</label></th>
-        <td><%= @user.phone_number %></td>
-      </tr>
-      <tr>
-        <th><label>メールアドレス</label></th>
-        <td><%= @user.email %></td>
-      </tr>
-    <% end %>
-      <tr>
-        <th><label>フォロー数</label></th>
-        <td><%= @user.follower.count %></td>
-      </tr>
-      <tr>
-        <th><label>フォロワー数</label></th>
-        <td><%= @user.followed.count %></td>
-      </tr>
-    <% unless @user == current_user %>
-      <tr>
-        <th><label>フォロー</label></th>
-        <td>
-          <% if current_user.following?(@user) %>
-            <%= link_to unfollow_path(@user.id), method: :POST do %>
-              <i class="fas fa-user-slash fa-2x"></i>
+        <tr>
+           <th><label>プロフィール画像</label></th>
+           <td class="rounded-circle"><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'100x100' %></td>
+        </tr>
+        <tr>
+          <th><label>ハンドルネーム</label></th>
+          <td><%= @user.handle_name %></td>
+        </tr>
+        <tr>
+          <th><label>自己紹介</label></th>
+          <td><%= @user.introduction %></td>
+        </tr>
+      <% if @user == current_user %>
+        <tr>
+          <th><label>名前</label></th>
+          <td><%= @user.last_name %>
+          <%= @user.first_name %></td>
+        </tr>
+        <tr>
+          <th><label>カナ</label></th>
+          <td><%= @user.kana_last_name %>
+          <%= @user.kana_first_name %></td>
+        </tr>
+        <tr>
+          <th><label>郵便番号</label></th>
+          <td><%= @user.postcode %></td>
+        </tr>
+        <tr>
+          <th><label>住所</label></th>
+          <td>
+            <%= @user.prefecture_name %>
+            <%= @user.address_city %>
+            <%= @user.address_street %>
+            <%= @user.address_building %>
+          </td>
+        </tr>
+        <tr>
+          <th><label>電話番号</label></th>
+          <td><%= @user.phone_number %></td>
+        </tr>
+        <tr>
+          <th><label>メールアドレス</label></th>
+          <td><%= @user.email %></td>
+        </tr>
+      <% end %>
+        <tr>
+          <th><label>フォロー数</label></th>
+          <td><%= @user.follower.count %></td>
+        </tr>
+        <tr>
+          <th><label>フォロワー数</label></th>
+          <td><%= @user.followed.count %></td>
+        </tr>
+      <% unless @user == current_user %>
+        <tr>
+          <th><label>フォロー</label></th>
+          <td>
+            <% if current_user.following?(@user) %>
+              <%= link_to unfollow_path(@user.id), method: :POST do %>
+                <i class="fas fa-user-slash fa-2x"></i>
+              <% end %>
+            <% else %>
+              <%= link_to follow_path(@user.id), method: :POST do %>
+                <i class="fas fa-user-plus fa-2x"></i>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to follow_path(@user.id), method: :POST do %>
-              <i class="fas fa-user-plus fa-2x"></i>
-            <% end %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-  <% if @user == current_user %>
-    <%= link_to "編集する", edit_user_path, class: "btn btn-outline-info mt-3"%>
-  <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="actions my-5">
+        <% if @user == current_user %>
+        <%= link_to "編集する", edit_user_path, class: "btn btn-outline-info mt-3"%>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 text-center">
+    <i class="fas fa-search fa-3x mt-4 mb-2"></i>
+    <h2 class="text-center bg-gray">ブックマークチーム</h2>
+      <% if @favorite_list.present? %>
+        <% @favorite_list.each do |team| %>
+          <div class="card mb-2">
+            <div class="row no-gutters">
+                <div class="col-md-2 my-3">
+                  <%= link_to team_path(team) do %>
+                    <%= attachment_image_tag team, :image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %><br><%= team.name %>
+                  <% end %>
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <%= link_to sport_path(team.sport_id) do %>
+                      <%= team.sport.name %>
+                    <% end %>
+                    <% if team.status == "active" %>
+                      <span class=""><%= team.status_i18n %></span>
+                    <% else %>
+                      <span class="text-muted"><%= team.status_i18n %></span>
+                    <% end %>
+                    <i class="fas fa-users m-1"></i><%= team.number %>人
+                    <i class="far fa-comment m-1"></i><%= team.comments.count %>
+                    <span id="favorites_buttons_<%= team.id %>">
+                      <%= render 'teams/favorite', team: team %>
+                    </span><i class="fas fa-map-pin m-1"></i><%= team.address %><br>
+                    <%= team.introduction %>
+                  </div>
+                </div>
+                <div class="col-md-2 my-3">
+                  <%= link_to user_path(team.user) do %>
+                    <%= attachment_image_tag team.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"my-1" %><br><i class="fas fa-user-lock m-1"></i><%= team.user.handle_name %>
+                  <% end %>
+                </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
   </div>
 </div>
