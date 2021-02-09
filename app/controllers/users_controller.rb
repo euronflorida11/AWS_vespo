@@ -3,7 +3,9 @@ class UsersController < ApplicationController
 
   def index
     # @users = User.all
-    @users = User.where(is_deleted: false).where.not(id: current_user.id).order(:handle_name)
+    # @users = User.where(is_deleted: false).where.not(id: current_user.id).order(:handle_name)
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true)
   end
 
   def show

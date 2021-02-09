@@ -6,11 +6,14 @@ class TeamsController < ApplicationController
     @sports = Sport.where(is_active: 'true')
     if @sports.blank?
       redirect_to sports_path, notice: "ベンチャースポーツを追加してください。"
-    elsif params[:sport_id].blank?
-      @teams = Team.all.order(name: :DESC)
+    # elsif params[:sport_id].blank?
+    #   @q = Team.ransack(params[:q])
+    #   @teams = @q.result(distinct: true).order(name: :DESC)
     else
-      @sport = Sport.find(params[:sport_id])
-      @teams = @sport.teams.all.order(name: :DESC)
+      @q = Team.ransack(params[:q])
+      # @sport = Sport.find(params[:sport_id])
+      # @teams = @sport.teams.all.order(name: :DESC)
+      @teams = @q.result(distinct: true).order(name: :DESC)
     end
   end
 
