@@ -7,10 +7,10 @@ class TeamsController < ApplicationController
     if @sports.blank?
       redirect_to sports_path, notice: "ベンチャースポーツを追加してください。"
     elsif params[:sport_id].blank?
-      @teams = Team.all
+      @teams = Team.all.order(name: :DESC)
     else
       @sport = Sport.find(params[:sport_id])
-      @teams = @sport.teams.all
+      @teams = @sport.teams.all.order(name: :DESC)
     end
   end
 

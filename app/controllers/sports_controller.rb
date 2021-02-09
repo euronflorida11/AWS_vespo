@@ -2,7 +2,7 @@ class SportsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @sports = Sport.where(is_active: true)
+    @sports = Sport.where(is_active: true).order(:name)
     @sport = Sport.new
   end
 
