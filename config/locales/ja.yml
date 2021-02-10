@@ -212,3 +212,12 @@ ja:
       status:                 #カラム名を指定
         active:   活動中      #Enumの名前定義①
         inactive: 休止中      #Enumの名前定義②
+
+ja:
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      next: "次 &rsaquo;"
+      previous: "&lsaquo; 前"
+      truncate: "&hellip;"

@@ -62,4 +62,6 @@ class User < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
+  
+  paginates_per 10
 end

@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
-
+  PER = 10
   def index
     # @teams = Team.all
     @sports = Sport.where(is_active: 'true')
@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
       @q = Team.ransack(params[:q])
       # @sport = Sport.find(params[:sport_id])
       # @teams = @sport.teams.all.order(name: :DESC)
-      @teams = @q.result.order(name: :DESC)
+      @teams = @q.result.order(name: :DESC).page(params[:page]).per(PER)
     end
   end
 
