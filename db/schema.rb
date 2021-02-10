@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_07_084700) do
+ActiveRecord::Schema.define(version: 2021_02_10_053701) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2021_02_07_084700) do
     t.string "image_id"
     t.float "longitude"
     t.float "latitude"
+    t.integer "prefecture_code"
   end
 
   create_table "users", force: :cascade do |t|

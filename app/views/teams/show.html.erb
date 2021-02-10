@@ -23,7 +23,7 @@
       <tr>
         <th><label>活動場所</label></th>
         <td>
-          <%= @team.address %>
+          <%= @team.prefecture_name %><span class="ml-1"></span><%= @team.address %>
           <%= render 'teams/map', team: @team %>
         </td>
       </tr>

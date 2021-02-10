@@ -19,6 +19,7 @@
       </div>
       <div class="form-group mt-5">
         <label>活動場所</label>
+        <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code", class: 'form-control mr-1' %>
         <%= f.text_field :address, autofocus: true, autocomplete: "address", class:"form-control" %>
       </div>
       <div class="form-group mt-5">

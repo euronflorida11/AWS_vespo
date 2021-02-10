@@ -13,7 +13,8 @@
       <div class="font-weight-bold mt-5">活動人数</div>
         <%= f.text_field :number, class: 'form-control' %>
       <div class="font-weight-bold mt-5">活動場所</div>
-        <%= f.text_field :address, class: 'form-control' %>
+        <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code", class: 'm-2' %>
+        <%= f.text_field :address, class: 'form-control m-2' %>
       <div class="font-weight-bold mt-5">活動ステータス</div>
         <%= f.select :status, [['活動中', "active" ],['休止中', "inactive" ]] %>
       <div class="font-weight-bold mt-5">ベンチャースポーツ</div>

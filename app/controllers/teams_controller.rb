@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
       @q = Team.ransack(params[:q])
       # @sport = Sport.find(params[:sport_id])
       # @teams = @sport.teams.all.order(name: :DESC)
-      @teams = @q.result(distinct: true).order(name: :DESC)
+      @teams = @q.result.order(name: :DESC)
     end
   end
 
@@ -79,6 +79,6 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:name, :introduction, :number, :status, :address, :image, :user_id, :sport_id, :longitude, :latitude)
+    params.require(:team).permit(:name, :introduction, :number, :status, :address, :image, :user_id, :sport_id, :longitude, :latitude, :prefecture_code)
   end
 end

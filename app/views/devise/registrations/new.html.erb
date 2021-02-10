@@ -37,7 +37,6 @@
         <label>都道府県</label>
         <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: "user_prefecture_code", class: 'form-control' %>
       </div>
-
       <div class="font-weight-bold mt-5">
         <label>市区町村</label>
         <%= f.text_field :address_city, autofocus: true, id: "user_address_city", class:"form-control"%>
