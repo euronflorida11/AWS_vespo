@@ -2,7 +2,10 @@
 <div class="row">
   <div class="col-12 text-center">
     <i class="fas fa-passport fa-3x mt-4 mb-2"></i>
-    <h2 class="text-center bg-gray mb-4">ベンチャースポーツ一覧</h2>
+    <h2 class="text-center bg-gray">ベンチャースポーツ一覧</h2>
+    <div class="form_action text-center">
+      <%= link_to 'ベンチャースポーツ登録', sports_path(anchor: 'v_form'), class:'btn btn-outline-info my-3' %>
+    </div>
   </div>
 </div>
 <% if @sports.present? %>
@@ -30,7 +33,7 @@
 <% if user_signed_in? %>
   <div class="row mt-5">
     <div class="col-12 text-center">
-      <i class="fas fa-plus fa-3x mt-4 mb-2"></i>
+      <i class="fas fa-plus fa-3x mt-4 mb-2" id="v_form"></i>
       <h2 class="text-center bg-gray">ベンチャースポーツ登録</h2>
       <%= form_with model: @sport, url: sports_path, local: true do |f| %>
         <div class="font-weight-bold mt-5">イメージ</div>
