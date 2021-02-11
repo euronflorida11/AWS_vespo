@@ -22,7 +22,7 @@
                   <div class="col-md-8">
                     <div class="card-body">
                       <%= link_to sport_path(team.sport_id) do %>
-                        <%= team.sport.name %>
+                        <%= team.sport.name %><br>
                       <% end %>
                       <% if team.status == "active" %>
                         <span class=""><%= team.status_i18n %></span>
