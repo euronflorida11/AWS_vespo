@@ -18,7 +18,13 @@
     <%= render 'layouts/header' %>
       <main class="container">
         <h5 class="text-success mt-3" id="notice"><%= notice %></h5>
+        <div 
+        　<% if content_for?(:body_attributes) %>  
+           <%= yield(:body_attributes) %>
+        　<% end %>
+        >
         <%= yield %>
+        </div>
          <div class="my-5 text-center" id="back">
           <a href="" data-toggle="tooltip", data-placement="bottom", title="トップへ戻る">
             <%= image_tag asset_path 'ToUp.png', data: {"turbolinks"=>false}, class: "arrow" %>
