@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
   </head>
   <body>
+    <!--% if content_for?(:body_attributes) %>-->
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <%= render 'layouts/header' %>
       <main class="container">
@@ -25,5 +26,6 @@
         </div>
       </main>
     <%= render 'layouts/footer' %>
+    <!--% end %>-->
   </body>
 </html>
