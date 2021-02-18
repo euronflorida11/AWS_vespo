@@ -3,9 +3,11 @@
   <div class="col-12 text-center">
     <i class="fas fa-passport fa-3x mt-4 mb-2"></i>
     <h2 class="text-center bg-gray">ベンチャースポーツ一覧</h2>
-    <div class="form_action text-center">
-      <%= link_to 'ベンチャースポーツ登録', sports_path(anchor: 'v_form'), class:'btn btn-outline-info my-3' %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="form_action text-center">
+        <%= link_to 'ベンチャースポーツ登録', sports_path(anchor: 'v_form'), class:'btn btn-outline-info my-3' %>
+      </div>
+    <% end %>
   </div>
 </div>
 <% if @sports.present? %>

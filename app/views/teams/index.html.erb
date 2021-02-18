@@ -34,14 +34,13 @@
                       <span id="favorites_buttons_<%= team.id %>">
                         <%= render 'teams/favorite', team: team %>
                       </span><i class="fas fa-map-pin m-1"></i><%= team.prefecture_name %><span class="ml-1"><%= team.address %></span><br>
-
                       <%= team.introduction %>
                     </div>
                   </div>
                   <div class="col-md-2 my-3">
-
                     <%= link_to user_path(team.user) do %>
-                      <%= attachment_image_tag team.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"my-1" %><br><i class="fas fa-user-lock m-1"></i><%= team.user.handle_name %>
+                      <%= attachment_image_tag team.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class:"my-1" %><br>
+                      <i class="fas fa-user-lock m-1"></i><%= team.user.handle_name %>
                     <% end %>
                   </div>
               </div>

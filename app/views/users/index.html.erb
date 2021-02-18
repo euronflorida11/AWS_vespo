@@ -24,16 +24,8 @@
                 <p><%= user.introduction %></p>
               </div>
             </div>
-            <div class="col-md-2 my-3">
-              <% if current_user.following?(user) %>
-                <%= link_to unfollow_path(user.id), method: :POST do %>
-                  <i class="fas fa-user-slash fa-2x text-right"></i>
-                <% end %>
-              <% else %>
-                <%= link_to follow_path(user.id), method: :POST do %>
-                  <i class="fas fa-user-plus fa-2x text-right"></i>
-                <% end %>
-              <% end %>
+            <div class="col-md-2 my-3" id="follow_form_<%= user.id %>">
+              <%= render 'relationships/follow_form', user: user %>
             </div>
         </div>
       </div>

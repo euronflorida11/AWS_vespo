@@ -16,39 +16,10 @@
           <th><label>自己紹介</label></th>
           <td><%= @user.introduction %></td>
         </tr>
-      <% if @user == current_user %>
-        <tr>
-          <th><label>名前</label></th>
-          <td><%= @user.last_name %>
-          <%= @user.first_name %></td>
-        </tr>
-        <tr>
-          <th><label>カナ</label></th>
-          <td><%= @user.kana_last_name %>
-          <%= @user.kana_first_name %></td>
-        </tr>
-        <tr>
-          <th><label>郵便番号</label></th>
-          <td><%= @user.postcode %></td>
-        </tr>
-        <tr>
-          <th><label>住所</label></th>
-          <td>
-            <%= @user.prefecture_name %>
-            <%= @user.address_city %>
-            <%= @user.address_street %>
-            <%= @user.address_building %>
-          </td>
-        </tr>
-        <tr>
-          <th><label>電話番号</label></th>
-          <td><%= @user.phone_number %></td>
-        </tr>
         <tr>
           <th><label>メールアドレス</label></th>
           <td><%= @user.email %></td>
         </tr>
-      <% end %>
         <tr>
           <th><label>フォロー数</label></th>
           <td><%= @user.follower.count %></td>
@@ -60,23 +31,15 @@
       <% unless @user == current_user %>
         <tr>
           <th><label>フォロー</label></th>
-          <td>
-            <% if current_user.following?(@user) %>
-              <%= link_to unfollow_path(@user.id), method: :POST do %>
-                <i class="fas fa-user-slash fa-2x"></i>
-              <% end %>
-            <% else %>
-              <%= link_to follow_path(@user.id), method: :POST do %>
-                <i class="fas fa-user-plus fa-2x"></i>
-              <% end %>
-            <% end %>
+          <td id="follow_form_<%= @user.id %>">
+            <%= render 'relationships/follow_form', user: @user %>
           </td>
         </tr>
       <% end %>
       </tbody>
     </table>
     <div class="actions my-5">
-        <% if @user == current_user %>
+      <% if @user == current_user %>
         <%= link_to "編集する", edit_user_path, class: "btn btn-outline-info mt-3"%>
       <% end %>
     </div>
@@ -131,3 +94,34 @@
     <% end %>
   </div>
 </div>
+
+<!--個人情報入力用フォーム-->
+
+<!--% if @user == current_user %>-->
+<!--<tr>-->
+<!--  <th><label>名前</label></th>-->
+<!--  <td>%= @user.last_name %>-->
+<!--  %= @user.first_name %></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--  <th><label>カナ</label></th>-->
+<!--  <td>%= @user.kana_last_name %>-->
+<!--  %= @user.kana_first_name %></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--  <th><label>郵便番号</label></th>-->
+<!--  <td>%= @user.postcode %></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--  <th><label>住所</label></th>-->
+<!--  <td>-->
+<!--    %= @user.prefecture_name %>-->
+<!--    %= @user.address_city %>-->
+<!--    %= @user.address_street %>-->
+<!--    %= @user.address_building %>-->
+<!--  </td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--  <th><label>電話番号</label></th>-->
+<!--  <td>%= @user.phone_number %></td>-->
+<!--</tr>-->
