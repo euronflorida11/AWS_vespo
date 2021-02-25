@@ -1,42 +1,39 @@
 <div class="row">
   <div class="col-12 text-center">
     <i class="fas fa-user-friends fa-3x mt-4 mb-2"></i>
-    <h2 class="text-center bg-gray">会員一覧</h2>
-
-    <%= search_form_for @q do |f| %>
-      <!--%= f.label :handle_name, "キーワード" %>-->
-      <%= f.search_field :handle_name_cont, placeholder: "キーワード", class:"my-4" %>
-
-      <%= f.submit "検索" %>
-    <% end %>
-
-    <% if @users.present? %>
-    <% @users.each do |user| %>
-      <div class="card mb-2">
-        <div class="row no-gutters">
-            <div class="col-md-2 my-3">
-              <%= link_to user_path(user) do %>
-                <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br><%= user.handle_name %>
-              <% end %>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <p><%= user.introduction %></p>
+      <h2 class="text-center bg-gray">会員一覧</h2>
+        <%= search_form_for @q do |f| %>
+          <!--%= f.label :handle_name, "キーワード" %>-->
+          <%= f.search_field :handle_name_cont, placeholder: "キーワード", class:"my-4" %>
+          <%= f.submit "検索" %>
+        <% end %>
+          <% if @users.present? %>
+            <% @users.each do |user| %>
+              <div class="card mb-2">
+                <div class="row no-gutters">
+                  <div class="col-md-2 my-3">
+                    <%= link_to user_path(user) do %>
+                      <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br><%= user.handle_name %>
+                    <% end %>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <p><%= user.introduction %></p>
+                    </div>
+                  </div>
+                  <div class="col-md-2 my-3" id="follow_form_<%= user.id %>">
+                    <%= render 'relationships/follow_form', user: user %>
+                  </div>
+                </div>
               </div>
+            <% end %>
+              <%= paginate @users %>
+          <% else %>
+            <div class="col-12 text-center">
+              <i class="fas fa-exclamation fa-2x mt-4 text-center"></i>
+                <p class="mt-2 text-center">他に会員がいません。</p>
             </div>
-            <div class="col-md-2 my-3" id="follow_form_<%= user.id %>">
-              <%= render 'relationships/follow_form', user: user %>
-            </div>
-        </div>
-      </div>
-    <% end %>
-    <%= paginate @users %>
-    <% else %>
-      <div class="col-12 text-center">
-        <i class="fas fa-exclamation fa-2x mt-4 text-center"></i>
-        <p class="mt-2 text-center">他に会員がいません。</p>
-      </div>
-    <% end %>
-    <%= link_to "マイページ", user_path(current_user), class: 'btn btn-outline-info mt-3' %>
+          <% end %>
+            <%= link_to "マイページ", user_path(current_user), class: 'btn btn-outline-info mt-3' %>
   </div>
 </div>
