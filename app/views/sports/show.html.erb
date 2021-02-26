@@ -1,23 +1,22 @@
 <div class="row">
- <div class="col-12 text-center">
-  <i class="fas fa-passport fa-3x mt-4 mb-2"></i>
-  <h2>ベンチャースポーツ詳細</h2>
+  <div class="col-12 text-center">
+    <i class="fas fa-passport fa-3x mt-4 mb-2"></i>
+    <h2>ベンチャースポーツ詳細</h2>
     <table class="table">
-     <tbody>
-      <tr>
-        <%= attachment_image_tag @sport, :image, :fill, 150, 150, fallback: "no_image.jpg", size:'150x150' %>
-      </tr>
-      <tr>
-        <th><label>ベンチャースポーツ名</label></th>
-        <td><%= @sport.name %></td>
-      </tr>
-      <tr>
-        <th><label>概要</label></th>
-        <td><%= @sport.introduction %></td>
-      </tr>
-      </tr>
-    </tbody>
-  </table>
+      <tbody>
+        <tr>
+          <%= attachment_image_tag @sport, :image, :fill, 150, 150, fallback: "no_image.jpg", size:'150x150' %>
+        </tr>
+        <tr>
+          <th><label>ベンチャースポーツ名</label></th>
+          <td><%= @sport.name %></td>
+        </tr>
+        <tr>
+          <th><label>概要</label></th>
+          <td><%= @sport.introduction %></td>
+        </tr>
+      </tbody>
+    </table>
     <% if user_signed_in? %>
       <%= link_to "編集する", edit_sport_path(@sport), class: "btn btn-outline-info text-center"%>
     <% end %>

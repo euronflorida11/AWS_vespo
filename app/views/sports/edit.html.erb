@@ -1,11 +1,11 @@
 <%= render 'layouts/error_messages', model: @sport %>
 <div class="row">
- <div class="col-md-12 text-center">
-  <i class="far fa-edit fa-3x mt-4 mb-2"></i>
-   <h2><%= @sport.name %>の情報編集</h2>
+  <div class="col-md-12 text-center">
+    <i class="far fa-edit fa-3x mt-4 mb-2"></i>
+    <h2><%= @sport.name %>の情報編集</h2>
     <%= form_with model: @sport, url: sport_path, local:true do |f| %>
-    <%= attachment_image_tag @team, :image, :fill, 150, 150, fallback: "no_image.jpg"%><br>
-    <%= f.attachment_field :image, placeholder: "イメージ" %><br>
+      <%= attachment_image_tag @team, :image, :fill, 150, 150, fallback: "no_image.jpg"%><br>
+      <%= f.attachment_field :image, placeholder: "イメージ" %><br>
       <div class="font-weight-bold mt-5">
         <label>ベンチャースポーツ名</label>
         <%= f.text_field :name, class:"form-control" %>
@@ -14,7 +14,6 @@
         <label>概要</label>
         <%= f.text_area :introduction, class:"form-control" %>
       </div>
-
       <div class="actions mt-5">
         <%= f.submit class: 'btn btn-success' %>
       </div>
@@ -22,4 +21,3 @@
     <%= link_to '削除', sport_path(@sport), method: :delete, data: { confirm: '削除しますか？' }, class:'btn btn-outline-info mt-5' %>
   </div>
 </div>
-
