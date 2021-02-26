@@ -22,7 +22,9 @@
 
     <%- if devise_mapping.omniauthable? %>
       <%- resource_class.omniauth_providers.each do |provider| %>
-        <%= link_to "Googleアカウント認証", user_google_oauth2_omniauth_authorize_path, class:'btn btn-outline-info mt-3' %><br />
+        <%= link_to user_google_oauth2_omniauth_authorize_path, class:'btn btn-outline-info mt-3' do %>
+          <i class="fab fa-google"></i>    Sign in with Google
+        <% end %>
       <% end %>
     <% end %>
   </div>
