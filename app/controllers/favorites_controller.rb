@@ -6,6 +6,7 @@ class FavoritesController < ApplicationController
       @team = Team.find(params[:team_id])
       favorite = current_user.favorites.new(team_id: @team.id)
       favorite.save
+      @team.create_notification_like!(current_user)
       # redirect_to request.referer
     # end
   end

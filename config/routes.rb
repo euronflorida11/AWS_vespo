@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
+  resources :notifications, only: :index
   resources :users
   get 'unsubscribe/user' => 'users#unsubscribe', as: 'unsubscribe_user'
   patch ':withdraw/user' => 'users#withdraw', as: 'withdraw_user'

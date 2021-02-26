@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     @comment = @team.comments.build(comment_params)
     @comment.user_id = current_user.id
     @comment.save
+    @comment.create_notification_comment!(current_user, @comment.id)
     # flash[:notice] = "コメントしました。"
     render :index
   end
