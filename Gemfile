@@ -70,7 +70,9 @@ group :production do
   gem 'mysql2'
 end
 
-gem 'devise'
+gem 'devise', git: "https://github.com/heartcombo/devise.git", branch: "ca-omniauth-2"
+gem 'omniauth', '1.9.1'
+gem 'omniauth-google-oauth2'
 gem 'activeadmin'
 gem "active_material"
 gem "refile", require: "refile/rails", github: 'manfe/refile'

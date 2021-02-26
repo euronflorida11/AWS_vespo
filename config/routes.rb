@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  get 'maps/index'
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  devise_for :users
   root to: 'homes#top'
   get '/about' => 'homes#about'
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  devise_for :users, controllers: {
+    # sessions: 'users/sessions',
+    # passwords: 'users/passwords',
+    # registrations: 'users/registrations',
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
   resources :teams do
     resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]

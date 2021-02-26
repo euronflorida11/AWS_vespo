@@ -1,8 +1,19 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[google_oauth2]
+         
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      # deviseのuserカラムに name を追加している場合は以下のコメントアウトも追記します
+      # user.name = auth.info.name
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+    end
+  end
 
   has_many :teams, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -14,7 +25,7 @@ class User < ApplicationRecord
   attachment :profile_image
 
   validates :email, presence: true, uniqueness: true
-  validates :handle_name, length: { maximum: 20, minimum: 2 }, presence: true, uniqueness: true
+  validates :handle_name, length: { maximum: 20, minimum: 2 }, uniqueness: true
   validates :introduction, length: { maximum: 500 }
   
   # ユーザーをフォローする
@@ -49,21 +60,3 @@ class User < ApplicationRecord
   
   paginates_per 10
 end
-
-# 個人情報入力用フォーム
-# [
-    #:last_name,
-    #:first_name,
-    #:kana_last_name,
-    #:kana_first_name,
-    #:postcode,
-    #:address,
-    #:phone_number,
-    #:is_deleted,
-    #:prefecture_code,
-    #:address_city,
-    #:address_street,
-    #:address_building
-  # ].each do |v|
-  #   validates v, presence: true
-  # end

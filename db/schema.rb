@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_123108) do
+ActiveRecord::Schema.define(version: 2021_02_26_061759) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -83,6 +83,14 @@ ActiveRecord::Schema.define(version: 2021_02_24_123108) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sns_credentials", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "uid"
+    t.string "provider"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sports", force: :cascade do |t|
     t.string "name"
     t.boolean "is_active", default: true
@@ -139,6 +147,8 @@ ActiveRecord::Schema.define(version: 2021_02_24_123108) do
     t.string "address_street"
     t.string "address_building"
     t.text "introduction"
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -3,8 +3,6 @@ class UsersController < ApplicationController
   PER = 10
 
   def index
-    # @users = User.all
-    # @users = User.where(is_deleted: false).where.not(id: current_user.id).order(:handle_name)
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).page(params[:page]).per(PER)
   end
@@ -15,8 +13,6 @@ class UsersController < ApplicationController
     favorites = Favorite.where(user_id: current_user.id).pluck(:team_id)
     @favorite_list = Team.find(favorites)
   end
-
-
 
   def edit
     @user = User.find(params[:id])
