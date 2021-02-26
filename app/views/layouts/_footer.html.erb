@@ -1,25 +1,23 @@
 <footer class="mt-5">
-   <nav class="navbar navbar-expand-lg py-3">
+  <nav class="navbar navbar-expand-lg py-3">
     <div class="container text-white">
-
       <div class="row text-center">
         <div class="col-md-12 col-xs-6 offset-1 my-4" data-turbolinks="false">
           <ul class="navbar-nav ml-auto">
             <li><%= link_to ' トップページ', root_path, class: 'nav-link text-light mx-1' %></li>
             <li><%= link_to ' お知らせ',     notifications_path, class: 'nav-link text-light mx-1' %></li>
             <li><%= link_to ' ベンチャースポーツ', sports_path, class: 'nav-link text-light mx-1' %></li>
-            <% if user_signed_in? %>
-              <li><%= link_to ' マイページ', user_path(current_user), class: 'nav-link text-light mx-1' %></li>
-              <li><%= link_to ' 会員一覧'  , users_path, class: 'nav-link text-light mx-1' %></li>
-              <li><%= link_to ' チーム一覧', teams_path, class: 'nav-link text-light mx-1' %></li>
-              <li><%= link_to ' チーム設立', new_team_path, class: 'nav-link text-light mx-1' %></li>
-              <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light mx-1' %></li>
-            <% else %>
-              <li><%= link_to ' 新規登録', new_user_registration_path, class: 'nav-link text-light mx-1' %></li>
-              <li><%= link_to ' ログイン', new_user_session_path, class: 'nav-link text-light mx-1' %></li>
-            <% end %>
-            <li><%= link_to ' お問い合わせ',      about_path, class: 'nav-link text-light mx-1' %></li>
-            <!--<li>%= link_to ' 管理者ログイン', admin_root_path, class: 'nav-link text-light bg-danger' %></li>-->
+          <% if user_signed_in? %>
+            <li><%= link_to ' マイページ', user_path(current_user), class: 'nav-link text-light mx-1' %></li>
+            <li><%= link_to ' 会員一覧'  , users_path, class: 'nav-link text-light mx-1' %></li>
+            <li><%= link_to ' チーム一覧', teams_path, class: 'nav-link text-light mx-1' %></li>
+            <li><%= link_to ' チーム設立', new_team_path, class: 'nav-link text-light mx-1' %></li>
+            <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-light mx-1' %></li>
+          <% else %>
+            <li><%= link_to ' 新規登録', new_user_registration_path, class: 'nav-link text-light mx-1' %></li>
+            <li><%= link_to ' ログイン', new_user_session_path, class: 'nav-link text-light mx-1' %></li>
+          <% end %>
+            <li><%= link_to ' お問い合わせ', about_path, class: 'nav-link text-light mx-1' %></li>
           </ul>
         </div>
         <div class="col-md-10 col-xs-11 offset-1 my-4">
