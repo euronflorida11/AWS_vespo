@@ -1,52 +1,51 @@
 <div class="row">
- <div class="col-12 text-center">
-  <i class="fas fa-address-card fa-3x mt-4 mb-2"></i>
-  <h2>チーム情報</h2>
-  <% if @team.present? %>
-    <table class="table table-condensed">
-     <tbody>
-      <tr>
-        <%= attachment_image_tag @team, :image, :fill, 150, 150, fallback: "no_image.jpg", size:'150x150' %><br>
-      </tr>
-      <tr>
-        <th><label>チーム名</label></th>
-        <td><%= @team.name %></td>
-      </tr>
-      <tr>
-        <th><label>チーム紹介</label></th>
-        <td><%= @team.introduction %></td>
-      </tr>
-      <tr>
-        <th><label>活動人数</label></th>
-        <td><%= @team.number %></td>
-      </tr>
-      <tr>
-        <th><label>活動場所</label></th>
-        <td>
-          <%= @team.prefecture_name %><span class="ml-1"></span><%= @team.address %>
-          <%= render 'teams/map', team: @team %>
-        </td>
-      </tr>
-      <tr>
-        <th><label>活動ステータス</label></th>
-        <td><%= @team.status_i18n %></td>
-      </tr>
-      <tr>
-      <tr>
-        <th><label>ベンチャースポーツ</label></th>
-        <td><%= @team.sport.name %></td>
-      </tr>
-      <tr>
-        <th><label>いいね</label></th>
-        <td id="favorites_buttons_<%= @team.id %>">
-          <%= render 'teams/favorite', team: @team %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-    <% if @team.user_id == current_user.id %>
-      <%= link_to "編集する", edit_team_path, class: "btn btn-outline-info text-center my-3"%>
-    <% end %>
+  <div class="col-12 text-center">
+    <i class="fas fa-address-card fa-3x mt-4 mb-2"></i>
+    <h2>チーム情報</h2>
+    <% if @team.present? %>
+      <table class="table table-condensed">
+        <tbody>
+          <tr>
+            <%= attachment_image_tag @team, :image, :fill, 150, 150, fallback: "no_image.jpg", size:'150x150' %><br>
+          </tr>
+          <tr>
+            <th><label>チーム名</label></th>
+            <td><%= @team.name %></td>
+          </tr>
+          <tr>
+            <th><label>チーム紹介</label></th>
+            <td><%= @team.introduction %></td>
+          </tr>
+          <tr>
+            <th><label>活動人数</label></th>
+            <td><%= @team.number %></td>
+          </tr>
+          <tr>
+            <th><label>活動場所</label></th>
+            <td>
+              <%= @team.prefecture_name %><span class="ml-1"></span><%= @team.address %>
+              <%= render 'teams/map', team: @team %>
+            </td>
+          </tr>
+          <tr>
+            <th><label>活動ステータス</label></th>
+            <td><%= @team.status_i18n %></td>
+          </tr>
+          <tr>
+            <th><label>ベンチャースポーツ</label></th>
+            <td><%= @team.sport.name %></td>
+          </tr>
+          <tr>
+            <th><label>いいね</label></th>
+            <td id="favorites_buttons_<%= @team.id %>">
+              <%= render 'teams/favorite', team: @team %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% if @team.user_id == current_user.id %>
+        <%= link_to "編集する", edit_team_path, class: "btn btn-outline-info text-center my-3"%>
+      <% end %>
     <% else %>
       <i class="fas fa-exclamation fa-5x text-light text-center"></i>
       <p class="text-center">チーム情報がありません。</p>
