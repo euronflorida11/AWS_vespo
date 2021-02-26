@@ -3,7 +3,6 @@
     <i class="fas fa-user-friends fa-3x mt-4 mb-2"></i>
     <h2 class="text-center bg-gray">会員一覧</h2>
     <%= search_form_for @q do |f| %>
-      <!--%= f.label :handle_name, "キーワード" %>-->
       <%= f.search_field :handle_name_cont, placeholder: "キーワード", class:"my-4" %>
       <%= f.submit "検索" %>
     <% end %>

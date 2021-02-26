@@ -1,10 +1,10 @@
 <%= render 'layouts/error_messages', model: @user %>
 <div class="row">
- <div class="col-md-12 text-center">
-  <i class="far fa-edit fa-3x mt-4 mb-2"></i>
+  <div class="col-md-12 text-center">
+    <i class="far fa-edit fa-3x mt-4 mb-2"></i>
     <h2><%= @user.handle_name %>さんの登録情報編集</h2>
+    <div class="form-group">
       <%= form_with model: @user, local: true do |f| %>
-      <div class="form-group">
         <div class="my-5">
           <label for="inputImage my-3">プロフィール画像</label><br>
           <%= attachment_image_tag @user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg"%><br>
@@ -29,6 +29,6 @@
           <%= link_to '退会', unsubscribe_user_path(current_user.id), class:'btn btn-outline-info' %>
         </div>
       <% end %>
-   </div>
+    </div>
   </div>
 </div>
