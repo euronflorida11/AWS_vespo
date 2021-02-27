@@ -18,7 +18,7 @@ class Team < ApplicationRecord
     # いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
-        post_id: id,
+        team_id: id,
         visited_id: user_id,
         action: 'favorite'
       )
@@ -43,7 +43,7 @@ class Team < ApplicationRecord
   def save_notification_comment!(current_user, comment_id, visited_id)
     # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
     notification = current_user.active_notifications.new(
-      post_id: id,
+      team_id: id,
       comment_id: comment_id,
       visited_id: visited_id,
       action: 'comment'

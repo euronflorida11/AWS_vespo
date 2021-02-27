@@ -1,10 +1,16 @@
 class InquiryMailer < ApplicationMailer
-  def send_mail(inquiry)
+  default from: "example@example.com"   # 送信元アドレス
+
+  def received_email(inquiry)
     @inquiry = inquiry
-    mail(
-      from: 'system@example.com',
-      to:   ENV['SEND_MAIL'],
-      subject: 'お問い合わせ通知'
-    )
+    mail(:to => inquiry.email, :subject => 'お問い合わせを承りました')
   end
+  # def send_mail(inquiry)
+  #   @inquiry = inquiry
+  #   mail(
+  #     from: 'system@example.com',
+  #     to:   ENV['SEND_MAIL'],
+  #     subject: 'お問い合わせ通知'
+  #   )
+  # end
 end

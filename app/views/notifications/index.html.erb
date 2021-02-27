@@ -4,15 +4,22 @@
     <div class="col-12">
       <i class="fas fa-bell fa-3x mt-4 mb-2"></i>
       <h2 class="text-center bg-gray">お知らせ</h2>
-        <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-        <% if notifications.exists? %>
-          <%= render 'notifications/notifications' %>
-        <% else %>
-          <div class="col-12 text-center">
-            <i class="fas fa-exclamation fa-2x mt-4 text-center"></i>
-            <p class="mt-2 text-center">お知らせはありません。</p>
-          </div>
-        <% end %>
+      
+      <%= link_to notifications_path, method: :delete do %>
+          <i class="fas fa-trash" style="color: black;"></i>
+          <h7 style="color: black;">全削除</h7>
+      <% end %>
+      
+      <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+      <% if @notifications.exists? %>
+        <%= render 'notifications/notifications', notification: @notification %>
+        <%= paginate @notifications %>
+      <% else %>
+        <div class="col-12 text-center">
+          <i class="fas fa-exclamation fa-2x mt-4 text-center"></i>
+          <p class="mt-2 text-center">お知らせはありません。</p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

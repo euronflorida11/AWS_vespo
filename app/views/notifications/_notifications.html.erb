@@ -1,36 +1,13 @@
-<% visitor = notification.visitor %>
-<% visited = notification.visited %>
-<div class="col-md-6 mx-auto">
-  <div class="form-inline">
-    
-    <span>
-      <%= link_to user_path(visitor) do %>
-        <%= image_tag avatar_url(visitor).to_s, class: "icon_mini"  %>
-        <strong>
-          <%= visitor.name %></strong>
-      <%= 'さんが' %></span>
+<% visiter = notification.visiter %>
+<% team = notification.team %>
 
-      <% case notification.action %>
-      <% when 'follow' then %>
-        <%= "あなたをフォローしました" %>
-      <% when 'like' then %>
-        <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %>
-        <%= "にいいねしました" %>
-      <% when 'comment' then %>
-        <% if notification.post.user_id ==visited.id %>
-          <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %>
-        <% else %>
-          <span>
-            <%= link_to post_path(notification.post) do %>
-              <%= image_tag avatar_url(notification.post.user).to_s, class: "icon_mini"  %></span>
-              <strong>
-                <%= notification.post.user.name + 'さんの投稿' %></strong><%= "にコメントしました" %>
-        <p class="text-muted mb-0">
-          <%= Comment.find_by(id: notification.comment_id)&.comment %>
-        </p>
-    </div>
-  </div>
-  
-  <div class="small text-muted text-right">
-    <%=  time_ago_in_words(notification.created_at).upcase %>
-  </div>
+<div class="user-view clearfix ">
+  <%= link_to users_user_path(notification.visiter) do %>
+    <%= attachment_image_tag visiter, :profile_image, :fill,100,100, fallback: "no_image.jpg", size: "50x50", class:"profile-img-circle" %>
+  <% end %>
+  <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+  <br>
+  <% if !@comment.nil? %>
+    <p class="moderate-font text-center" style="color: #C0C0C0;"><%= @comment %></p>
+  <% end %>
+</div>

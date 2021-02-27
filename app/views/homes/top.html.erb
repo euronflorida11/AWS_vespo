@@ -6,7 +6,6 @@
     <div class="col-12">
       <div class="logo m-3">
         <%= image_tag asset_path 'vespo_logo.png' %>
-       <!--<img src="/assets/vespo_logo.png" alt="" class="logo m-3">-->
       </div>
       <div class="sentence">
         <h1 class="text-warning my-3">Let's Venture Sports !!</h1>
@@ -26,13 +25,11 @@
           つまり、<span class="">広めたい！</span>と思ったら、<span class="indention text-danger"> ベンチャースポーツ </span> であり、<br>
           オススメしたい！ と思ったら、<span class="indention"><span class="text-danger"> ベンチャースポーツ </span>なのです。</span>
         </h4>
-
         <div class="slider mt-3 mb-5" id="slider">
           <% @sports.each do |sport| %>
             <%= attachment_image_tag sport, :image, :fill, 300, 200, size:'300x200', class:"text-center" %>
            <% end %>
         </div>
-
         <h2 class="mt-5">"VESPO"とは？</h2>
         <h4 class="my-3">
           ベンチャースポーツをしたい人とベンチャースポーツチームの
