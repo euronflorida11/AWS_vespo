@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   resources :notifications, only: [:index, :destroy]
+  # get '/notifications/destroy_all' => 'notifications#destroy_all', as: 'notification'
   resources :users
   get 'unsubscribe/user' => 'users#unsubscribe', as: 'unsubscribe_user'
   patch ':withdraw/user' => 'users#withdraw', as: 'withdraw_user'

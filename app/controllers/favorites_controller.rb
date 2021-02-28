@@ -5,8 +5,9 @@ class FavoritesController < ApplicationController
     # if @team.user_id != current_user.id
       @team = Team.find(params[:team_id])
       favorite = current_user.favorites.new(team_id: @team.id)
-      favorite.save
-      @team.create_notification_by(current_user)
+      if favorite.save
+        @team.create_notification_fovorite!(current_user)
+      end
       # redirect_to request.referer
     # end
   end
