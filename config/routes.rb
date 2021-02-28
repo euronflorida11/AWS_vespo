@@ -1,17 +1,9 @@
 Rails.application.routes.draw do
-  get 'inquiry/index'
-  post 'inquiry/confirm'
-  post 'inquiry/thanks'
-  get 'chat/:id' => 'chats#show', as: 'chat'
-  resources :chats, only: [:create]
   root to: 'homes#top'
   get '/about' => 'homes#about'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {
-    # sessions: 'users/sessions',
-    # passwords: 'users/passwords',
-    # registrations: 'users/registrations',
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   resources :teams do
@@ -22,7 +14,11 @@ Rails.application.routes.draw do
   resources :users
   get 'unsubscribe/user' => 'users#unsubscribe', as: 'unsubscribe_user'
   patch ':withdraw/user' => 'users#withdraw', as: 'withdraw_user'
-
+  get 'inquiry/index'
+  post 'inquiry/confirm'
+  post 'inquiry/thanks'
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
   resources :sports do
     resource :favorites, only: [:create, :destroy]
   end

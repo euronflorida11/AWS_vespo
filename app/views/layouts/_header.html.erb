@@ -19,7 +19,12 @@
             </li>
             <li>
               <%= link_to notifications_path, class: 'nav-link text-light' do %>
-                <i class="fas fa-bell fa-2x m-2 mr-4", data-toggle="tooltip", data-placement="bottom", title="お知らせ"></i>
+                <span class="notification-badge fa-stack m-2 mr-4" style="vertical-align: top;">
+                  <i class="fas fa-bell fa-stack-2x", data-toggle="tooltip", data-placement="bottom", title="お知らせ"></i>
+                  <!--% if unchecked_notifications.any? %>-->
+                    <i class="fa fa-circle fa-stack-1x" style="color: gold;"></i>
+                  <!--% end %>-->
+                </span>
               <% end %>
             </li>
             <li>
