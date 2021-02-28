@@ -10,18 +10,23 @@
       <% @users.each do |user| %>
         <div class="card mb-2">
           <div class="row no-gutters">
-            <div class="col-md-2 my-3">
+            <div class="col-md-3 my-3">
               <%= link_to user_path(user) do %>
                 <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br><%= user.handle_name %>
               <% end %>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-6">
               <div class="card-body">
                 <p><%= user.introduction %></p>
               </div>
             </div>
-            <div class="col-md-2 my-3" id="follow_form_<%= user.id %>">
+            <div class="col-md-1 my-3" id="follow_form_<%= user.id %>">
               <%= render 'relationships/follow_form', user: user %>
+            </div>
+            <div class="col-md-2 my-3">
+              <%= link_to chat_path(user.id) do %>
+                <i class="fas fa-envelope fa-2x m-1", data-toggle="tooltip", data-placement="bottom", title="メッセージ"></i>
+              <% end %>
             </div>
           </div>
         </div>

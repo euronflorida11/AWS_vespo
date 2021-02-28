@@ -16,6 +16,9 @@ class User < ApplicationRecord
   has_many :sns_credentials, dependent: :destroy
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :user_rooms
+  has_many :chats
+  has_many :rooms, through: :user_rooms
   attachment :profile_image
 
   validates :email, presence: true, uniqueness: true

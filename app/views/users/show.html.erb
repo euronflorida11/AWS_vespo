@@ -28,21 +28,36 @@
           <th><label>フォロワー数</label></th>
           <td><%= @user.followed.count %></td>
         </tr>
-        <% unless @user == current_user %>
-          <tr>
-            <th><label>フォロー</label></th>
-            <td id="follow_form_<%= @user.id %>">
-              <%= render 'relationships/follow_form', user: @user %>
-            </td>
-          </tr>
-        <% end %>
+      <% unless @user == current_user %>
+        <tr>
+          <th><label>フォロー</label></th>
+          <td id="follow_form_<%= @user.id %>">
+            <%= render 'relationships/follow_form', user: @user %>
+          </td>
+        </tr>
+      <% end %>
+      <% if current_user != @user %>
+        <tr>
+          <th><label>メッセージ</label></th>
+          <td>
+            <%= link_to chat_path(@user.id) do %>
+              <i class="fas fa-envelope fa-2x m-1", data-toggle="tooltip", data-placement="bottom", title="メッセージ"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <% if @user == current_user %>
+        <tr>
+          <th><label></label></th>
+          <td>
+            <%= link_to edit_user_path do %>
+              <i class="fas fa-edit fa-2x m-1", data-toggle="tooltip", data-placement="bottom", title="編集"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
       </tbody>
     </table>
-    <div class="actions my-5">
-          <% if @user == current_user %>
-            <%= link_to "編集する", edit_user_path, class: "btn btn-outline-info mt-3"%>
-          <% end %>
-        </div>
   </div>
 </div>
 <% if @user == current_user %>

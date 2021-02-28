@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'inquiry/index'
   post 'inquiry/confirm'
   post 'inquiry/thanks'
+  get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
   root to: 'homes#top'
   get '/about' => 'homes#about'
   devise_for :admin_users, ActiveAdmin::Devise.config
