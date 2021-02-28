@@ -12,7 +12,7 @@ class Team < ApplicationRecord
   validates :number, presence: true, numericality: true
   validates :address, presence: true
   
-  def create_notification_like!(current_user)
+  def create_notification_favorite!(current_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
     # いいねされていない場合のみ、通知レコードを作成
