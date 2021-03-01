@@ -1,16 +1,16 @@
 <div class="row">
   <div class="col-md-12 text-center">
     <i class="fas fa-envelope fa-3x mt-4 mb-2"></i>
-      <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.handle_name %> さんとのメッセージ</h2>
-      <table class="message table">
-        <thead>
-          <tr>
-            <th style="text-align: left; font-size: 15px;"><%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'50x50' %><span> </span><%= current_user.handle_name %></th>
-            <th style="text-align: right; font-size: 15px;"><%= @user.handle_name %><span> </span><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'50x50' %></th>
-          </tr>
-        </thead>
-        <% @chats.each do |chat| %>
-          <% if chat.user_id == current_user.id %>
+    <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.handle_name %> さんとのメッセージ</h2>
+    <table class="message table">
+      <thead>
+        <tr>
+          <th style="text-align: left; font-size: 15px;"><%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'50x50' %><span> </span><%= current_user.handle_name %></th>
+          <th style="text-align: right; font-size: 15px;"><%= @user.handle_name %><span> </span><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'50x50' %></th>
+        </tr>
+      </thead>
+      <% @chats.each do |chat| %>
+        <% if chat.user_id == current_user.id %>
           <tbody>
             <tr>
               <th>
@@ -18,23 +18,22 @@
               </th>
               <th></th>
             </tr>
-          </tbody>
-          <% else %>
+        </tbody>
+        <% else %>
           <tbody>
             <tr>
               <th></th>
-              <th>
+              <th>  
                 <p style="text-align: right;"><%= chat.message %></p>
               </th>
             </tr>
           </tbody>
-          <% end %>
         <% end %>
-      </table>
-      <%= form_with model: @chat do |f| %>
-        <%= f.text_field :message %>
-        <%= f.hidden_field :room_id %>
       <% end %>
-    </div>
+    </table>
+    <%= form_with model: @chat do |f| %>
+      <%= f.text_field :message %>
+      <%= f.hidden_field :room_id %>
+    <% end %>
   </div>
 </div>
