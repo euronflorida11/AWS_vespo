@@ -13,7 +13,7 @@ module NotificationsHelper
         tag.a(notification.visitor.handle_name, href:user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:team_path(notification.team_id), style:"font-weight: bold;")+"にいいねしました"
       when "comment" then
           @comment = Comment.find_by(id: @visitor_comment)&.content
-          tag.a(@visitor.name, href:user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:team_path(notification.team_id), style:"font-weight: bold;")+"にコメントしました"
+          tag.a(@visitor.handle_name, href:user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:team_path(notification.team_id), style:"font-weight: bold;")+"にコメントしました"
     end
   end
 
