@@ -12,9 +12,8 @@ class SportsController < ApplicationController
       @tags = Vision.get_image_data(@sport.image)
       @tags.each do |tag|
         @sport.tags.create(name: tag)
-        # @sport.save_tag(tag)
       end
-      redirect_to sports_path, notice: "Vスポーツを作成しました。"
+      redirect_to sports_path, notice: "ベンチャースポーツを作成しました。"
     else
       @sports = Sport.all
       render "index"
@@ -33,14 +32,13 @@ class SportsController < ApplicationController
   def update
     @sport = Sport.find(params[:id])
     if @sport.update(sport_params)
-      redirect_to sports_path, notice: "Vスポーツを更新しました。"
+      redirect_to sports_path, notice: "ベンチャースポーツを更新しました。"
     else
       render "edit"
     end
   end
 
   private
-
   def sport_params
     params.require(:sport).permit(:image, :user_id, :name, :is_active, :introduction)
   end
