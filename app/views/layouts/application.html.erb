@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GTVL554BC"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', ENV['GOOGLE_ANALYTICS_ID']);
-        
-      </script>
-    <title>VESPO</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4GTVL554BC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', ENV['GOOGLE_ANALYTICS_ID']);
+    </script>
+    <title>VENTURE SPORT PLATFORM</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_API_KEY'] %>"></script>
@@ -22,25 +19,23 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
   </head>
   <body>
-    <!--% if content_for?(:body_attributes) %>-->
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <%= render 'layouts/header' %>
-      <main class="container">
-        <h5 class="text-success mt-3" id="notice"><%= notice %></h5>
-        <div
-        　<% if content_for(:body_attributes) %>
-           <%= yield(:body_attributes) %>
-        　<% end %>
-        >
-        <%= yield %>
-        </div>
-         <div class="my-5 text-center" id="back">
-          <a href="" data-toggle="tooltip", data-placement="bottom", title="トップへ戻る" data-turbolinks="false">
-            <%= image_tag asset_path 'ToUp.png', data: {"turbolinks"=>false}, class: "arrow" %>
-          </a>
-        </div>
-      </main>
+    <main class="container">
+      <h5 class="text-success mt-3" id="notice"><%= notice %></h5>
+      <div
+      　<% if content_for(:body_attributes) %>
+         <%= yield(:body_attributes) %>
+      　<% end %>
+      >
+      <%= yield %>
+      </div>
+      <div class="my-5 text-center" id="back">
+        <a href="" data-toggle="tooltip", data-placement="bottom", title="トップへ戻る" data-turbolinks="false">
+          <%= image_tag asset_path 'ToUp.png', data: {"turbolinks"=>false}, class: "arrow" %>
+        </a>
+      </div>
+    </main>
     <%= render 'layouts/footer' %>
-    <!--% end %>-->
   </body>
 </html>

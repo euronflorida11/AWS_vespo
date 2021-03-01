@@ -2,9 +2,9 @@
   <div class="alert alert-warning col-12 text-left">
     <h3><%= model.errors.count %>件のエラー</h3>
     <ul>
-          <% model.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-          <% end %>
-      </ul>
+      <% model.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+      <% end %>
+    </ul>
   </div>
 <% end %>
