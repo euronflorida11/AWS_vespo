@@ -4,7 +4,6 @@ class Team < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  # has_many :tags, dependent: :destroy
   attachment :image
   validates :image, presence: true
   validates :name, presence: true, length: { maximum: 20, minimum: 2 }, uniqueness: true
@@ -52,12 +51,9 @@ class Team < ApplicationRecord
     if notification.visitor_id == notification.visited_id
       notification.checked = true
     end
-    byebug
+    # byebug
     notification.save if notification.valid?
   end
-
-
-
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

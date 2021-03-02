@@ -5,8 +5,9 @@ class CommentsController < ApplicationController
     @team = Team.find(params[:team_id])
     @comment = @team.comments.build(comment_params)
     @comment.user_id = current_user.id
+    @comment_team = @comment.team
     if @comment.save
-      @team.create_notification_comment!(current_user, @comment.id)
+      @comment_team.create_notification_comment!(current_user, @comment.id)
       render :index
     end
   end

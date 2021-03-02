@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2]
@@ -9,10 +8,10 @@ class User < ApplicationRecord
   has_many :teams, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロー取得
-  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
-  has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
-  has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :following_user, through: :follower, source: :followed
+  has_many :follower_user, through: :followed, source: :follower
   has_many :sns_credentials, dependent: :destroy
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
@@ -27,7 +26,6 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      # deviseのuserカラムに name を追加している場合は以下のコメントアウトも追記します
       user.handle_name = auth.info.name
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
@@ -45,17 +43,14 @@ class User < ApplicationRecord
     end
   end
 
-  # ユーザーをフォローする
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
 
-  # ユーザーのフォローを外す
   def unfollow(user_id)
     follower.find_by(followed_id: user_id).destroy
   end
 
-  # フォローしていればtrueを返す
   def following?(user)
     following_user.include?(user)
   end
