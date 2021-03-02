@@ -1,0 +1,6 @@
+<%= search_form_for q do |f| %>
+  <%= f.search_field :name_or_address_or_introduction_cont, placeholder: "キーワード", class:"my-4" %>
+  <%= f.collection_select :sport_name_eq, sports, :name, :name, include_blank: ' ベンチャースポーツ ' %>
+  <%= f.collection_select :prefecture_code_eq, JpPrefecture::Prefecture.all, :code, :name, include_blank: '都道府県' %>
+  <%= f.submit "検索" %>
+<% end %>

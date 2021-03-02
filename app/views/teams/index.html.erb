@@ -2,12 +2,7 @@
   <div class="col-12 text-center">
     <i class="fas fa-search fa-3x mt-4 mb-2"></i>
     <h2 class="text-center bg-gray">チーム一覧</h2>
-    <%= search_form_for @q do |f| %>
-      <%= f.search_field :name_or_address_or_introduction_cont, placeholder: "キーワード", class:"my-4" %>
-      <%= f.collection_select :sport_name_eq, @sports, :name, :name, include_blank: ' ベンチャースポーツ ' %>
-      <%= f.collection_select :prefecture_code_eq, JpPrefecture::Prefecture.all, :code, :name, include_blank: ' --都道府県-- ' %>
-      <%= f.submit "検索" %>
-    <% end %>
+    <%= render 'teams/search', q: @q, sports: @sports %>
     <% if @teams.present? %>
       <% @teams.each do |team| %>
         <div class="card mb-2">
