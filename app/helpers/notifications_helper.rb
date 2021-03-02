@@ -13,6 +13,9 @@ module NotificationsHelper
       when "comment" then
           @comment = Comment.find_by(id: @visitor_comment)&.comment
           tag.a(@visitor.handle_name, href:user_path(@visitor), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:team_path(notification.team_id), style:"font-weight: bold;")+"にコメントしました"
+      when "chat" then
+        tag.a(notification.visitor.handle_name, href:user_path(@visitor), style:"font-weight: bold;")+"から"+tag.a('あなた', href:chat_path(notification.chat_id), style:"font-weight: bold;")+"へメッセージが届いています"
+
     end
   end
 

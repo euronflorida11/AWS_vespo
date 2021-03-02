@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_100711) do
+ActiveRecord::Schema.define(version: 2021_03_02_055334) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 2021_02_28_100711) do
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "room_id"
+    t.integer "chat_id"
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["team_id"], name: "index_notifications_on_team_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
