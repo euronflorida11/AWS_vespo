@@ -2,38 +2,18 @@
   <div class="col-md-12 text-center">
     <i class="fas fa-envelope fa-3x mt-4 mb-2"></i>
     <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.handle_name %> さんとのメッセージ</h2>
-    <table class="message table">
-      <thead>
-        <tr>
-          <th style="text-align: left; font-size: 15px;"><%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'50x50' %><span> </span><%= current_user.handle_name %></th>
-          <th style="text-align: right; font-size: 15px;"><%= @user.handle_name %><span> </span><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'50x50' %></th>
-        </tr>
-      </thead>
-      <% @chats.each do |chat| %>
-        <% if chat.user_id == current_user.id %>
-          <tbody>
-            <tr>
-              <th>
-                <p style="text-align: left;"><%= chat.message %></p>
-              </th>
-              <th></th>
-            </tr>
-        </tbody>
-        <% else %>
-          <tbody>
-            <tr>
-              <th></th>
-              <th>  
-                <p style="text-align: right;"><%= chat.message %></p>
-              </th>
-            </tr>
-          </tbody>
-        <% end %>
+    <% if @chats.exists? %>
+      <%= render 'chats/chat_list', chats: @chats, user: @user %>
+      <%= form_with model: @chat do |f| %>
+        <%= f.text_field :message, class:'form-control', :placeholder => "メッセージ" %>
+        <%= f.hidden_field :room_id %><br>
+        <%= f.submit "送信", class:'btn btn-outline-info' %>
       <% end %>
-    </table>
-    <%= form_with model: @chat do |f| %>
-      <%= f.text_field :message %>
-      <%= f.hidden_field :room_id %>
+    <% else %>
+      <div class="col-12 text-center">
+        <i class="fas fa-exclamation fa-2x mt-4 text-center"></i>
+        <p class="mt-2 text-center">メッセージはまだありません。</p>
+      </div>
     <% end %>
   </div>
 </div>
