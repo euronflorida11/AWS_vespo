@@ -67,7 +67,7 @@
       <h2 class="text-center bg-gray">ブックマークチーム</h2>
       <% if @favorite_list.present? %>
         <% @favorite_list.each do |team| %>
-          <%= render 'users/team_list', team: team %>
+          <%= render 'teams/team_list', team: team %>
         <% end %>
       <% else %>
         <div class="col-12 text-center">

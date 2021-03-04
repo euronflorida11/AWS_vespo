@@ -9,7 +9,7 @@
     <div class="col-md-8">
       <div class="card-body">
         <%= link_to sport_path(team.sport_id) do %>
-          <%= team.sport.name %>
+          <%= team.sport.name %><br>
         <% end %>
         <% if team.status == "active" %>
           <span class=""><%= team.status_i18n %></span>
@@ -19,8 +19,8 @@
         <i class="fas fa-users m-1"></i><%= team.number %>人
         <i class="far fa-comment m-1"></i><%= team.comments.count %>
         <span id="favorites_buttons_<%= team.id %>">
-        <%= render 'teams/favorite', team: team %>
-        </span><i class="fas fa-map-pin m-1"></i><%= team.address %><br>
+          <%= render 'teams/favorite', team: team %>
+        </span><i class="fas fa-map-pin m-1"></i><%= team.prefecture_name %><span class="ml-1"><%= team.address %></span><br>
         <%= team.introduction %>
       </div>
     </div>
