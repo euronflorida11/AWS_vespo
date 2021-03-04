@@ -1,11 +1,11 @@
 <div id="follow_form">
   <% if current_user.following?(user) %>
     <%= link_to unfollow_path(user.id), method: :POST, remote: true do %>
-      <i class="fas fa-user-slash fa-2x"></i>
+      <i class="fas fa-user-slash fa-2x", data-toggle="tooltip", data-placement="bottom", title="フォローを外す"></i>
     <% end %>
   <% else %>
     <%= link_to follow_path(user.id), method: :POST, remote: true do %>
-      <i class="fas fa-user-plus fa-2x"></i>
+      <i class="fas fa-user-plus fa-2x", data-toggle="tooltip", data-placement="bottom", title="フォローする"></i>
     <% end %>
   <% end %>
 </div>
