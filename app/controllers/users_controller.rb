@@ -48,12 +48,12 @@ class UsersController < ApplicationController
 
   def following
     @user = User.find(params[:id])
-    @users = @user.following_user
+    @users = @user.following_user.page(params[:page]).per(PER)
   end
 
   def follower
     @user = User.find(params[:id])
-    @users = @user.follower_user
+    @users = @user.follower_user.page(params[:page]).per(PER)
   end
 
   private
