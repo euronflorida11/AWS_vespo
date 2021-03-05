@@ -2,7 +2,7 @@
   <div class="col-12 text-center">
     <i class="fas fa-search fa-3x mt-4 mb-2"></i>
     <h2 class="text-center bg-gray">チーム一覧</h2>
-    <%= render 'teams/search', q: @q, sports: @sports %>
+    <%= render 'teams/search_team', q: @q, sports: @sports %>
     <% if @teams.present? %>
       <% @teams.each do |team| %>
         <%= render 'teams/team_list', team: team %>

@@ -22,11 +22,19 @@
         </tr>
         <tr>
           <th><label>フォロー数</label></th>
-          <td><%= @user.follower.count %></td>
+          <td>
+            <%= link_to following_path(@user.id) do %>
+              <%= @user.follower.count %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th><label>フォロワー数</label></th>
-          <td><%= @user.followed.count %></td>
+          <td>
+            <%= link_to follower_path(@user.id) do %>
+              <%= @user.followed.count %>
+            <% end %>
+          </td>
         </tr>
       <% unless @user == current_user %>
         <tr>
@@ -60,6 +68,8 @@
     </table>
   </div>
 </div>
+
+
 <% if @user == current_user %>
   <div class="row">
     <div class="col-12 text-center">

@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   resources :notifications, only: [:index, :destroy]
-  # get '/notifications/destroy_all' => 'notifications#destroy_all', as: 'notification'
   resources :users
   get 'unsubscribe/user' => 'users#unsubscribe', as: 'unsubscribe_user'
   patch ':withdraw/user' => 'users#withdraw', as: 'withdraw_user'
@@ -23,8 +22,10 @@ Rails.application.routes.draw do
   resources :sports do
     resource :favorites, only: [:create, :destroy]
   end
-  post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
-  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
+  post 'follow/:id' => 'relationships#follow', as: 'follow'
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+  get 'user/following/:id' => 'users#following', as: 'following'
+  get 'user/follower/:id' => 'users#follower', as: 'follower'
   get 'tags/:tag_name' => 'tags#index', as: 'tags'
 
 end
