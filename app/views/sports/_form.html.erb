@@ -1,0 +1,11 @@
+<%= form_with model: sport, url: sports_path, local: true do |f| %>
+  <div class="font-weight-bold mt-5">イメージ</div>
+    <%= f.attachment_field :image %>
+  <div class="font-weight-bold mt-5">ベンチャースポーツ名</div>
+    <%= f.text_field :name, class:'form-control' %>
+  <div class="font-weight-bold mt-5">概要</div>
+    <%= f.text_area :introduction, class:'form-control' %>
+  <div class="form_action text-center mt-4">
+    <%= f.submit "登録", class:'btn btn-outline-info' %>
+  </div>
+<% end %>
