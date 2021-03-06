@@ -1,0 +1,11 @@
+<div class="col-3 card shadow-ig py-3 px-2 text-center">
+  <div class="sport-sport"><%= link_to sport_path(sport) do %><%= attachment_image_tag sport, :image, size: "150x150", fallback: "no_image.jpg" %><% end %></div>
+  <h4 class="sport-name my-3"><%= link_to sport.name, sport_path(sport) %></h4>
+  <% sport.tags.each do |tag| %>
+    <div class="">
+      <%= link_to tags_path(tag.name), class: 'btn btn-outline-info m-1 p-1' do %>
+        <%= tag.name %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
