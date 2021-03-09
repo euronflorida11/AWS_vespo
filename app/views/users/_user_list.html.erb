@@ -11,7 +11,9 @@
       </div>
     </div>
     <div class="col-md-1 my-3" id="follow_form_<%= user.id %>">
-      <%= render 'relationships/follow_form', user: user %>
+      <% unless user == current_user %>
+        <%= render 'relationships/follow_form', user: user %>
+      <% end %>
     </div>
     <div class="col-md-2 my-3">
       <%= link_to chat_path(user.id) do %>
