@@ -22,15 +22,15 @@
 /*global $*/
 $(function() {
   $('#slider').slick({
-      infinite: true, //スライドのループ有効化
+      infinite: true,
       dots: true,
       autoplay: true,
       autoplaySpeed: 4000,
-      slidesToShow: 1, //表示するスライドの数
-      slidesToScroll: 1, //スクロールで切り替わるスライドの数
-      infinite: true, //スライドのループ有効化
-      centerMode: true, //要素を中央寄せ
-      centerPadding:'10%', //両サイドの見えている部分のサイズ
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      infinite: true,
+      centerMode: true,
+      centerPadding:'10%',
 
   });
 });

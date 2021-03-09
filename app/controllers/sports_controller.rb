@@ -37,6 +37,13 @@ class SportsController < ApplicationController
       render "edit"
     end
   end
+  
+  def destroy
+    @sport = Sport.find(params[:id])
+    @sport.destroy
+    flash[:notice] = "ベンチャースポーツを削除しました。"
+    redirect_to sports_path
+  end
 
   private
   def sport_params
