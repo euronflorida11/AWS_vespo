@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def google_analytics
+  def top
     gon.google_analytics_key = ENV['GOOGLE_ANALYTICS_ID']
   end
 

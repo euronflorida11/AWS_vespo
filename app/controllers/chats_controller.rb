@@ -18,26 +18,23 @@ class ChatsController < ApplicationController
   end
 
   def create
-    # if UserRoom.where(user_id: current_user.id, room_id: params[:chat][:room_id]).present?
-      @chat = current_user.chats.new(chat_params)
-      @room = @chat.room
-      if @chat.save
-        @roommembernotme = UserRoom.where(room_id: @room.id).where.not(user_id: current_user.id)
-        @theid = @roommembernotme.find_by(room_id: @room.id)
-        notification = current_user.active_notifications.new(
-            room_id: @room.id,
-            chat_id: @chat.id,
-            visited_id: @theid.user_id,
-            visitor_id: current_user.id,
-            action: 'chat'
-        )
-        if notification.visitor_id == notification.visited_id
-            notification.checked = true
-        end
-        notification.save if notification.valid?
+    @chat = current_user.chats.new(chat_params)
+    @room = @chat.room
+    if @chat.save
+      @roommembernotme = UserRoom.where(room_id: @room.id).where.not(user_id: current_user.id)
+      @theid = @roommembernotme.find_by(room_id: @room.id)
+      notification = current_user.active_notifications.new(
+          room_id: @room.id,
+          chat_id: @chat.id,
+          visited_id: @theid.user_id,
+          visitor_id: current_user.id,
+          action: 'chat'
+      )
+      if notification.visitor_id == notification.visited_id
+          notification.checked = true
       end
-      # redirect_to "/chat/#{@chat.room_id}"
-    # end
+      notification.save if notification.valid?
+    end
   end
 
   private
