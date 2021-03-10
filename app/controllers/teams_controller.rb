@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
   PER = 10
-  
+
   def index
     @sports = Sport.where(is_active: 'true')
     if @sports.blank?

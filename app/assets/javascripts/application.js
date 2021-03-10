@@ -19,6 +19,9 @@
 //= require jquery.jpostal
 //= require_tree .
 
+/*global gon/
+const KEY = gon.google_analytics_key;
+
 /*global $*/
 $(function() {
   $('#slider').slick({
