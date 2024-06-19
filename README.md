@@ -21,7 +21,7 @@
 - チームメイトを増やしたいスポーツチームがメンバー募集
 
 ## 設計書
-### 機能一覧(AI教養コース)
+### 機能一覧
   https://docs.google.com/spreadsheets/d/1avAmuAHetvh2t2DnsqB9KRKibShsRbuhQ39Qoi_3kuU/edit?usp=sharing
 
 ### 開発環境
